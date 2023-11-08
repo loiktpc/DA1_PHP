@@ -29,6 +29,9 @@ switch ($_GET['pages']) {
 					case 'checkout':
 						include './Site/src/checkout/CheckOut.php';
 						break;
+					case 'infouser':
+						include './Site/src/infouser/InfoUser.php';
+						break;
 					default:
 						include './Site/src/home/home.php';
 						break;
