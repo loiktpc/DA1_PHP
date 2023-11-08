@@ -7,7 +7,7 @@
                 <nav class="d-flex align-items-center">
                     <a href="/index.php?pages=site&action=home&layout=home">Trang Chủ<span
                             class="lnr lnr-arrow-right"></span></a>
-                    <a href="/index.php?pages=site&action=home&layout=infouser">Thông Tin Tài Khoản</a>
+                    <a href="/index.php?pages=site&action=home&layout=changpass">Đổi mật khẩu</a>
                 </nav>
             </div>
         </div>
@@ -23,32 +23,27 @@
                 <div class="single-post row">
 
 
-
-
                 </div>
 
 
                 <div class="comment-form">
-                    <h4>Thông tin tài khoản</h4>
+                    <h4>Đổi Mẩu Khẩu</h4>
                     <form>
 
                         <div class="form-group ">
-                            <input type="text" class="form-control" id="subject" placeholder="Họ Tên" />
+                            <input type="text" class="form-control" id="subject" placeholder="Mật Khẩu Hiện Tại" />
                         </div>
                         <div class="form-group ">
 
-                            <input type="text" class="form-control" id="subject" placeholder="Số điện thoại" />
+                            <input type="text" class="form-control" id="subject" placeholder="Mật khẩu mới" />
                         </div>
                         <div class="form-group ">
 
-                            <input type="text" class="form-control" id="subject" placeholder="Email" />
-                        </div>
-                        <div class="form-group ">
-
-                            <input type="text" class="form-control" id="subject" placeholder="Địa Chỉ" />
+                            <input type="text" class="form-control" id="subject" placeholder="Xác nhận mật khẩu mới" />
                         </div>
 
-                        <button style="border: none;" class="primary-btn submit_btn">Lưu thông tin</button>
+
+                        <button style="border: none;" class="primary-btn submit_btn">Xác Nhận</button>
                     </form>
                 </div>
             </div>

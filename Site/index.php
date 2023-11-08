@@ -32,6 +32,9 @@ switch ($_GET['pages']) {
 					case 'infouser':
 						include './Site/src/infouser/InfoUser.php';
 						break;
+					case 'changpass':
+						include './Site/src/infouser/ChangsPass.php';
+						break;
 					default:
 						include './Site/src/home/home.php';
 						break;
