@@ -39,6 +39,9 @@ switch ($_GET['pages']) {
 					case 'infocart':
 						include './Site/src/infouser/InfoCart.php';
 						break;
+					case 'infocartdetail':
+						include './Site/src/infouser/InfoCart_detail.php';
+						break;
 					default:
 						include './Site/src/home/home.php';
 						break;
