@@ -26,31 +26,27 @@
                     <form class="row contact_form" action="#" method="post" novalidate="novalidate">
 
                         <div class="col-md-12 form-group p_star">
-                            <input type="text" class="form-control" id="last" name="name">
-                            <span class="placeholder" data-placeholder="Họ Tên"></span>
+                            <input type="text" class="form-control" id="last" name="name" placeholder="Họ Tên">
+
                         </div>
-                        <!-- <div class="col-md-12 form-group">
-                            <input type="text" class="form-control" id="company" name="company"
-                                placeholder="Company name">
-                        </div> -->
+
                         <div class="col-md-6 form-group p_star">
-                            <input type="text" class="form-control" id="number" name="number">
-                            <span class="placeholder" data-placeholder="Só Điện Thoại"></span>
+                            <input type="text" class="form-control" id="number" name="number"
+                                placeholder="Só Điện Thoại">
+
                         </div>
                         <div class="col-md-6 form-group p_star">
-                            <input type="text" class="form-control" id="email" name="compemailany">
-                            <span class="placeholder" data-placeholder="Email"></span>
+                            <input type="text" class="form-control" id="email" name="compemailany" placeholder="Email">
+
                         </div>
-                        <div class="col-md-12 form-group p_star">
-                            <select class="country_select">
-                                <option value="1">Tỉnh</option>
-                                <option value="2">Country</option>
-                                <option value="4">Country</option>
-                            </select>
+                        <div class="col-md-6 form-group p_star">
+                            <input type="text" class="form-control" id="email" name="compemailany"
+                                placeholder="Thành phố">
+
                         </div>
-                        <div class="col-md-12 form-group p_star">
-                            <input type="text" class="form-control" id="add1" name="add1">
-                            <span class="placeholder" data-placeholder="Địa Chỉ"></span>
+                        <div class="col-md-6 form-group p_star">
+                            <input type="text" class="form-control" id="add1" name="add1" placeholder="Địa Chỉ">
+
                         </div>
 
 

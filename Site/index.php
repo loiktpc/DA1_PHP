@@ -1,4 +1,5 @@
 <?php include "./site/include/header.php" ?>
+
 <?php
 switch ($_GET['pages']) {
 	case 'site':
@@ -34,6 +35,9 @@ switch ($_GET['pages']) {
 						break;
 					case 'changpass':
 						include './Site/src/infouser/ChangsPass.php';
+						break;
+					case 'infocart':
+						include './Site/src/infouser/InfoCart.php';
 						break;
 					default:
 						include './Site/src/home/home.php';

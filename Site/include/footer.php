@@ -23,8 +23,8 @@
                             <div class="d-flex flex-row">
 
                                 <input class="form-control" name="EMAIL" placeholder="Email"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email '"
-                                    required="" type="email">
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email '" required=""
+                                    type="email">
 
 
                                 <button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right"
@@ -34,9 +34,7 @@
                                         type="text">
                                 </div>
 
-                                <!-- <div class="col-lg-4 col-md-4">
-                                                <button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
-                                            </div>  -->
+
                             </div>
                             <div class="info"></div>
                         </form>
@@ -71,7 +69,7 @@
                 </div>
             </div>
         </div>
-       
+
     </div>
 </footer>
 <!-- End footer Area -->
@@ -79,7 +77,7 @@
 <script src="./Site/js/vendor/jquery-2.2.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
     integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous">
-    </script>
+</script>
 <script src="./Site/js/vendor/bootstrap.min.js"></script>
 <script src="./Site/js/jquery.ajaxchimp.min.js"></script>
 <script src="./Site/js/jquery.nice-select.min.js"></script>
@@ -92,6 +90,14 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 <script src="./Site/js/gmaps.min.js"></script>
 <script src="./Site/js/main.js"></script>
+<!-- bootraps -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
+</script>
+
 </body>
 
 </html>
