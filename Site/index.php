@@ -1,4 +1,5 @@
 <?php include "./site/include/header.php" ?>
+
 <?php
 switch ($_GET['pages']) {
 	case 'site':
@@ -29,9 +30,27 @@ switch ($_GET['pages']) {
 					case 'checkout':
 						include './Site/src/checkout/CheckOut.php';
 						break;
+
 					case 'contact':
 							include './Site/src/contact/ConTact.php';
 							break;
+
+					case 'infouser':
+						include './Site/src/infouser/InfoUser.php';
+						break;
+					case 'changpass':
+						include './Site/src/infouser/ChangsPass.php';
+						break;
+					case 'infocart':
+						include './Site/src/infouser/InfoCart.php';
+						break;
+					case 'infocartdetail':
+						include './Site/src/infouser/InfoCart_detail.php';
+						break;
+					case 'favoritecart':
+						include './Site/src/infouser/FavoriteCart.php';
+						break;
+
 					default:
 						include './Site/src/home/home.php';
 						break;

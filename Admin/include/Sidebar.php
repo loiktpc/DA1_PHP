@@ -1,119 +1,71 @@
 <div class="nk-sidebar">
     <div class="nk-nav-scroll">
         <ul class="metismenu" id="menu">
-            <li class="nav-label">Dashboard</li>
+            <li class="nav-label">Quản Lí Admin</li>
             <li>
-                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
+                <a href="/index.php?pages=admin&layout=home&modulde=dashboard&action=list" aria-expanded="false"
+                    class="active">
+                    <i class="icon-speedometer menu-icon"></i><span class="nav-text">Thống Kê</span>
                 </a>
-                <ul aria-expanded="false">
-                    <li><a href="./index.html">Home 1</a></li>
-                    <!-- <li><a href="./index-2.html">Home 2</a></li> -->
-                </ul>
             </li>
-            <li class="mega-menu mega-menu-sm">
-                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Layouts</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="./layout-blank.html">Blank</a></li>
-                    <li><a href="./layout-one-column.html">One Column</a></li>
-                    <li><a href="./layout-two-column.html">Two column</a></li>
-                    <li><a href="./layout-compact-nav.html">Compact Nav</a></li>
-                    <li><a href="./layout-vertical.html">Vertical</a></li>
-                    <li><a href="./layout-horizontal.html">Horizontal</a></li>
-                    <li><a href="./layout-boxed.html">Boxed</a></li>
-                    <li><a href="./layout-wide.html">Wide</a></li>
 
 
-                    <li><a href="./layout-fixed-header.html">Fixed Header</a></li>
-                    <li><a href="layout-fixed-sidebar.html">Fixed Sidebar</a></li>
-                </ul>
-            </li>
-            <li class="nav-label">Apps</li>
+            <li class="nav-label">Bảng Quản Lý</li>
             <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-envelope menu-icon"></i> <span class="nav-text">Email</span>
+                    <i class="icon-envelope menu-icon"></i> <span class="nav-text">Khách Hàng</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="./email-inbox.html">Inbox</a></li>
-                    <li><a href="./email-read.html">Read</a></li>
-                    <li><a href="./email-compose.html">Compose</a></li>
-                </ul>
-            </li>
-            <li>
-                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-screen-tablet menu-icon"></i><span class="nav-text">Apps</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="./app-profile.html">Profile</a></li>
-                    <li><a href="./app-calender.html">Calender</a></li>
-                </ul>
-            </li>
-            <li>
-                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-graph menu-icon"></i> <span class="nav-text">Charts</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="./chart-flot.html">Flot</a></li>
-                    <li><a href="./chart-morris.html">Morris</a></li>
-                    <li><a href="./chart-chartjs.html">Chartjs</a></li>
-                    <li><a href="./chart-chartist.html">Chartist</a></li>
-                    <li><a href="./chart-sparkline.html">Sparkline</a></li>
-                    <li><a href="./chart-peity.html">Peity</a></li>
-                </ul>
-            </li>
-            <li class="nav-label">UI Components</li>
-            <li>
-                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-grid menu-icon"></i><span class="nav-text">UI Components</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="./ui-accordion.html">Accordion</a></li>
-                    <li><a href="./ui-alert.html">Alert</a></li>
-                    <li><a href="./ui-badge.html">Badge</a></li>
-                    <li><a href="./ui-button.html">Button</a></li>
-                    <li><a href="./ui-button-group.html">Button Group</a></li>
-                    <li><a href="./ui-cards.html">Cards</a></li>
-                    <li><a href="./ui-carousel.html">Carousel</a></li>
-                    <li><a href="./ui-dropdown.html">Dropdown</a></li>
-                    <li><a href="./ui-list-group.html">List Group</a></li>
-                    <li><a href="./ui-media-object.html">Media Object</a></li>
-                    <li><a href="./ui-modal.html">Modal</a></li>
-                    <li><a href="./ui-pagination.html">Pagination</a></li>
-                    <li><a href="./ui-popover.html">Popover</a></li>
-                    <li><a href="./ui-progressbar.html">Progressbar</a></li>
-                    <li><a href="./ui-tab.html">Tab</a></li>
-                    <li><a href="./ui-typography.html">Typography</a></li>
-                    <!-- </ul>
+                    <li><a href="/index.php?pages=admin&layout=home&modulde=user&action=list">Danh Sách Khách Hàng</a>
                     </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-layers menu-icon"></i><span class="nav-text">Components</span>
-                        </a>
-                        <ul aria-expanded="false"> -->
-                    <li><a href="./uc-nestedable.html">Nestedable</a></li>
-                    <li><a href="./uc-noui-slider.html">Noui Slider</a></li>
-                    <li><a href="./uc-sweetalert.html">Sweet Alert</a></li>
-                    <li><a href="./uc-toastr.html">Toastr</a></li>
+                    <li><a href="/index.php?pages=admin&layout=home&modulde=user&action=add">Thêm Khách Hàng</a></li>
+
                 </ul>
             </li>
             <li>
-                <a href="widgets.html" aria-expanded="false">
-                    <i class="icon-badge menu-icon"></i><span class="nav-text">Widget</span>
-                </a>
-            </li>
-            <li class="nav-label">Forms</li>
-            <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-note menu-icon"></i><span class="nav-text">Forms</span>
+                    <i class="icon-screen-tablet menu-icon"></i><span class="nav-text">Bình Luận</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="./form-basic.html">Basic Form</a></li>
-                    <li><a href="./form-validation.html">Form Validation</a></li>
-                    <li><a href="./form-step.html">Step Form</a></li>
-                    <li><a href="./form-editor.html">Editor</a></li>
-                    <li><a href="./form-picker.html">Picker</a></li>
+                    <li><a href="/index.php?pages=admin&layout=home&modulde=comment&action=list
+">Danh Sách Bình Luận</a></li>
+                    <li><a href="/index.php?pages=admin&layout=home&modulde=comment&action=add
+">Thêm Bình Luận</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                    <i class="icon-graph menu-icon"></i> <span class="nav-text">Thể Loại</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="/index.php?pages=admin&layout=home&modulde=category&action=list
+">Danh Sách Thể Loại</a></li>
+                    <li><a href="/index.php?pages=admin&layout=home&modulde=category&action=add
+">Thêm Thể Loại</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                    <i class="icon-grid menu-icon"></i><span class="nav-text">Đơn Hàng</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="/index.php?pages=admin&layout=home&modulde=order&action=list">Danh Sách Đơn Hàng</a>
+                    </li>
+                    <li><a href="/index.php?pages=admin&layout=home&modulde=order&action=add">Thêm Đơn Hàng</a></li>
+                </ul>
+            </li>
+
+
+            <li>
+                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                    <i class="icon-note menu-icon"></i><span class="nav-text">Sản Phẩm</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="/index.php?pages=admin&layout=home&modulde=product&action=list
+                    ">Danh Sách Sản Phẩm</a></li>
+                    <li><a href="/index.php?pages=admin&layout=home&modulde=product&action=add
+                    ">Thêm Sản Phẩm</a></li>
+
                 </ul>
             </li>
             <li class="nav-label">Table</li>

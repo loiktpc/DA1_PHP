@@ -20,10 +20,13 @@ switch ($_GET['pages']) {
                                 include './Admin/src/products/ProductList.php';
                                 break;
                             case 'add':
-                                include './Admin/src/products/ProductList.php';
+                                include './Admin/src/products/ProductAdd.php';
                                 break;
                             case 'edit':
-                                include './Admin/src/products/ProductList.php';
+                                include './Admin/src/products/ProductEdit.php';
+                                break;
+                            case 'delete':
+                                include './Admin/src/products/ProductDelete.php';
                                 break;
                             default:
                                 include './Admin/src/products/ProductList.php';
@@ -36,10 +39,13 @@ switch ($_GET['pages']) {
                                 include './Admin/src/users/UserList.php';
                                 break;
                             case 'add':
-                                include './Admin/src/users/UserList.php';
+                                include './Admin/src/users/UserAdd.php';
                                 break;
                             case 'edit':
-                                include './Admin/src/users/UserList.php';
+                                include './Admin/src/users/UserEdit.php';
+                                break;
+                            case 'detele':
+                                include './Admin/src/users/UserDelete.php';
                                 break;
                             default:
                                 include './Admin/src/users/UserList.php';
@@ -53,10 +59,13 @@ switch ($_GET['pages']) {
                                 include './Admin/src/category/CategoryList.php';
                                 break;
                             case 'add':
-                                include './Admin/src/category/CategoryList.php';
+                                include './Admin/src/category/CategoryAdd.php';
                                 break;
                             case 'edit':
-                                include './Admin/src/category/CategoryList.php';
+                                include './Admin/src/category/CategoryEdit.php';
+                                break;
+                            case 'delete':
+                                include './Admin/src/category/CategoryDetele.php';
                                 break;
                             default:
                                 include './Admin/src/category/CategoryList.php';
@@ -68,6 +77,32 @@ switch ($_GET['pages']) {
                         switch ($_GET['action']) {
                             case 'list':
                                 include './Admin/src/order/OrderList.php';
+                            case 'add':
+                                include './Admin/src/order/OrderAdd.php';
+                            case 'edit':
+                                include './Admin/src/order/OrderEdit.php';
+                            case 'delete':
+                                include './Admin/src/order/OrderDelete.php';
+                                break;
+                            default:
+                                include './Admin/src/order/OrderList.php';
+                                break;
+                        }
+                        break;
+
+                    case 'comment':
+                        switch ($_GET['action']) {
+                            case 'list':
+                                include './Admin/src/comment/CommentList.php';
+                            case 'add':
+                                include './Admin/src/comment/CommentAdd.php';
+                            case 'edit':
+                                include './Admin/src/comment/CommentEdit.php';
+                            case 'delete':
+                                include './Admin/src/comment/CommentDelete.php';
+                                break;
+                            default:
+                                include './Admin/src/comment/CommentList.php';
                                 break;
                         }
                         break;
