@@ -1,6 +1,6 @@
 # file thư mục đường dẫn tạo hết. chỉnh cần chuyển cái action là qua trang đó
 
-=> chú ý nhầm lúc có sai xót báo cáo lại
+=> chú ý nhầm lúc có sai xót báo cáo lại (thêm vào hoặc chỉnh sửa)
 
 # trang dashboard admin
 
