@@ -7587,7 +7587,7 @@ sub {
   position: absolute;
   left: 0;
   top: 0;
-  background: #111B27;
+  /* background: #111B27; */
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
   transition: all .2s ease; }
   .nav-header .logo-abbr {
@@ -7600,7 +7600,8 @@ sub {
   .nav-header .brand-logo {
     z-index: 999; }
     .nav-header .brand-logo a {
-      padding: 1.607rem 1.8125rem;
+      text-align: center;
+      padding: 0.607rem 1.8125rem;
       display: block; }
       .nav-header .brand-logo a i {
         font-size: 1.375rem; }
@@ -14010,7 +14011,8 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
   padding-right: 15rem; }
 
 [data-nav-headerbg="color_1"] .nav-header {
-  background-color: #7571f9; }
+  /* background-color: #7571f9;  */
+}
 
 [data-nav-headerbg="color_2"] .nav-header {
   background-color: #27394F !important; }

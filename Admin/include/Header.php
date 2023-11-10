@@ -47,10 +47,12 @@
         <div class="nav-header">
             <div class="brand-logo">
                 <a href="index.html">
-                    <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
+                    <b class="logo-abbr">
+                        <!-- <img src="./Public/img/logo/logo.png" alt=""> -->
+                    </b>
                     <span class="logo-compact"><img src="" alt=""></span>
                     <span class="brand-title">
-                        <img src="images/logo-text.png" alt="">
+                        <img style="width:100px;height:64px" src="./Public/img/logo/logo.png" alt="">
                     </span>
                 </a>
             </div>
@@ -76,8 +78,7 @@
                             <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
                                     class="mdi mdi-magnify"></i></span>
                         </div>
-                        <input type="search" class="form-control" placeholder="Search Dashboard"
-                            aria-label="Search Dashboard">
+                        <input type="search" class="form-control" placeholder="Tìm Kiếm" aria-label="Search Dashboard">
                         <div class="drop-down animated flipInX d-md-none">
                             <form action="#">
                                 <input type="text" class="form-control" placeholder="Search">
@@ -209,44 +210,33 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="icons dropdown d-none d-md-flex">
-                            <a href="javascript:void(0)" class="log-user" data-toggle="dropdown">
-                                <span>English</span> <i class="fa fa-angle-down f-s-14" aria-hidden="true"></i>
-                            </a>
-                            <div class="drop-down dropdown-language animated fadeIn  dropdown-menu">
-                                <div class="dropdown-content-body">
-                                    <ul>
-                                        <li><a href="javascript:void()">English</a></li>
-                                        <li><a href="javascript:void()">Dutch</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
+
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                <img src="images/user/1.png" height="40" width="40" alt="">
+                                <img src="./Public/img/imgshop/user.jpg" height="40" width="40" alt="">
                             </div>
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
                                     <ul>
                                         <li>
                                             <a href="app-profile.html"><i class="icon-user"></i>
-                                                <span>Profile</span></a>
+                                                <span>Thông Tin</span></a>
                                         </li>
                                         <li>
                                             <a href="javascript:void()">
-                                                <i class="icon-envelope-open"></i> <span>Inbox</span>
+                                                <i class="icon-envelope-open"></i> <span>Thông Báo</span>
                                                 <div class="badge gradient-3 badge-pill gradient-1">3</div>
                                             </a>
                                         </li>
 
                                         <hr class="my-2">
                                         <li>
-                                            <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock
-                                                    Screen</span></a>
+                                            <a href="page-lock.html"><i class="icon-lock"></i> <span>Khóa Tài
+                                                    Khoản</span></a>
                                         </li>
-                                        <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a>
+                                        <li><a href="page-login.html"><i class="icon-key"></i> <span>Đăng Xuất
+                                                </span></a>
                                         </li>
                                     </ul>
                                 </div>
