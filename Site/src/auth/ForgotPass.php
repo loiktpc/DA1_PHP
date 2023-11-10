@@ -3,10 +3,10 @@
     <div class="container">
         <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
             <div class="col-first">
-                <h1>Order Tracking</h1>
+                <h1>Quên mật khẩu</h1>
                 <nav class="d-flex align-items-center">
-                    <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-                    <a href="category.html">Fashon Category</a>
+                    <a href="index.php">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="category.html">Quên mật khẩu</a>
                 </nav>
             </div>
         </div>
@@ -15,25 +15,58 @@
 <!-- End Banner Area -->
 
 <!--================Tracking Box Area =================-->
-<section class="tracking_box_area section_gap">
+<!-- <section class="tracking_box_area section_gap">
     <div class="container">
         <div class="tracking_box_inner">
-            <p>To track your order please enter your Order ID in the box below and press the "Track" button. This
-                was given to you on your receipt and in the confirmation email you should have received.</p>
+            <p> Vui lòng nhập thông tin</p>
             <form class="row tracking_form" action="#" method="post" novalidate="novalidate">
                 <div class="col-md-12 form-group">
-                    <input type="text" class="form-control" id="order" name="order" placeholder="Order ID"
-                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Order ID'">
+                    <input type="text" class="form-control" id="order" name="order" placeholder="Email hoặc Số điện thoại"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email hoặc Số điện thoại'">
                 </div>
+                
                 <div class="col-md-12 form-group">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Billing Email Address"
-                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Billing Email Address'">
-                </div>
-                <div class="col-md-12 form-group">
-                    <button type="submit" value="submit" class="primary-btn">Track Order</button>
+                    <button type="submit" value="submit" class="primary-btn">Xác nhận</button>
                 </div>
             </form>
         </div>
     </div>
-</section>
+</section> -->
 <!--================End Tracking Box Area =================-->
+<section class="login_box_area section_gap">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="login_box_img">
+					<img class="img-fluid" src="./Public/img/aothun/4.jpg" alt="">
+					<!-- <div class="hover">
+						<h4>New to our website?</h4>
+						<p>There are advances being made in science and technology everyday, and a good example of this
+							is the</p>
+						<a class="primary-btn" href="registration.html">Create an Account</a>
+					</div> -->
+				</div>
+			</div>
+
+			<div class="col-lg-6">
+				<div class="login_form_inner">
+					<h3>Quên mật khẩu</h3>
+                    
+					<form class="row login_form" action="contact_process.php" method="post" id="contactForm"
+						novalidate="novalidate">
+						<div class="col-md-12 form-group">
+                        <input type="text" class="form-control" id="order" name="order" placeholder="Email hoặc Số điện thoại"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email hoặc Số điện thoại'">
+						</div>
+						
+						<div class="col-md-12 form-group">
+							<button type="submit" value="submit" class="primary-btn">Xác nhận</button>
+							<a href="index.php?pages=site&action=home&layout=login">Đăng nhập?</a>
+				
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
