@@ -50,7 +50,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="d-flex justify-content-between">
+                                <a href="/index.php?pages=site&action=home&layout=favoritecart"
+                                    class="d-flex justify-content-between">
                                     <p>Sản Phẩm Yêu Thích</p>
                                 </a>
                             </li>
@@ -87,7 +88,7 @@
                                 <th scope="col" class="text-center">Thao Tác</th>
                             </tr>
                         </thead>
-                        <tbody style="">
+                        <tbody>
 
                             <tr>
                                 <td>
@@ -115,46 +116,12 @@
                                 </td>
                                 <td class="text-center">
 
-                                    <button class="btn btn-success ">Chi tiết đơn
+                                    <button class="genric-btn info">Chi tiết đơn
                                         hàng</button>
-                                    <button type="button" class="btn btn-primary">Đánh Giá</button>
+
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <h5>Kim Thành Lợi</h5>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5 style="width: 250px;">44 kenh 30/4 khóm 6 phường 6
-                                        sóc dasdasd assdasdasd</h5>
-                                </td>
-                                <td>
-                                    <h5>123</h5>
-                                </td>
-                                <td>
-                                    <h5>$360.00</h5>
 
-                                </td>
-                                <td>
-                                    <h5>0945202221</h5>
-
-                                </td>
-                                <td>
-
-                                    <span class="badge rounded-pill bg-secondary">
-                                        Chờ Xác Nhận
-
-                                    </span>
-                                </td>
-                                <td class="text-center">
-
-                                    <button class="btn btn-success ">Chi tiết đơn
-                                        hàng</button>
-                                    <button type="button" class="btn btn-primary">Đánh Giá</button>
-                                </td>
-                            </tr>
 
                         </tbody>
                     </table>
@@ -168,19 +135,3 @@
 </section>
 <!--================Blog Area =================-->
 <!-- Modal delete product -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                Đơn Hàng
-            </div>
-            <div class="modal-body">
-                <h5> Bạn Có Xác nhận Hủy Đơn Hàng Này </h5>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bỏ</button>
-                <button type="button" class="btn btn-primary">Hủy Đơn Hàng</button>
-            </div>
-        </div>
-    </div>
-</div>

@@ -83,7 +83,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="d-flex justify-content-between">
+                                <a href="/index.php?pages=site&action=home&layout=favoritecart"
+                                    class="d-flex justify-content-between">
                                     <p>Sản Phẩm Yêu Thích</p>
                                 </a>
                             </li>
