@@ -80,10 +80,13 @@ switch ($_GET['pages']) {
                         switch ($_GET['action']) {
                             case 'list':
                                 include './Admin/src/order/OrderList.php';
-                            case 'add':
-                                include './Admin/src/order/OrderAdd.php';
-                            case 'edit':
-                                include './Admin/src/order/OrderEdit.php';
+                                break;
+                            case 'handlerorder':
+                                include './Admin/src/order/HandlerOrder.php';
+                                break;
+                            case 'orderdetail':
+                                include './Admin/src/order/OrderDetail.php';
+                                break;
                             case 'delete':
                                 include './Admin/src/order/OrderDelete.php';
                                 break;

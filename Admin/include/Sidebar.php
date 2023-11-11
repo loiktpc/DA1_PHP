@@ -51,7 +51,7 @@
                 <ul aria-expanded="false">
                     <li><a href="/index.php?pages=admin&layout=home&modulde=order&action=list">Danh Sách Đơn Hàng</a>
                     </li>
-                    <li><a href="/index.php?pages=admin&layout=home&modulde=order&action=add">Thêm Đơn Hàng</a></li>
+
                 </ul>
             </li>
 
