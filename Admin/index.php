@@ -99,7 +99,17 @@ switch ($_GET['pages']) {
                     case 'comment':
                         switch ($_GET['action']) {
                             case 'list':
-                                include './Admin/src/comment/CommentList.php';                            
+                                include './Admin/src/comment/CommentList.php';
+                                break;
+                            case 'add':
+                                include './Admin/src/comment/CommentAdd.php';
+                                break;
+                            case 'edit':
+                                include './Admin/src/comment/CommentEdit.php';
+                                break;
+                            case 'delete':
+                                include './Admin/src/comment/CommentDelete.php';
+                                break;
                             default:
                                 include './Admin/src/comment/CommentList.php';
                                 break;
@@ -111,13 +121,26 @@ switch ($_GET['pages']) {
                                 include './Admin/src/commentdetail/CmtdetailList.php';
                             case 'delete':
                                 include './Admin/src/commentdetail/cmtdetailDelete.php';
-                                break;                                
+                                break;
                             default:
                                 include './Admin/src/commentdetail/CmtdetailList.php';
                                 break;
                         }
-                        break;    
-                        
+                        break;
+
+                    case 'review':
+                        switch ($_GET['action']) {
+                            case 'list':
+                                include './Admin/src/review/ReviewList.php';
+                                break;
+                            case 'delete':
+                                include './Admin/src/review/ReviewDelete.php';
+                                break;
+                            default:
+                                include './Admin/src/review/ReviewList.php';
+                                break;
+                        }
+                        break;
                     default:
                         include './Admin/src/Dashboard/Dashboard.php';
                         break;
