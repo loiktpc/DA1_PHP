@@ -5,7 +5,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Bình Luận</h4>
+                        <h4 class="card-title">Bình Luận Chi Tiết</h4>
                         <div class="table-responsive">
                             <div id="DataTables_Table_0_wrapper"
                                 class="dataTables_wrapper container-fluid dt-bootstrap4">
@@ -21,15 +21,15 @@
                                                         aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                                                         aria-sort="ascending"
                                                         aria-label="Name: activate to sort column descending"
-                                                        style="width: 150px;">Tên Sản Phẩm</th>
+                                                        style="width: 150px;">Tên Tài Khoản</th>
                                                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Position: activate to sort column ascending"
-                                                        style="width: 150px;">Tổng Số Bình Luận</th>
+                                                        style="width: 150px;">Nội Dung</th>
                                                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Position: activate to sort column ascending"
-                                                        style="width: 150px;">Ngày Bình Luận Mới Nhất</th>
+                                                        style="width: 150px;">Ngày Bình Luận</th>
                                                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Salary: activate to sort column ascending"
@@ -37,50 +37,50 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr role="row" class="odd">
-                                                    <td class="sorting_1">Áo thun </td>
-                                                    <td>3
+                                            <tr role="row" class="odd">
+                                                    <td class="sorting_1">nhi </td>
+                                                    <td>áo thun đẹp quá
                                                     </td>
                                                     <td>11/11/2023
                                                     </td>
                                                     <td class="d-flex">
                                                         <a
-                                                            href="./index.php?pages=admin&layout=home&modulde=commentdetail&action=edit">
+                                                            href="./index.php?pages=admin&layout=home&modulde=commentdetail&action=delete">
                                                             <button style="margin-right: 10px;"
                                                                 class="btn mb-1 btn-flat btn-primary">
-                                                                Chi Tiết
+                                                                Xóa
                                                             </button>
                                                         </a>
                                                     </td>
                                                 </tr>
                                                 <tr role="row" class="odd">
-                                                    <td class="sorting_1">Áo thun 1 </td>
-                                                    <td>3
+                                                    <td class="sorting_1">loi </td>
+                                                    <td>áo thun đẹp quá
                                                     </td>
                                                     <td>11/11/2023
                                                     </td>
                                                     <td class="d-flex">
                                                         <a
-                                                            href="./index.php?pages=admin&layout=home&modulde=commentdetail&action=edit">
+                                                            href="./index.php?pages=admin&layout=home&modulde=commentdetail&action=delete">
                                                             <button style="margin-right: 10px;"
                                                                 class="btn mb-1 btn-flat btn-primary">
-                                                                Chi Tiết
+                                                                Xóa
                                                             </button>
                                                         </a>
                                                     </td>
                                                 </tr>
                                                 <tr role="row" class="odd">
-                                                    <td class="sorting_1">Áo thun 2</td>
-                                                    <td>3
+                                                    <td class="sorting_1">phu </td>
+                                                    <td>áo thun đẹp quá
                                                     </td>
                                                     <td>11/11/2023
                                                     </td>
                                                     <td class="d-flex">
                                                         <a
-                                                            href="./index.php?pages=admin&layout=home&modulde=commentdetail&action=edit">
+                                                            href="./index.php?pages=admin&layout=home&modulde=commentdetail&action=delete">
                                                             <button style="margin-right: 10px;"
                                                                 class="btn mb-1 btn-flat btn-primary">
-                                                                Chi Tiết
+                                                                Xóa
                                                             </button>
                                                         </a>
                                                     </td>
@@ -88,9 +88,9 @@
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <th rowspan="1" colspan="1">Tên Sản Phẩm</th>
-                                                    <th rowspan="1" colspan="1">Tổng Số Bình Luận</th>
-                                                    <th rowspan="1" colspan="1">Ngày Bình Luận Mới Nhất</th>
+                                                    <th rowspan="1" colspan="1">Tên Tài Khoản</th>
+                                                    <th rowspan="1" colspan="1">Nội Dung</th>
+                                                    <th rowspan="1" colspan="1">Ngày Bình Luận</th>
                                                 </tr>
                                             </tfoot>
                                         </table>
@@ -99,7 +99,7 @@
                                 <div class="row">
                                     <div class="col-sm-12 col-md-5">
                                         <div class="dataTables_info" id="DataTables_Table_0_info" role="status"
-                                            aria-live="polite">Có 3 sản phẩm được bình luận</div>
+                                            aria-live="polite">Có 3 bình luận</div>
                                     </div>
                                     <div class="col-sm-12 col-md-7">
                                         <div class="dataTables_paginate paging_simple_numbers"

@@ -44,7 +44,7 @@ switch ($_GET['pages']) {
                             case 'edit':
                                 include './Admin/src/users/UserEdit.php';
                                 break;
-                            case 'detele':
+                            case 'delete':
                                 include './Admin/src/users/UserDelete.php';
                                 break;
                             default:
@@ -93,19 +93,25 @@ switch ($_GET['pages']) {
                     case 'comment':
                         switch ($_GET['action']) {
                             case 'list':
-                                include './Admin/src/comment/CommentList.php';
-                            case 'add':
-                                include './Admin/src/comment/CommentAdd.php';
-                            case 'edit':
-                                include './Admin/src/comment/CommentEdit.php';
-                            case 'delete':
-                                include './Admin/src/comment/CommentDelete.php';
-                                break;
+                                include './Admin/src/comment/CommentList.php';                            
                             default:
                                 include './Admin/src/comment/CommentList.php';
                                 break;
                         }
                         break;
+                    case 'commentdetail':
+                        switch ($_GET['action']) {
+                            case 'list':
+                                include './Admin/src/commentdetail/CmtdetailList.php';
+                            case 'delete':
+                                include './Admin/src/commentdetail/cmtdetailDelete.php';
+                                break;                                
+                            default:
+                                include './Admin/src/commentdetail/CmtdetailList.php';
+                                break;
+                        }
+                        break;    
+                        
                     default:
                         include './Admin/src/Dashboard/Dashboard.php';
                         break;
