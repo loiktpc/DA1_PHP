@@ -21,24 +21,23 @@
 <script src="./Admin/js/styleSwitcher.js"></script>
 
 <!-- Chartjs -->
-<script src="./Admin/plugins/chart.js/Chart.bundle.min.js"></script>
+<!-- <script src="./Admin/plugins/chart.js/Chart.bundle.min.js"></script> -->
 <!-- Circle progress -->
-<script src="./Admin/plugins/circle-progress/circle-progress.min.js"></script>
+<!-- <script src="./Admin/plugins/circle-progress/circle-progress.min.js"></script> -->
 <!-- Datamap -->
-<script src="./Admin/plugins/d3v3/index.js"></script>
-<script src="./Admin/plugins/topojson/topojson.min.js"></script>
-<script src="./Admin/plugins/datamaps/datamaps.world.min.js"></script>
+<!-- <script src="./Admin/plugins/d3v3/index.js"></script> -->
+<!-- <script src="./Admin/plugins/topojson/topojson.min.js"></script> -->
+<!-- <script src="./Admin/plugins/datamaps/datamaps.world.min.js"></script> -->
 <!-- Morrisjs -->
-<script src="./Admin/plugins/raphael/raphael.min.js"></script>
-<script src="./Admin/plugins/morris/morris.min.js"></script>
+<!-- <script src="./Admin/plugins/raphael/raphael.min.js"></script> -->
+<!-- <script src="./Admin/plugins/morris/morris.min.js"></script> -->
 <!-- Pignose Calender -->
-<script src="./Admin/plugins/moment/moment.min.js"></script>
-<script src="./Admin/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
+<!-- <script src="./Admin/plugins/moment/moment.min.js"></script> -->
+<!-- <script src="./Admin/plugins/pg-calendar/js/pignose.calendar.min.js"></script> -->
 <!-- ChartistJS -->
-<script src="./Admin/plugins/chartist/js/chartist.min.js"></script>
-<script src="./Admin/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
-<script src="./Admin/js/dashboard/dashboard-1.js"></script>
-<!-- validation -->
+<!-- <script src="./Admin/plugins/chartist/js/chartist.min.js"></script> -->
+<!-- <script src="./Admin/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script> -->
+
 <script src="./Admin/plugins/validation/jquery.validate.min.js"></script>
 <script src="./Admin/plugins/validation/jquery.validate-init.js"></script>
 
