@@ -1,3 +1,13 @@
+<?php
+ 
+if (isset($_POST['DeleteCate'])) {
+    $id = $_GET ['id'];  
+    $deletecate=new categories();
+    $DeleteCategory=$deletecate->delete($id);
+    header("location:/index.php?pages=admin&layout=home&modulde=category&action=list");
+    ob_end_flush();
+}
+?>
 <div class="content-body" style="min-height: 780px;">
     <!-- row -->
 
@@ -12,7 +22,7 @@
                                 <p>Bạn chắc chắn xóa ?</p>
                                 <div class="form-group row">
                                     <div class="col-lg-8 ml-auto">
-                                        <button type="submit" class="btn btn-primary ">Xác Nhận</button>
+                                        <button type="submit" class="btn btn-primary " name="DeleteCate">Xác Nhận</button>
                                         <a class="btn btn-outline-info"
                                             href="./index.php?pages=admin&layout=home&modulde=category&action=list">
                                             Quay Lại

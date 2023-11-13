@@ -1,3 +1,32 @@
+<?php
+
+if (isset($_POST['UpdateCate'])) {
+    $id = $_GET ['id']; 
+    $name = $_POST['name'];
+    $note = $_POST['note']; 
+    $updatecate=new categories();
+if (!empty($name)) {
+    if (strlen($name) >= 6) {
+        $UpdateCategory=$updatecate->update($name,$note,$id);
+        $mess = $name;
+        header('location: /index.php?pages=admin&layout=home&modulde=category&action=list');
+        ob_end_flush();
+    } else {
+        $mess = "Tên phân loại phải trên 6 kí tự";
+    }
+    
+}   else{
+    $mess = "Vui Lòng Điền Đầy Đủ Thông Tin";
+}
+} 
+
+ if (isset($_GET['id'])) {
+    $updatecate=new categories();
+    $showupdate = $updatecate->getCateById($_GET['id']);
+    $name = $showupdate['name'];
+    $note=$showupdate['note'];
+}
+?>
 <div class="content-body" style="min-height: 780px;">
     <!-- row -->
 
@@ -15,20 +44,28 @@
                                     </label>
                                     <div class="col-lg-6">
                                         <input type="text" class="form-control" id="val-username" name="name"
-                                            placeholder="Áo thun">
+                                            value="<?= $name ?>" placeholder="Áo thun">
                                     </div>
-                                </div>                                
+                                </div>
                                 <div class="form-group row">
                                     <label class="col-lg-4 col-form-label" for="val-phoneus">Ghi Chú <span
                                             class="text-danger">*</span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <textarea class="form-control" name="" id="" cols="76" rows="3"></textarea>
+                                        <textarea class="form-control" name="note" id="" cols="76"
+                                            rows="3"><?= $note ?></textarea>
                                     </div>
-                                </div>                               
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-4"></div>
+                                    <div class="col-lg-6" style="color: red;">
+                                        <?php echo $mess ?? "" ?>
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <div class="col-lg-8 ml-auto">
-                                        <button type="submit" class="btn btn-primary">Xác Nhận</button>
+                                        <button type="submit" class="btn btn-primary" name="UpdateCate">Xác
+                                            Nhận</button>
                                         <a class="btn btn-outline-info"
                                             href="/index.php?pages=admin&layout=home&modulde=category&action=list">
                                             Quay Lại

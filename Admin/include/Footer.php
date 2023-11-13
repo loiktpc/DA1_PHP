@@ -37,10 +37,10 @@
 <!-- ChartistJS -->
 <script src="./Admin/plugins/chartist/js/chartist.min.js"></script>
 <script src="./Admin/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
-
-
-
 <script src="./Admin/js/dashboard/dashboard-1.js"></script>
+<!-- validation -->
+<script src="./Admin/plugins/validation/jquery.validate.min.js"></script>
+<script src="./Admin/plugins/validation/jquery.validate-init.js"></script>
 
 </body>
 
