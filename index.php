@@ -2,6 +2,7 @@
 include './config/Database.php';
 include './config/Config.php';
 include './Dao/User.php';
+include './Dao/Dashboard.php';
 
 
 if (isset($_GET['pages'])) {
