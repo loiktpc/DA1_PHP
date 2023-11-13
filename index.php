@@ -1,6 +1,7 @@
 <?php
-require_once './config/Database.php';
-require_once './config/Config.php';
+include './config/Database.php';
+include './config/Config.php';
+include './Dao/User.php';
 
 
 if (isset($_GET['pages'])) {

@@ -1,6 +1,5 @@
 <?php
 ob_start();
-
 include "./Admin/include/Header.php";
 include "./Admin/include/Sidebar.php";
 require './Dao/CategoryPdo.php';
@@ -49,6 +48,9 @@ switch ($_GET['pages']) {
                                 break;
                             case 'delete':
                                 include './Admin/src/users/UserDelete.php';
+                                break;
+                            case 'handleruser':
+                                include './Admin/src/users/HandlerUser.php';
                                 break;
                             default:
                                 include './Admin/src/users/UserList.php';

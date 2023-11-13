@@ -1,6 +1,4 @@
 <div class="content-body" style="min-height: 780px;">
-
-
     <!-- row -->
 
     <div class="container-fluid">
@@ -52,36 +50,53 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php
+                                                $user = new User();
+                                                $rows = $user->getUserAll();
+                                                foreach ($rows as $row) {
+                                                    extract($row)
+                                                        ?>
 
+                                                    <tr role="row" class="odd">
+                                                        <td class="sorting_1">
+                                                            <?php echo $username ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $phone ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $email ?>
 
-                                                <tr role="row" class="odd">
-                                                    <td class="sorting_1">Airi Satou</td>
-                                                    <td>23
-                                                        566546466
-                                                    </td>
-                                                    <td>Tokyo@gmail.com</td>
-                                                    <td>online</td>
-                                                    <td>admin</td>
-                                                    <td>2008/11/28</td>
-                                                    <td class="d-flex">
-                                                        <a
-                                                            href="/index.php?pages=admin&layout=home&modulde=user&action=edit">
-                                                            <button style="margin-right: 10px;"
-                                                                class="btn mb-1 btn-flat btn-primary">
-                                                                Sửa
-                                                            </button>
-                                                        </a>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $user_status == 1 ? "online" : "off" ?>
 
-                                                        <a
-                                                            href="/index.php?pages=admin&layout=home&modulde=user&action=detele">
-                                                            <button class="btn mb-1 btn-flat btn-secondary">
-                                                                Xóa
-                                                            </button>
-                                                        </a>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $role_id == 1 ? "admin" : "user" ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $create_at ?>
+                                                        </td>
+                                                        <td class="d-flex">
+                                                            <a
+                                                                href="/index.php?pages=admin&layout=home&modulde=user&action=edit&id=<?php echo $id ?>">
+                                                                <button style="margin-right: 10px;"
+                                                                    class="btn mb-1 btn-flat btn-primary">
+                                                                    Sửa
+                                                                </button>
+                                                            </a>
 
-                                                    </td>
-                                                </tr>
+                                                            <a
+                                                                href="/index.php?pages=admin&layout=home&modulde=user&action=detele&id=<?php echo $id ?>">
+                                                                <button class="btn mb-1 btn-flat btn-secondary">
+                                                                    Xóa
+                                                                </button>
+                                                            </a>
 
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
 
 
                                             </tbody>
@@ -102,41 +117,14 @@
                                 <div class="row">
                                     <div class="col-sm-12 col-md-5">
                                         <div class="dataTables_info" id="DataTables_Table_0_info" role="status"
-                                            aria-live="polite">Còn 12 tài khoản</div>
-                                    </div>
-                                    <div class="col-sm-12 col-md-7">
-                                        <div class="dataTables_paginate paging_simple_numbers"
-                                            id="DataTables_Table_0_paginate">
-                                            <ul class="pagination">
-                                                <li class="paginate_button page-item previous disabled"
-                                                    id="DataTables_Table_0_previous"><a href="#"
-                                                        aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0"
-                                                        class="page-link">Previous</a></li>
-                                                <li class="paginate_button page-item active"><a href="#"
-                                                        aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0"
-                                                        class="page-link">1</a></li>
-                                                <li class="paginate_button page-item "><a href="#"
-                                                        aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0"
-                                                        class="page-link">2</a></li>
-                                                <li class="paginate_button page-item "><a href="#"
-                                                        aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0"
-                                                        class="page-link">3</a></li>
-                                                <li class="paginate_button page-item "><a href="#"
-                                                        aria-controls="DataTables_Table_0" data-dt-idx="4" tabindex="0"
-                                                        class="page-link">4</a></li>
-                                                <li class="paginate_button page-item "><a href="#"
-                                                        aria-controls="DataTables_Table_0" data-dt-idx="5" tabindex="0"
-                                                        class="page-link">5</a></li>
-                                                <li class="paginate_button page-item "><a href="#"
-                                                        aria-controls="DataTables_Table_0" data-dt-idx="6" tabindex="0"
-                                                        class="page-link">6</a></li>
-                                                <li class="paginate_button page-item next" id="DataTables_Table_0_next">
-                                                    <a href="#" aria-controls="DataTables_Table_0" data-dt-idx="7"
-                                                        tabindex="0" class="page-link">Next</a>
-                                                </li>
-                                            </ul>
+                                            aria-live="polite">Còn
+                                            <?php
+                                            $rows = $user->Count_Users();
+                                            echo ($rows['total_accounts']);
+                                            ?> tài khoản
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
