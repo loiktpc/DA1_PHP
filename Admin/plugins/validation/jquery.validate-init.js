@@ -29,6 +29,7 @@ jQuery(".form-valide").validate({
         "val-select2-multiple": { required: !0, minlength: 2 },
         "val-suggestions": { required: !0, minlength: 5 },
         role_id: { required: !0 },
+        checkconfrim: { required: !0 },
         "val-currency": { required: !0, currency: ["$", !0] },
         "val-website": { required: !0, url: !0 },
         UserPhone: { required: !0, minlength: 10, number: true, maxlength: 15 },
@@ -58,6 +59,7 @@ jQuery(".form-valide").validate({
         "val-select2-multiple": "Please select at least 2 values!",
         "val-suggestions": "What can we do to become better?",
         role_id: "Vui Lòng Nhập Phân Quyền",
+        checkconfrim: "vui lòng chọn thông tin ",
         "val-currency": "Please enter a price!",
         "val-website": "Please enter your website!",
         UserPhone: {

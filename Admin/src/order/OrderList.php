@@ -1,7 +1,11 @@
+<?php
+$order = new Order();
+
+
+?>
+
 <div class="content-body" style="min-height: 780px;">
-
     <!-- row -->
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -28,14 +32,16 @@
                                                         rowspan="1" colspan="1"
                                                         aria-label="Position: activate to sort column ascending"
                                                         style="width: 200.438px;"> Số Điện Thoại</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
-                                                        rowspan="1" colspan="1"
-                                                        aria-label="Office: activate to sort column ascending"
-                                                        style="width: 60.3854px;">Email</th>
+
                                                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Age: activate to sort column ascending"
                                                         style="width: 34.9896px;">Thành Phố</th>
+
+                                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Age: activate to sort column ascending"
+                                                        style="width: 34.9896px;">Thanh Toán</th>
                                                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Age: activate to sort column ascending"
@@ -51,40 +57,51 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php
+                                                $rows = $order->GetallOrder();
+                                                foreach ($rows as $row) {
+                                                    extract($row)
+                                                        ?>
 
+                                                    <tr role="row" class="odd">
+                                                        <td class="sorting_1">
+                                                            <?php echo $nameorder ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $phone ?>
+                                                        </td>
 
-                                                <tr role="row" class="odd">
-                                                    <td class="sorting_1">Airi Satou</td>
-                                                    <td>23
-                                                        566546466
-                                                    </td>
-                                                    <td>Tokyo@gmail.com</td>
-                                                    <td>Cần Thơ</td>
-                                                    <td>44 kênh 30/4 khóm 6 phường 6 thành phố sóc trăng phường 6 thành
-                                                        phố sóc trăng</td>
-                                                    <td>giao hàng cẩn thận giao hàng giao giao hàng cẩn thậngiao hàng
+                                                        <td>
+                                                            <?php echo $city ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $transfer_money ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $addressorder ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $mess ?>
+                                                        </td>
+                                                        <td class="vertical-align">
+                                                            <a
+                                                                href="/index.php?pages=admin&layout=home&modulde=order&action=orderdetail&id=<?php echo $id ?>">
+                                                                <button class="btn mb-1 btn-flat btn-primary">
+                                                                    Chi Tiết
+                                                                </button>
+                                                            </a>
 
-                                                        giao
-                                                        hàng cẩn thận</td>
-                                                    <td class="vertical-align">
-                                                        <a
-                                                            href="/index.php?pages=admin&layout=home&modulde=order&action=orderdetail">
-                                                            <button class="btn mb-1 btn-flat btn-primary">
-                                                                Chi Tiết
-                                                            </button>
-                                                        </a>
+                                                            <a
+                                                                href="/index.php?pages=admin&layout=home&modulde=order&action=delete&id=<?php echo $id ?>">
+                                                                <button style="margin-top: 10px;"
+                                                                    class="btn mb-1 btn-flat btn-secondary">
+                                                                    Hủy Đơn Hàng
+                                                                </button>
+                                                            </a>
 
-                                                        <a
-                                                            href="/index.php?pages=admin&layout=home&modulde=order&action=delete">
-                                                            <button style="margin-top: 10px;"
-                                                                class="btn mb-1 btn-flat btn-secondary">
-                                                                Hủy Đơn Hàng
-                                                            </button>
-                                                        </a>
-
-                                                    </td>
-                                                </tr>
-
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
 
 
                                             </tbody>
@@ -92,8 +109,9 @@
                                                 <tr>
                                                     <th rowspan="1" colspan="1">Họ Tên</th>
                                                     <th rowspan="1" colspan="1">Số Điện Thoại</th>
-                                                    <th rowspan="1" colspan="1">Email</th>
+
                                                     <th rowspan="1" colspan="1">Thành Phố</th>
+                                                    <th rowspan="1" colspan="1">Thanh Toán</th>
                                                     <th rowspan="1" colspan="1">Địa Chỉ</th>
                                                     <th rowspan="1" colspan="1">Nội Dung</th>
                                                     <th rowspan="1" colspan="1">Thao Tác</th>
@@ -105,41 +123,14 @@
                                 <div class="row">
                                     <div class="col-sm-12 col-md-5">
                                         <div class="dataTables_info" id="DataTables_Table_0_info" role="status"
-                                            aria-live="polite">Còn 12 tài khoản</div>
-                                    </div>
-                                    <div class="col-sm-12 col-md-7">
-                                        <div class="dataTables_paginate paging_simple_numbers"
-                                            id="DataTables_Table_0_paginate">
-                                            <ul class="pagination">
-                                                <li class="paginate_button page-item previous disabled"
-                                                    id="DataTables_Table_0_previous"><a href="#"
-                                                        aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0"
-                                                        class="page-link">Previous</a></li>
-                                                <li class="paginate_button page-item active"><a href="#"
-                                                        aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0"
-                                                        class="page-link">1</a></li>
-                                                <li class="paginate_button page-item "><a href="#"
-                                                        aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0"
-                                                        class="page-link">2</a></li>
-                                                <li class="paginate_button page-item "><a href="#"
-                                                        aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0"
-                                                        class="page-link">3</a></li>
-                                                <li class="paginate_button page-item "><a href="#"
-                                                        aria-controls="DataTables_Table_0" data-dt-idx="4" tabindex="0"
-                                                        class="page-link">4</a></li>
-                                                <li class="paginate_button page-item "><a href="#"
-                                                        aria-controls="DataTables_Table_0" data-dt-idx="5" tabindex="0"
-                                                        class="page-link">5</a></li>
-                                                <li class="paginate_button page-item "><a href="#"
-                                                        aria-controls="DataTables_Table_0" data-dt-idx="6" tabindex="0"
-                                                        class="page-link">6</a></li>
-                                                <li class="paginate_button page-item next" id="DataTables_Table_0_next">
-                                                    <a href="#" aria-controls="DataTables_Table_0" data-dt-idx="7"
-                                                        tabindex="0" class="page-link">Next</a>
-                                                </li>
-                                            </ul>
+                                            aria-live="polite">
+                                            <?php
+
+                                            $row = $order->Count_Order();
+                                            echo $row['total'] ?> Đơn Hàng
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>

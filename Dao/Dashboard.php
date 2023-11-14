@@ -49,7 +49,7 @@ class Dashboard
     {
         $db = new connect();
 
-        $select = "SELECT COUNT(*) AS total FROM user_order";
+        $select = "SELECT COUNT(*) AS total FROM orders";
         $result = $db->pdo_query_one($select);
         return $result;
     }
@@ -57,7 +57,7 @@ class Dashboard
     {
         $db = new connect();
 
-        $select = "SELECT MAX(create_at) FROM user_order";
+        $select = "SELECT MAX(create_at) FROM orders";
         $result = $db->pdo_query_one($select);
         return $result;
     }
@@ -65,7 +65,7 @@ class Dashboard
     {
         $db = new connect();
 
-        $select = "SELECT COUNT(*) AS total FROM comment_detail";
+        $select = "SELECT COUNT(*) AS total FROM comment";
         $result = $db->pdo_query_one($select);
         return $result;
     }
