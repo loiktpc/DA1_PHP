@@ -88,7 +88,7 @@
                                                             </a>
 
                                                             <a
-                                                                href="/index.php?pages=admin&layout=home&modulde=user&action=detele&id=<?php echo $id ?>">
+                                                                href="/index.php?pages=admin&layout=home&modulde=user&action=delete&id=<?php echo $id ?>">
                                                                 <button class="btn mb-1 btn-flat btn-secondary">
                                                                     Xóa
                                                                 </button>

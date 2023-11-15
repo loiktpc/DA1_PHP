@@ -77,4 +77,12 @@ class Dashboard
         $result = $db->pdo_query_one($select);
         return $result;
     }
+    public function Count_Caterory()
+    {
+        $db = new connect();
+
+        $select = "SELECT COUNT(*) AS total FROM category";
+        $result = $db->pdo_query_one($select);
+        return $result;
+    }
 }

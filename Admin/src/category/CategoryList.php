@@ -58,7 +58,11 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12 col-md-5">
-                                        <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Còn 4 phân loại</div>
+                                        <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Còn <?php 
+                                        $Dashboard = new Dashboard();
+                                        $rows =  $Dashboard->Count_Caterory();
+                                        echo $rows["total"];
+                                        ?> phân loại</div>
                                     </div>
                                     
                                 </div>

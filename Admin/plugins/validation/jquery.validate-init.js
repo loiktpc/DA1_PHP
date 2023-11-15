@@ -37,6 +37,7 @@ jQuery(".form-valide").validate({
         "val-number": { required: !0, number: !0 },
         "val-range": { required: !0, range: [1, 5] },
         "val-terms": { required: !0 },
+        name: { required: !0, minlength: 6 },
     },
     messages: {
         UserName: {
@@ -72,5 +73,9 @@ jQuery(".form-valide").validate({
         "val-number": "Please enter a number!",
         "val-range": "Please enter a number between 1 and 5!",
         "val-terms": "You must agree to the service terms!",
+        name: {
+            required: "vui lòng không được để trống",
+            minlength: "Vui lòng nhập trên 6 kí tự",
+        },
     },
 });
