@@ -95,7 +95,9 @@
     .pink {
         background: #f33d92;
     }
-    
+    .yellow {
+        background: yellow;
+    }
     .product-colors .active:after {
         content: "";
         width: 30px;

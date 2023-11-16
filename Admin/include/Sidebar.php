@@ -68,7 +68,18 @@
 
                 </ul>
             </li>
+            <li>
+                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Thuộc Tính</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="/index.php?pages=admin&layout=home&modulde=attribute&action=list
+                    ">Danh Sách Thuộc Tính</a></li>
+                    <li><a href="/index.php?pages=admin&layout=home&modulde=attribute&action=add
+                    ">Thêm Thuộc Tính</a></li>
 
+                </ul>
+            </li>
             <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                     <i class="icon-notebook menu-icon"></i><span class="nav-text">Đánh Giá Sản Phẩm</span>

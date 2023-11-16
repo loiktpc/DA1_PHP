@@ -29,11 +29,11 @@
                                                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Position: activate to sort column ascending"
-                                                        style="width: 120px;"> Giá Tiền</th>
+                                                        style="width: 100px;"> Giá Tiền</th>
                                                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Office: activate to sort column ascending"
-                                                        style="width: 120px;">Số Lượng</th>
+                                                        style="width: 20px;">Số Lượng</th>
                                                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Age: activate to sort column ascending"
@@ -56,7 +56,7 @@
                                                     </td>
                                                     <td>1</td>
                                                     <td>Áo thun</td>
-                                                    <td class="text-justify ">Loại bỏ kiểu danh sách mặc định và lề trái trên các mục danh sách Lớp này chỉ áp dụng cho các mục danh sách con ngay lập tức (để xóa kiểu danh sách mặc định khỏi bất kỳ danh sách lồng nhau nào, hãy áp dụng lớp này cho mọi danh sách lồng nhau)</td>
+                                                    <td class="text-justify ">Loại bỏ kiểu danh sách mặc định và lề trá xóa kiểu danh sách mặc định khỏi bất kỳ danh sách lồng nhau nào, hãy áp dụng lớp này cho mọi danh sách lồng nhau)</td>
                                                     <td class="d-flex">
                                                         <a
                                                             href="./index.php?pages=admin&layout=home&modulde=product&action=edit">
@@ -67,10 +67,11 @@
                                                         </a>
                                                         <a
                                                             href="./index.php?pages=admin&layout=home&modulde=product&action=delete">
-                                                            <button class="btn mb-1 btn-flat btn-secondary">
+                                                            <button style="margin-right: 10px;" class="btn mb-1 btn-flat btn-secondary">
                                                                 Xóa
                                                             </button>
                                                         </a>
+                                                      
                                                     </td>
                                                 </tr>
                                             </tbody>

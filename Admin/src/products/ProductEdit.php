@@ -60,59 +60,20 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="val-password">Kích Thước <span
-                                            class="text-danger">*</span>
+                                    <label class="col-lg-4 col-form-label" for="role_id">Lựa Chọn Thuộc Tính <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                                value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox1">S</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                                value="option2">
-                                            <label class="form-check-label" for="inlineCheckbox2">M</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                                value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox1">L</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                                value="option2">
-                                            <label class="form-check-label" for="inlineCheckbox2">XL</label>
-                                        </div>
+                                        <select class="form-control valid" id="role_id" name="role_id" aria-required="true" aria-describedby="role_id-error" aria-invalid="false">
+                                            <option value="">Lựa Chọn</option>
+                                            <option value="1">Màu sắc</option>
+                                            <option value="1">Kích Thước</option>
+                                           
+
+                                            
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="val-password">Màu Sắc <span
-                                            class="text-danger">*</span>
-                                    </label>
-                                    <div class="col-lg-6">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                                value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox1">Đen</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                                value="option2">
-                                            <label class="form-check-label" for="inlineCheckbox2">Trắng</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                                value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox1">Hồng</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                                value="option2">
-                                            <label class="form-check-label" for="inlineCheckbox2">Đỏ</label>
-                                        </div>
-                                    </div>
-                                </div>
+                               
                                 <div class="form-group row">
                                     <label class="col-lg-4 col-form-label" for="val-phoneus">Mô Tả <span
                                             class="text-danger">*</span>
@@ -132,6 +93,63 @@
 
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Cấu Hình Biến Thể</h4>
+                        <div class="table-responsive">
+                            <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table class="table table-striped table-bordered zero-configuration dataTable" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                                            <thead>
+                                                <tr role="row">
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 150px;">Thuộc Tính </th>
+                                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 120px;">Giá trị</th>
+                                                 
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $Cate = new categories();
+                                                $ShowListCate=$Cate->getlist();
+                                                foreach ($ShowListCate as $ShowList):
+                                                    extract($ShowList);   
+                                                    ?>                                       
+                                                    <tr role="row" class="odd">
+                                                        <td class="sorting_1"> màu sắc </td>
+                                                        <td>
+                                                        đỏ
+                                                        </td>
+                                                      
+                                                     
+                                                    </tr>
+                                                
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th rowspan="1" colspan="1">Thuộc Tính </th>
+                                                    <th rowspan="1" colspan="1">Giá trị </th>
+                                                 
+                                                  
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-5">
+                                        <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Còn <?php 
+                                        $Dashboard = new Dashboard();
+                                        $rows =  $Dashboard->Count_Caterory();
+                                        echo $rows["total"];
+                                        ?> phân loại</div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

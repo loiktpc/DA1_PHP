@@ -27,6 +27,9 @@ switch ($_GET['pages']) {
                             case 'edit':
                                 include './Admin/src/products/ProductEdit.php';
                                 break;
+                            case 'variant':
+                                    include './Admin/src/products/VariantProduct.php';
+                                    break;  
                             case 'delete':
                                 include './Admin/src/products/ProductDelete.php';
                                 break;
@@ -121,6 +124,7 @@ switch ($_GET['pages']) {
                         switch ($_GET['action']) {
                             case 'list':
                                 include './Admin/src/commentdetail/CmtdetailList.php';
+                                break ;
                             case 'delete':
                                 include './Admin/src/commentdetail/cmtdetailDelete.php';
                                 break;
@@ -129,6 +133,25 @@ switch ($_GET['pages']) {
                                 break;
                         }
                         break;
+                        case 'attribute':
+                            switch ($_GET['action']) {
+                                case 'list':
+                                    include './Admin/src/attribute/AttributeList.php';
+                                    break;
+                                case 'add':
+                                    include './Admin/src/attribute/AttributeAdd.php';
+                                    break;
+                                    case 'edit':
+                                    include './Admin/src/attribute/AttributeEdit.php';
+                                        break;
+                                case 'delete':
+                                    include './Admin/src/attribute/AttributeDelete.php';
+                                    break;
+                                default:
+                                    include './Admin/src/attribute/AttributeList.php';
+                                    break;
+                            }
+                            break;
 
                     case 'review':
                         switch ($_GET['action']) {
