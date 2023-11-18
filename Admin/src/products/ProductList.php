@@ -1,3 +1,4 @@
+
 <div class="content-body" style="min-height: 780px;">
     <!-- row -->
     <div class="container-fluid">
@@ -49,24 +50,63 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php 
+                                                    $db = new connect();
+                                                    $conn = $db->pdo_get_connection();
+                                                    $results_per_page = 4;
+                                                    $stmt1 = $conn->prepare("SELECT * FROM products");
+                                                    $stmt1->execute();
+                                                    $number_of_result = $stmt1->rowCount();
+                                                    $number_of_page = ceil($number_of_result / $results_per_page);
+                                                    if (!isset($_GET['numpage'])) {
+                                                        $page = 1;
+                                                    } else {
+                                                        $page = $_GET['numpage'];
+                                                    }
+                                                    $page_first_result = ($page - 1) * $results_per_page;
+                                                    $stmt = $conn->prepare("SELECT p.*, c.name as namecaterory ,
+                                                    c.id as cateid from products p, category c where c.id = p.category_id  LIMIT $page_first_result ,$results_per_page");
+                                                    $stmt->execute();
+                                                    if ($stmt->rowCount() > 0) {
+        
+        
+        
+                                                // $product = new Products();
+                                                // $rows = $product->getAllProduct();
+                                                foreach ($stmt as $row):
+                                                    extract($row);   
+                                                ?>
                                                 <tr role="row" class="odd">
-                                                    <td>aothun.jpg</td>
-                                                    <td class="sorting_1">Áo thun basic</td>
-                                                    <td>299.000
+                                                    <td>
+                                                        <img width="80px" src="./Public/img/imgshop/<?php echo $img ?>" alt="">
+                                                      
                                                     </td>
-                                                    <td>1</td>
-                                                    <td>Áo thun</td>
-                                                    <td class="text-justify ">Loại bỏ kiểu danh sách mặc định và lề trá xóa kiểu danh sách mặc định khỏi bất kỳ danh sách lồng nhau nào, hãy áp dụng lớp này cho mọi danh sách lồng nhau)</td>
+                                                    <td class="sorting_1">
+                                                    <?php echo $name	 ?>
+                                                    </td>
+                                                    <td>
+                                                    <?php echo $price		 ?>
+                                                    </td>
+                                                    <td>
+                                                    <?php echo $stock		 ?>
+                                                    </td>
+                                                    <td>
+                                                    <?php echo $namecaterory 		 ?>
+                                                    </td>
+                                                    
+                                                    <td class="text-justify ">
+                                                    <?php echo $content 		 ?>
+                                                    </td>
                                                     <td class="d-flex">
                                                         <a
-                                                            href="./index.php?pages=admin&layout=home&modulde=product&action=edit">
+                                                            href="./index.php?pages=admin&layout=home&modulde=product&action=edit&id=<?php echo $id  ?>&cateroryid=<?php echo $cateid ?>">
                                                             <button style="margin-right: 10px;"
                                                                 class="btn mb-1 btn-flat btn-primary">
                                                                 Sửa
                                                             </button>
                                                         </a>
                                                         <a
-                                                            href="./index.php?pages=admin&layout=home&modulde=product&action=delete">
+                                                            href="./index.php?pages=admin&layout=home&modulde=product&action=delete&id=<?php echo $id  ?>&namefile=<?php echo $img  ?>">
                                                             <button style="margin-right: 10px;" class="btn mb-1 btn-flat btn-secondary">
                                                                 Xóa
                                                             </button>
@@ -74,6 +114,7 @@
                                                       
                                                     </td>
                                                 </tr>
+                                                <?php endforeach; } ?>
                                             </tbody>
                                             <tfoot>
                                                 <tr>
@@ -92,38 +133,32 @@
                                 <div class="row">
                                     <div class="col-sm-12 col-md-5">
                                         <div class="dataTables_info" id="DataTables_Table_0_info" role="status"
-                                            aria-live="polite">Còn 12 sản phẩm</div>
+                                            aria-live="polite">Còn 
+                                            <?php
+                                        $dashboard = new Dashboard();
+                                        $product = $dashboard->Count_Products();
+                                        echo $product['total'] ;                        
+                                            ?>
+                                            sản phẩm</div>
                                     </div>
                                     <div class="col-sm-12 col-md-7">
                                         <div class="dataTables_paginate paging_simple_numbers"
                                             id="DataTables_Table_0_paginate">
                                             <ul class="pagination">
-                                                <li class="paginate_button page-item previous disabled"
-                                                    id="DataTables_Table_0_previous"><a href="#"
-                                                        aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0"
-                                                        class="page-link">Trước</a></li>
-                                                <li class="paginate_button page-item active"><a href="#"
-                                                        aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0"
-                                                        class="page-link">1</a></li>
-                                                <li class="paginate_button page-item "><a href="#"
-                                                        aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0"
-                                                        class="page-link">2</a></li>
-                                                <li class="paginate_button page-item "><a href="#"
-                                                        aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0"
-                                                        class="page-link">3</a></li>
-                                                <li class="paginate_button page-item "><a href="#"
-                                                        aria-controls="DataTables_Table_0" data-dt-idx="4" tabindex="0"
-                                                        class="page-link">4</a></li>
-                                                <li class="paginate_button page-item "><a href="#"
-                                                        aria-controls="DataTables_Table_0" data-dt-idx="5" tabindex="0"
-                                                        class="page-link">5</a></li>
-                                                <li class="paginate_button page-item "><a href="#"
-                                                        aria-controls="DataTables_Table_0" data-dt-idx="6" tabindex="0"
-                                                        class="page-link">6</a></li>
-                                                <li class="paginate_button page-item next" id="DataTables_Table_0_next">
-                                                    <a href="#" aria-controls="DataTables_Table_0" data-dt-idx="7"
-                                                        tabindex="0" class="page-link">Tiếp</a>
-                                                </li>
+                                            <?php
+                                
+                                for ($page = 1; $page <= $number_of_page; $page++) {
+                                    echo '        
+                              
+
+                                <li class="paginate_button page-item "><a href="/index.php?pages=admin&layout=home&modulde=product&action=list&numpage=' . $page . '"
+                                aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0"
+                                class="page-link">' . $page . '</a></li>
+                                ';
+                                }
+
+                                ?>                                                                             
+                                           
                                             </ul>
                                         </div>
                                     </div>
