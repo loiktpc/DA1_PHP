@@ -1,10 +1,10 @@
 <?php
  
-if (isset($_POST['DeleteCate'])) {
+if (isset($_POST['delete'])) {
     $id = $_GET ['id'];  
-    $deletecate=new categories();
-    $DeleteCategory=$deletecate->delete($id);
-    header("location:/index.php?pages=admin&layout=home&modulde=category&action=list");
+    $delete=new attributes();
+    $delete->Delete_attributes($id);
+    header("location:/index.php?pages=admin&layout=home&modulde=attribute&action=list");
     ob_end_flush();
 }
 ?>
@@ -22,7 +22,8 @@ if (isset($_POST['DeleteCate'])) {
                                 <p>Bạn chắc chắn xóa ?</p>
                                 <div class="form-group row">
                                     <div class="col-lg-8 ml-auto">
-                                        <button type="submit" class="btn btn-primary " name="DeleteCate">Xác Nhận</button>
+                                        <input type="hidden" name="idatt" id="idatt" value="<?php echo $_GET['id'] ?>">
+                                        <button type="submit" class="btn btn-primary " name="delete">Xác Nhận</button>
                                         <a class="btn btn-outline-info"
                                             href="./index.php?pages=admin&layout=home&modulde=category&action=list">
                                             Quay Lại

@@ -4,7 +4,8 @@ include './config/Config.php';
 include './Dao/User.php';
 include './Dao/Dashboard.php';
 include './Dao/Order.php';
-
+include './Dao/Attribute.php';
+include './Dao/Products.php';
 
 if (isset($_GET['pages'])) {
     switch ($_GET['pages']) {

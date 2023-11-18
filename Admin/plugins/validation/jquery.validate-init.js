@@ -38,6 +38,26 @@ jQuery(".form-valide").validate({
         "val-range": { required: !0, range: [1, 5] },
         "val-terms": { required: !0 },
         name: { required: !0, minlength: 6 },
+        type_att:{required: !0},
+       
+        nameproduct:{
+            required: !0
+        },
+        price:{
+            required: !0,
+            number: true
+        },
+        stock:{
+            required: !0,
+            number: true
+        },
+        caterory_id:{
+            required: !0,
+          
+        },
+        content:{
+            required: !0,
+        }
     },
     messages: {
         UserName: {
@@ -77,5 +97,27 @@ jQuery(".form-valide").validate({
             required: "vui lòng không được để trống",
             minlength: "Vui lòng nhập trên 6 kí tự",
         },
+        type_att:{
+            required: "vui lòng không được để trống"
+        },
+       
+        nameproduct:{
+            required: "vui lòng không được để trống" 
+        },
+        price:{
+            required: "vui lòng không được để trống" ,
+            number: "vui lòng nhập số"
+        },
+        stock:{
+            required: "vui lòng không được để trống" ,
+            number: "vui lòng nhập số"
+        },
+        caterory_id:{
+            required: "vui lòng không được để trống",
+          
+        },
+        content:{
+            required: "vui lòng không được để trống",
+        }
     },
 });

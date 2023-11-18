@@ -23,23 +23,23 @@
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $Cate = new categories();
-                                                $ShowListCate=$Cate->getlist();
+                                                $Cate = new attributes();
+                                                $ShowListCate=$Cate->getallattributes();
                                                 foreach ($ShowListCate as $ShowList):
                                                     extract($ShowList);   
                                                     ?>                                       
                                                     <tr role="row" class="odd">
                                                         <td class="sorting_1"><?php echo $ShowList['name'] ;?> </td>
-                                                        <td><?php echo $ShowList['note']; ?>
-                                                        <td><?php echo $ShowList['note']; ?>
+                                                        <td><?php echo $ShowList['type_Attribute'] == 1 ? "Text" : "Color" ; ?>
+                                                        <td><?php echo $ShowList['description']; ?>
                                                         </td>
                                                         <td class="d-flex">
-                                                        <a href="./index.php?pages=admin&layout=home&modulde=attribute&action=edit&id=<?=$id?>">
+                                                        <a href="./index.php?pages=admin&layout=home&modulde=attribute&action=edit&id=<?php echo $id?>&type=<?php echo $ShowList['type_Attribute'] ?>">
                                                                 <button style="margin-right: 10px;" class="btn mb-1 btn-flat btn-primary">
                                                                  Thuộc Tính
                                                                 </button>
                                                             </a>
-                                                            <a href="./index.php?pages=admin&layout=home&modulde=attribute&action=delete&id=<?=$id?>">
+                                                            <a href="./index.php?pages=admin&layout=home&modulde=attribute&action=delete&id=<?php echo $id?>">
                                                                 <button class="btn mb-1 btn-flat btn-secondary">
                                                                     Xóa
                                                                 </button>

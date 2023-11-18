@@ -1,21 +1,18 @@
 <?php
 
-if (isset($_POST["AddCate"])) {
+if (isset($_POST["add"])) {
     $name = $_POST["name"];
+    $type_att = $_POST['type_att'];
     $note = $_POST['note'];
-    $addcate = new categories();
+   
+    $attributes = new attributes();
     if (
-        !empty($name)
+        !empty($name) &&  !empty($type_att)
     ) {
-        if (strlen($name) >= 6) {
-            $AddCategory = $addcate->add($name, $note);
-            $mess = $name;
-            header('location: /index.php?pages=admin&layout=home&modulde=category&action=list');
-            ob_end_flush();
-        }
-        else {
-            $mess = "Tên phân loại phải trên 6 kí tự";
-        }
+        $attributes->Insert_attributes($name, $note,$type_att);
+           
+        header('location: /index.php?pages=admin&layout=home&modulde=attribute&action=list');
+        ob_end_flush();
     } else {
          $mess = "Vui Lòng Điền Đầy Đủ Thông Tin";
     }
@@ -34,19 +31,19 @@ if (isset($_POST["AddCate"])) {
                             <h3>Thêm Thuộc Tính</h3>
                             <form class="form-valide" action="#" method="post" novalidate="novalidate">
                                 <div class="form-group row ">
-                                    <label class="col-lg-4 col-form-label" for="username">Tên Thuộc Tính <span
+                                    <label class="col-lg-4 col-form-label" for="name">Tên Thuộc Tính <span
                                             class="text-danger">*</span>
                                     </label>
                                     <div class="col-lg-6 ">
-                                        <input type="text" class="form-control" id="username" placeholder="" name="name"
+                                        <input type="text" class="form-control" id="name" placeholder="" name="name"
                                             required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="role_id">Kiểu Loại <span class="text-danger">*</span>
+                                    <label class="col-lg-4 col-form-label" for="type_att">Kiểu Loại <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <select class="form-control" id="role_id" name="role_id">
+                                        <select class="form-control" id="type_att" name="type_att">
                                             <option value="">Lựa Chọn</option>
                                             <option value="1">Text</option>
                                             <option value="2">Color</option>
@@ -54,11 +51,11 @@ if (isset($_POST["AddCate"])) {
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="">Ghi Chú <span
+                                    <label class="col-lg-4 col-form-label" for="note">Ghi Chú <span
                                             class="text-danger">*</span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <textarea class="form-control" name="note" id="" cols="76" rows="3"></textarea>
+                                        <textarea class="form-control" name="note" id="note" cols="76" rows="3"></textarea>
                                     </div>
                                 </div>
                                
@@ -70,7 +67,7 @@ if (isset($_POST["AddCate"])) {
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg-8 ml-auto">
-                                        <button type="submit" class="btn btn-primary" name="AddCate">Xác Nhận</button>
+                                        <button type="submit" class="btn btn-primary" name="add">Xác Nhận</button>
                                         <a class="btn btn-outline-info"
                                             href="./index.php?pages=admin&layout=home&modulde=attribute&action=list">
                                             Quay Lại

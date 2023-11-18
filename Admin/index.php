@@ -27,8 +27,8 @@ switch ($_GET['pages']) {
                             case 'edit':
                                 include './Admin/src/products/ProductEdit.php';
                                 break;
-                            case 'variant':
-                                    include './Admin/src/products/VariantProduct.php';
+                            case 'handle':
+                                    include './Admin/src/products/handler.php';
                                     break;  
                             case 'delete':
                                 include './Admin/src/products/ProductDelete.php';

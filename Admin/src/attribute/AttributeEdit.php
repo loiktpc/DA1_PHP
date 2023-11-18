@@ -1,22 +1,18 @@
 
 <?php
-
-if (isset($_POST["AddCate"])) {
-    $name = $_POST["name"];
-    $note = $_POST['note'];
-    $addcate = new categories();
+//  cấu hình thuộc tính 
+if (isset($_POST["edit"])) {
+    $idatt = $_POST["idatt"];
+    $valueatt = $_POST['valueatt'];
+    $type = $_POST['type'];
+    $attributes = new attributes();
     if (
-        !empty($name)
+        !empty($idatt) && !empty($valueatt)
     ) {
-        if (strlen($name) >= 6) {
-            $AddCategory = $addcate->add($name, $note);
-            $mess = $name;
-            header('location: /index.php?pages=admin&layout=home&modulde=category&action=list');
+        $attributes->Insert_attributes_detail($idatt, $valueatt);
+            
+            header('location: /index.php?pages=admin&layout=home&modulde=attribute&action=edit&id='.$idatt.'&type='. $type.'');
             ob_end_flush();
-        }
-        else {
-            $mess = "Tên phân loại phải trên 6 kí tự";
-        }
     } else {
          $mess = "Vui Lòng Điền Đầy Đủ Thông Tin";
     }
@@ -34,41 +30,37 @@ if (isset($_POST["AddCate"])) {
                         <div class="form-validation">
                             <h3>Cấu Hình Thuộc Tính Sản Phẩm</h3>
                             <form class="form-valide" action="#" method="post" novalidate="novalidate">
-                                <div class="form-group row ">
-                                    <label class="col-lg-4 col-form-label" for="username">Tên <span
-                                            class="text-danger">*</span>
-                                    </label>
-                                    <div class="col-lg-6 ">
-                                        <input type="text" class="form-control" id="username" placeholder="" name="name"
-                                            required>
-                                    </div>
-                                </div>
+                                <input type="hidden" name="idatt" id="idatt" value="<?php echo $_GET['id'] ?>">
+                                <input type="hidden" name="type" id="type" value="<?php echo $_GET['type'] ?>">
+                                <?php if($_GET['type']==2) { ?> 
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="role_id">Màu <span class="text-danger">*</span>
+                                    <label class="col-lg-4 col-form-label" for="valueatt">Màu <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <select class="form-control valid" id="role_id" name="role_id" aria-required="true" aria-describedby="role_id-error" aria-invalid="false">
+                                        <select class="form-control valid" id="valueatt" name="valueatt" aria-required="true" aria-describedby="role_id-error" aria-invalid="false">
                                             <option value="">Lựa Chọn</option>
-                                            <option value="1">black</option>
-                                            <option value="2">red</option>
-                                            <option value="2">white</option>
-                                            <option value="2">pink</option>
-                                            <option value="2">yellow</option>
-                                            <option value="2">gray</option>
+                                            <option value="black">black</option>
+                                            <option value="red">red</option>
+                                            <option value="white">white</option>
+                                            <option value="pink">pink</option>
+                                            <option value="yellow">yellow</option>
+                                            <option value="purple">purple</option>
+                                            <option value="greenyellow">greenyellow</option>
 
                                             
                                         </select>
                                     </div>
                                 </div>
+                                <?php } else { ?>
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="">Mô tả <span
+                                    <label class="col-lg-4 col-form-label" for="valueatt">Giá Trị <span
                                             class="text-danger">*</span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <textarea class="form-control" name="note" id="" cols="76" rows="3"></textarea>
+                                        <textarea class="form-control" name="valueatt" id="valueatt" cols="76" rows="3"></textarea>
                                     </div>
                                 </div>
-                               
+                                    <?php }?>
                                 <div class="form-group row">
                                     <div class="col-lg-4"></div>
                                     <div class="col-lg-6" style="color: red;">
@@ -77,7 +69,7 @@ if (isset($_POST["AddCate"])) {
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg-8 ml-auto">
-                                        <button type="submit" class="btn btn-primary" name="AddCate">Xác Nhận</button>
+                                        <button type="submit" class="btn btn-primary" name="edit">Xác Nhận</button>
                                         <a class="btn btn-outline-info"
                                             href="./index.php?pages=admin&layout=home&modulde=attribute&action=list">
                                             Quay Lại
@@ -98,41 +90,31 @@ if (isset($_POST["AddCate"])) {
                                             <thead>
                                                 <tr role="row">
                                                     <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 150px;">Tên </th>
-                                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 120px;">Màu</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 120px;">Mô Tả</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 120px;">Giá Trị</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $Cate = new categories();
-                                                $ShowListCate=$Cate->getlist();
+                                                $Cate = new attributes();
+                                                $ShowListCate=$Cate->getallattributes_detail($_GET['id']);
                                                 foreach ($ShowListCate as $ShowList):
                                                     extract($ShowList);   
                                                     ?>                                       
                                                     <tr role="row" class="odd">
-                                                        <td class="sorting_1"> màu đỏ </td>
-                                                        <td>
-                                                        đỏ
-                                                        </td>
-                                                        <td></td>
+                                                    <td class="sorting_1"><?php echo $ShowList['nameatribute'] ;?> </td>
+                                                        <td><?php echo $ShowList['Attribute_value']; ?>
+                                                  
                                                      
                                                     </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1"> S </td>
-                                                        <td>
-                                                      
-                                                        </td>
-                                                        <td></td>
-                                                       
-                                                    </tr>
+                                                 
                                                    
                                                 <?php endforeach; ?>
                                             </tbody>
                                             <tfoot>
                                                 <tr>
                                                     <th rowspan="1" colspan="1">Tên </th>
-                                                    <th rowspan="1" colspan="1">Màu </th>
-                                                    <th rowspan="1" colspan="1">Mô Tả </th>
+                                                    <th rowspan="1" colspan="1">Giá Trị </th>
+                                                
                                                   
                                                 </tr>
                                             </tfoot>

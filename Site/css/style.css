@@ -98,6 +98,18 @@
     .yellow {
         background: yellow;
     }
+    .gray {
+        background: gray;
+    }
+    .white {
+        background: #ffffff;
+    }
+    .greenyellow {
+        background: greenyellow;
+    }
+    .purple {
+        background:  purple;
+    }
     .product-colors .active:after {
         content: "";
         width: 30px;
