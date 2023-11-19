@@ -6,6 +6,7 @@ include './Dao/Dashboard.php';
 include './Dao/Order.php';
 include './Dao/Attribute.php';
 include './Dao/Products.php';
+include './Dao/Review.php';
 
 if (isset($_GET['pages'])) {
     switch ($_GET['pages']) {

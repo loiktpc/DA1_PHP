@@ -71,8 +71,7 @@
         
         
         
-                                                // $product = new Products();
-                                                // $rows = $product->getAllProduct();
+        
                                                 foreach ($stmt as $row):
                                                     extract($row);   
                                                 ?>
@@ -146,12 +145,13 @@
                                             id="DataTables_Table_0_paginate">
                                             <ul class="pagination">
                                             <?php
-                                
+                                 // Lấy trang hiện tại từ tham số URL hoặc mặc định là 1           
+                                 $current_page = isset($_GET['numpage']) ? $_GET['numpage'] : 1; 
                                 for ($page = 1; $page <= $number_of_page; $page++) {
                                     echo '        
                               
 
-                                <li class="paginate_button page-item "><a href="/index.php?pages=admin&layout=home&modulde=product&action=list&numpage=' . $page . '"
+                                <li class="paginate_button page-item ' . ($page == $current_page ? 'active' : '') . ' "><a href="/index.php?pages=admin&layout=home&modulde=product&action=list&numpage=' . $page . '"
                                 aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0"
                                 class="page-link">' . $page . '</a></li>
                                 ';

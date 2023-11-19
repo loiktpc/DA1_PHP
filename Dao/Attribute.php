@@ -18,10 +18,8 @@ class attributes{
     function getallattributes_detail($id)
     {
         $db = new connect();
-        $select = "SELECT a.name as nameatribute ,
-         ad.Attribute_value as Attribute_value,
-          a.description as description from attributes a, 
-          attribute_detail ad where a.id = ad.Attribute_id and a.id = '$id'";
+        $select = "SELECT a.name as nameatribute , ad.Attribute_value as Attribute_value, a.description as description from attributes a, attribute_detail ad
+         where a.id = ad.Attribute_id and ad.variant_id = 1 and ad.Attribute_id = '$id'";
         return $db->pdo_query($select);
     }
     // select nhánh main để ít lần lập lại 

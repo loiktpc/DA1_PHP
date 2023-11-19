@@ -19,7 +19,7 @@ if (isset($_POST["edit"])) {
     $duong_dan_anh = "./Public/img/imgshop/$nameflie";
     if (
         !empty($nameproduct) && !empty($caterory_id) && !empty($price) &&
-        !empty($stock) && !empty($content)  && !empty($id_product)
+        !empty($stock) && !empty($content)  && !empty($id_product) && !empty($role_id)
     ) 
     {
           // Tập tin đã tồn tại, không cần cập nhật lại
