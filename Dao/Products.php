@@ -13,12 +13,39 @@ class Products{
     var $attribute_id  = null ;
     var $attribute_value  = null ;
     
+    function Get_variantProductID_color($id){
+        $db = new connect();
+        $select = "SELECT a.name as nameatribute , ad.Attribute_value as Attribute_value,
+        a.description as description from attributes a, attribute_detail ad ,
+        variant v where a.id = ad.Attribute_id and v.id = ad.variant_id and a.type_Attribute = 2 
+        and v.product_id = '$id'";
+        return $db->pdo_query($select);
+    }
     
+
+
+      function Get_variantProductID_size($id)
+    {
+        $db = new connect();
+        $select = "SELECT a.name as nameatribute , ad.Attribute_value as Attribute_value, 
+        a.description as description from attributes a, attribute_detail ad ,
+         variant v where a.id = ad.Attribute_id and v.id = ad.variant_id and 
+         a.type_Attribute = 1 and v.product_id = '$id'";
+        return $db->pdo_query($select);
+    }
+    function getId_Product($id)
+    {
+        $db = new connect();
+        $select = "SELECT p.*, c.name as namecaterory , c.id as cateid from products p,
+         category c where c.id = p.category_id and p.id = '$id'";
+        return $db->pdo_query($select);
+    }
+
+   
     function getAllProduct()
     {
         $db = new connect();
-        $select = "SELECT p.*, c.name as namecaterory ,
-        c.id as cateid from products p, category c where c.id = p.category_id";
+        $select = "SELECT * FROM products LIMIT 8";
         return $db->pdo_query($select);
     }
     
