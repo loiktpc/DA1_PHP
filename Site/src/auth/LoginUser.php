@@ -1,3 +1,67 @@
+<?php
+if (isset($_POST['login'])) {
+	$username = $_POST['username'];
+	$passwords = $_POST['passwords'];
+	$user = new User();
+	$hash = $user->checkUserpass($username);
+	$hash_pass = password_hash($passwords, PASSWORD_DEFAULT);
+
+	// if (isset($_SESSION['messages'])) {
+	// 	unset($_SESSION['messages']);
+	// }
+
+	if (empty($username) || empty($passwords)) {
+		$error['messages'] = "Bạn phải nhập thông tin đầy đủ";
+	} else {
+		if (isset($hash[0]) && password_verify($passwords, $hash[0]['passwords'])) {
+			$result = $user->userid($username, $passwords);
+			$_SESSION['user_on'] = $username;
+			$_SESSION['username'] = $username;
+			$_SESSION['passwords'] = $passwords;
+			if (!empty($_POST["remember_me"])) {
+				setcookie("username", $_POST["username"], time() + 86400, '/');
+				setcookie("passwords", $hash_pass, time() + 86400, '/');
+			}
+			header("Location: ./index.php?pages=site&action=home&layout=home");
+		} else {
+			$error['messages'] = "Đăng nhập không thành công!";
+		}
+	}
+	ob_end_flush();
+}
+?>
+<?php
+// if (isset($_POST['login'])) {
+// 	$username = $_POST['username'];
+// 	$passwords = $_POST['passwords'];
+// 	$user = new User();
+// 	$hash = $user->checkUserpass($username);
+// 	$hash_pass = password_hash($passwords, PASSWORD_DEFAULT);
+
+// 	if (isset($_SESSION['messages'])) {
+// 		unset($_SESSION['messages']);
+// 	}
+
+// 	if (empty($username) || empty($passwords)) {
+// 		$_SESSION['messages'] = "Bạn phải nhập thông tin đầy đủ";
+// 	} else {
+// 		if (isset($hash[0]) && password_verify($passwords, $hash[0]['passwords'])) {
+// 			$result = $user->userid($username, $passwords);
+// 			$_SESSION['user_on'] = $username;
+// 			$_SESSION['username'] = $username;
+// 			$_SESSION['passwords'] = $passwords;
+// 			if (!empty($_POST["remember_me"])) {
+// 				setcookie("username", $_POST["username"], time() + 86400, '/');
+// 				setcookie("passwords", $hash_pass, time() + 86400, '/');
+// 			}
+// 			header("Location: ./index.php?pages=site&action=home&layout=home");
+// 		} else {
+// 			$_SESSION['messages'] = "Đăng nhập không thành công!";
+// 		}
+// 	}
+// 	ob_end_flush();
+// }
+?>
 <!-- Start Banner Area -->
 <section class="banner-area organic-breadcrumb">
 	<div class="container">
@@ -21,35 +85,35 @@
 			<div class="col-lg-6">
 				<div class="login_box_img">
 					<img class="img-fluid" src="./Public/img/aothun/9.jpg" alt="">
-					<!-- <div class="hover">
-						<h4>New to our website?</h4>
-						<p>There are advances being made in science and technology everyday, and a good example of this
-							is the</p>
-						<a class="primary-btn" href="registration.html">Create an Account</a>
-					</div> -->
+
 				</div>
 			</div>
 			<div class="col-lg-6">
 				<div class="login_form_inner">
 					<h3>Đăng nhập</h3>
-					<form class="row login_form" action="contact_process.php" method="post" id="contactForm"
-						novalidate="novalidate">
+					<form class="row login_form" action="" method="post" id="contactForm" novalidate="novalidate">
+
 						<div class="col-md-12 form-group">
-							<input type="text" class="form-control" id="name" name="name" placeholder="Tên đăng nhập"
-								onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tên đăng nhập'">
+							<input type="text" class="form-control" name="username" placeholder="Tên đăng nhập">
 						</div>
 						<div class="col-md-12 form-group">
-							<input type="text" class="form-control" id="name" name="name" placeholder="Mật khẩu"
-								onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mật khẩu'">
+							<input type="password" class="form-control" name="passwords" placeholder="Mật khẩu">
 						</div>
+						<div class="col-lg-4"></div>
+
 						<div class="col-md-12 form-group">
 							<div class="creat_account">
-								<input type="checkbox" id="f-option2" name="selector">
-								<label for="f-option2">Nhớ mật khẩu</label>
+								<input type="checkbox" id="f-option2" name="remember_me">
+								<label for="f-option2">Lưu đăng nhập?</label>
+							</div>
+							<div class="" style="color: red;">
+								<?php
+								echo $error['messages'] ?? "" ?>
 							</div>
 						</div>
+
 						<div class="col-md-12 form-group">
-							<button type="submit" value="submit" class="primary-btn">Đăng nhập</button>
+							<button type="submit" name="login" class="primary-btn">Đăng nhập</button>
 							<a href="index.php?pages=site&action=home&layout=forgotpass">Quên mật khẩu?</a>
 							<a href="index.php?pages=site&action=home&layout=register">Bạn chưa có tài khoản?</a>
 						</div>

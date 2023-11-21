@@ -1,3 +1,12 @@
+<?php
+$role = null;
+
+if (isset($_SESSION['username'])) {
+    $userrole_id = new User();
+    $role = $userrole_id->userrole($_SESSION['username'], $_SESSION['passwords']);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -22,11 +31,9 @@
         ============================================= -->
 
     <!-- bootraps -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-        </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
 
 
     <link rel="stylesheet" href="./Site/css/linearicons.css">
@@ -66,13 +73,41 @@
                                 <a href="index.php?pages=site&action=home&layout=category" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sản phẩm</a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item"><a class="nav-link" href="./index.php?pages=site&action=home&layout=category">Áo thun</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="single-product.html">Quần short</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="single-product.html">Quần short</a>
+                                    </li>
                                     <li class="nav-item"><a class="nav-link" href="checkout.html">Quần thun dài</a></li>
                                     <li class="nav-item"><a class="nav-link" href="cart.html">Quần jean</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="index.php?pages=site&action=home&layout=login">Đăng nhập</a></li>
                             <li class="nav-item"><a class="nav-link" href="index.php?pages=site&action=home&layout=contact">Liên hệ</a></li>
+                            <?php if (!isset($_SESSION['user_on'])) { ?>
+                                <li class="nav-item"><a class="nav-link" href="index.php?pages=site&action=home&layout=login">Đăng nhập</a></li>
+                            <?php } else {
+                                $userlist = new User();
+                                $Info = $userlist->selletusername($_SESSION['username'], $_SESSION['passwords']);
+
+                                if ($role['role_id'] == 1) {
+
+                                    echo '<img class="rounded-circle m-2" 
+                            width="32" height="32" src="./Public/img/logo/avatar.jpg" alt="">
+                                 <li class="nav-item submenu dropdown"><a href="index.php?pages=site&action=home&layout=category" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' . $_SESSION['username'] . ' </a>
+                                     <ul class="dropdown-menu ">                   
+                                    <li class="nav-item"><a class="nav-link" href="/index.php?pages=logout">Đăng xuất</a></li>
+                                    <li class="nav-item"><a class="nav-link" href=" /index.php?pages=admin&layout=home&modulde=dashboard&action=list">Quản lý tài khoản</a></li>                                 
+                                    </ul></li>';
+                                } else {
+                                    echo '<img class="rounded-circle m-2" 
+                            width="32" height="32" src="./Public/img/logo/avatar.jpg" alt="">
+                                 <li class="nav-item submenu dropdown"><a href="index.php?pages=site&action=home&layout=category" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' . $_SESSION['username'] . ' </a>
+                                     <ul class="dropdown-menu ">                   
+                                    <li class="nav-item"><a class="nav-link" href="/index.php?pages=logout">Đăng xuất</a></li>
+                                    <li class="nav-item"><a class="nav-link" href=" index.php?pages=site&action=home&layout=infouser">Quản lý tài khoản</a></li>                                 
+                                    </ul></li>';
+                                }
+                            }
+
+                            ?>
+
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="nav-item"><a href="./index.php?pages=site&action=home&layout=cart" class="cart"><span class="ti-bag"></span></a></li>

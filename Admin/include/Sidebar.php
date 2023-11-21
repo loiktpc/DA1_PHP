@@ -29,8 +29,7 @@
                 <ul aria-expanded="false">
                     <li><a href="/index.php?pages=admin&layout=home&modulde=comment&action=list
 ">Danh Sách Bình Luận</a></li>
-                    <li><a href="/index.php?pages=admin&layout=home&modulde=comment&action=add
-">Thêm Bình Luận</a></li>
+                   
                 </ul>
             </li>
             <li>

@@ -50,6 +50,13 @@ class User
         $result = $db->pdo_execute($select);
         return $result;
     }
+    public function Updateuser($id,$passwords)
+    {
+        $db = new connect();
+        $select = "UPDATE users SET passwords ='$passwords'  WHERE id ='$id' ";
+        $result = $db->pdo_execute($select);
+        return $result;
+    }
     public function Delete_Users($Id)
     {
         $db = new connect();
@@ -80,5 +87,77 @@ class User
             }
         }
     }
+    public function checkUser($username, $passwords)
+    {
+        $db = new connect();
+        $select = "SELECT * FROM users WHERE username='$username' and passwords='$passwords'";
+        $result = $db->pdo_query_one($select);
+        if ($result != null)
+            return true;
+        else
+            return false;
+    }
+    public function checkUserpass($username)
+    {
+        $db = new connect();
+        $select = "SELECT passwords FROM users WHERE username='$username' ";
+        $result = $db->pdo_query($select);
+        return $result;
+    }
 
+    public function selletusername($username, $password)
+    {
+        $db = new connect();
+        $select = "SELECT username FROM users WHERE username='$username' and passwords='$password'";
+        $result = $db->pdo_query_one($select);
+        return $result;
+    }
+    public function usernamecmt($id)
+    {
+        $db = new connect();
+        $select = "SELECT username FROM users WHERE id='$id' ";
+        $result = $db->pdo_query_one($select);
+        return $result;
+    }
+    public function userid($username, $passwords)
+    {
+        $db = new connect();
+        $select = "SELECT id FROM users WHERE username='$username' and passwords='$passwords'";
+        $result = $db->pdo_query_one($select);
+        return $result;
+    }
+    public function id($username)
+    {
+        $db = new connect();
+        $select = "SELECT id FROM users WHERE username='$username'";
+        $result = $db->pdo_query_one($select);
+        return $result;
+    }
+    public function resetpass($password, $email)
+    {
+        $db = new connect();
+        $query = "UPDATE `users` SET `passwords`='$password' WHERE email = '$email'";
+        $result = $db->pdo_execute($query);
+        return $result;
+    }
+
+    public function getsendmail($email)
+    {
+        $db = new connect();
+        $query = "SELECT * FROM users WHERE email='$email'";
+        $result = $db->pdo_query_one($query);
+        return $result;
+    }
+    public function userrole($username, $password)
+    {
+        $db = new connect();
+        $selectpass = "SELECT passwords FROM users WHERE username='$username'";
+        $resultpass = $db->pdo_query_one($selectpass);
+        if (password_verify($password, $resultpass['passwords'])) {
+            $select = "SELECT role_id FROM users WHERE username='$username' ";
+            $result = $db->pdo_query_one($select);
+            return $result;
+        }
+    }
+  
 }

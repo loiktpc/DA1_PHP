@@ -30,6 +30,12 @@ switch ($_GET['pages']) {
 					case 'forgotpass':
 						include './Site/src/auth/ForgotPass.php';
 						break;
+					case 'confirm':
+						include './Site/src/auth/confirm.php';
+						break;
+					case 'changepass':
+						include './Site/src/auth/changepass.php';
+						break;	
 					case 'checkout':
 						include './Site/src/checkout/CheckOut.php';
 						break;

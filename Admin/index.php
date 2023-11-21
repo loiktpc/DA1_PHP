@@ -106,14 +106,19 @@ switch ($_GET['pages']) {
                             case 'list':
                                 include './Admin/src/comment/CommentList.php';
                                 break;
-                            case 'add':
-                                include './Admin/src/comment/CommentAdd.php';
+                        
+                            default:
+                                include './Admin/src/comment/CommentList.php';
                                 break;
-                            case 'edit':
-                                include './Admin/src/comment/CommentEdit.php';
+                        }
+                        break;
+                case 'commentdetail':
+                        switch ($_GET['action']) {
+                            case 'list':
+                                include './Admin/src/commentdetail/cmtdetailList.php';
                                 break;
                             case 'delete':
-                                include './Admin/src/comment/CommentDelete.php';
+                                include './Admin/src/commentdetail/cmtdetailDelete.php';
                                 break;
                             default:
                                 include './Admin/src/comment/CommentList.php';
