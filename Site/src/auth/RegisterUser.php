@@ -28,7 +28,6 @@ if (isset($_POST['register'])) {
         header("Location: ./index.php?pages=site&action=home&layout=login");
     }
 }
-
 ?>
 <!-- Start Banner Area -->
 <section class="banner-area organic-breadcrumb">
