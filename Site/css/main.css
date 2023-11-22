@@ -5388,13 +5388,14 @@ label {
 }
 .cart_inner .table tbody tr td .product_count input {
     width: 100px;
-    padding-left: 30px;
+    padding-left: 9px;
     height: 40px;
     outline: none;
     box-shadow: none;
 }
 .cart_inner .table tbody tr td .product_count .increase {
-    top: -2px;
+    top: -1px;
+    height: 40px;
 }
 .cart_inner .table tbody tr td .product_count .increase:before {
     content: "";
@@ -5402,13 +5403,13 @@ label {
     width: 1px;
     position: absolute;
     left: -3px;
-    top: 0px;
+    top: 1px;
     background: #eeeeee;
 }
 .cart_inner .table tbody tr td .product_count .increase:after {
     content: "";
     height: 1px;
-    width: 30px;
+    width: -73px;
     position: absolute;
     left: -3px;
     top: 22px;
