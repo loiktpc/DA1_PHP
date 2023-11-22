@@ -1,3 +1,8 @@
+<?php 
+  $product = new Products();
+
+?>
+
 <!-- Start Banner Area -->
 <section class="banner-area organic-breadcrumb">
     <div class="container">
@@ -19,66 +24,111 @@
 <div class="product_image_area">
     <div class="container">
         <div class="row s_product_inner">
+        <?php $rows = $product->getId_Product($_GET['id']) ;
+             
+             foreach ($rows as $row){
+                 extract($row);   
+            ?>
             <div class="col-lg-6">
                 <div class="s_Product_carousel">
                     <div class="single-prd-item">
-                        <img class="img-fluid" src="./public/img/aothun/10.jpg" alt="">
+                        <img class="img-fluid" src="./Public/img/imgshop/<?php echo  $img ?>" alt="">
                     </div>
                     <div class="single-prd-item">
-                        <img class="img-fluid" src="./public/img/aothun/10-1.jpg" alt="">
+                        <img class="img-fluid" src="./Public/img/imgshop/<?php echo  $img ?>" alt="">
                     </div>
                     <div class="single-prd-item">
-                        <img class="img-fluid" src="./public/img/aothun/10-2.jpg" alt="">
+                        <img class="img-fluid" src="./Public/img/imgshop/<?php echo  $img ?>" alt="">
                     </div>
                 </div>
             </div>
             <div class="col-lg-5 offset-lg-1">
+              
                 <div class="s_product_text">
-                    <h3>Faded SkyBlu Denim Jeans</h3>
-                    <h2>$149.99</h2>
+                    <h3><?php echo $name ?></h3>
+                    <h2><?php echo   number_format($price, 0, ",", ".") ?>đ</h2>
                     <ul class="list">
-                        <li><a class="active" href="#"><span>Phân loại</span> : Áo thun</a></li>
-                        <li><a href="#"><span>Còn hàng</span> : 15 áo trong kho</a></li>
+                        <li><a class="active" href="#"><span>Phân loại</span> : <?php echo $namecaterory ?></a></li>
+                        <li><a href="#"><span>Còn hàng</span> : còn  <?php echo $stock ?> số lượng  trong kho</a></li>
                     </ul>
-                    <p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking
-                        for
-                        something that can make your interior look awesome, and at the same time give you the pleasant
-                        warm feeling
-                        during the winter.</p>
+                    <p><?php echo $content ?>.</p>
                     <div class="product__details__option__size pb-2">
-                        <span>Kích thước:</span>
-                        <label for="sm" class="active">s
-                            <input type="radio" id="sm">
-                        </label>
-                        <label for="M" class="">M
-                            <input type="radio" id="M">
-                        </label>
-                        <label for="l" class="">l
-                            <input type="radio" id="l">
-                        </label>
-                        <label class="" for="xl">xl
-                            <input type="radio" id="xl">
-                        </label>
+                    <span>Kích thước:</span>
+                    <?php 
+                        $stmt = $product->Get_variantProductID_size($_GET['id']);
+                        $attributes = []; // Khởi tạo mảng attributes
+                        $isFirst = true; // Biến để xác định xem có phải là mục đầu tiên không
+                        foreach ($stmt as $row){
+                            extract($row); 
+                            $class = $isFirst ? 'active' : ''; // Chỉ đánh dấu "active" cho mục đầu tiên
+                            $isFirst = false; // Đặt lại giá trị cho lần lặp tiếp theo
+                            $attributes[] = $Attribute_value; // Thêm giá trị vào mảng attributes
+                    ?>
+                    <label for="<?php echo $Attribute_value ?>" class="<?php echo $class; ?>">
+                        <?php echo $Attribute_value ?>
+                        <input type="radio" id="<?php echo $Attribute_value ?>" name="size" value="<?php echo $Attribute_value ?>">
+                    </label>
+                    <?php 
+                        } 
+                    ?>
                     </div>
                     <div class="pb-2 pt-2">
-                        <span class="product-colors">Màu sắc:
-                            <span class="black active" data-color-primary="#000" data-color-sec="#212121" data-pic="https://github.com/anuzbvbmaniac/Responsive-Product-Card---CSS-ONLY/blob/master/assets/img/jordan_proto.png?raw=true"></span>
-                            <span class="red" data-color-primary="#7E021C" data-color-sec="#bd072d" data-pic="https://github.com/anuzbvbmaniac/Responsive-Product-Card---CSS-ONLY/blob/master/assets/img/jordan_proto_red_black.png?raw=true"></span>
-                            <span class="pink" data-color-primary="#CE5B39" data-color-sec="#F18557" data-pic="https://github.com/anuzbvbmaniac/Responsive-Product-Card---CSS-ONLY/blob/master/assets/img/jordan_proto_orange_black.png?raw=true"></span>
-                            <span class="white" data-color-primary="#CE5B39" data-color-sec="#F18557" data-pic="https://github.com/anuzbvbmaniac/Responsive-Product-Card---CSS-ONLY/blob/master/assets/img/jordan_proto_orange_black.png?raw=true"></span>
-                        </span>
+                    <span class="product-colors">Màu sắc:
+    <?php 
+        $rows = $product->Get_variantProductID_color($_GET['id']);
+        $attributes = []; // Khởi tạo mảng attributes
+        $isFirst = true; // Biến để xác định xem có phải là mục đầu tiên không
+        foreach ($rows as $row){
+            extract($row); 
+            $class = $isFirst ? 'active' : ''; // Chỉ đánh dấu "active" cho mục đầu tiên
+            $isFirst = false; // Đặt lại giá trị cho lần lặp tiếp theo
+            $attributes[] = $Attribute_value; // Thêm giá trị vào mảng attributes                          
+    ?>
+    <span class="color-option <?php echo $Attribute_value ?> <?php echo $class ?>" data-color-primary="#000"  data-color="<?php echo $Attribute_value ?>" data-pic="https://github.com/anuzbvbmaniac/Responsive-Product-Card---CSS-ONLY/blob/master/assets/img/jordan_proto.png?raw=true"></span>
+    <?php } ?>
+</span>
+
                     </div>
                     <br>
-                    <div class="product_count">
-                        <label for="qty">Số lượng:</label>
-                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                    </div>
+                   
                     <div class="card_area d-flex align-items-center">
-                        <a class="primary-btn" href="./index.php?pages=site&action=home&layout=cart">Thêm vào giỏ</a>
+                    <script>
+                        var selectedSize = null ;
+                        var selectedColor = null;
+                    
+                        $('.product__details__option__size input').change(function() {
+                            selectedSize = $('input[name=size]:checked').val();
+                        console.log(selectedSize);
+
+                            updateCartLink();
+                        });
+
+                        $('.color-option').click(function() {
+                            $('.color-option').removeClass('active');
+                            $(this).addClass('active');
+                            selectedColor = $(this).data('color');
+                            console.log(selectedColor);
+                            updateCartLink();
+                        });
+                     
+                        function updateCartLink() {
+                            // Cập nhật liên kết khi có sự thay đổi về kích thước hoặc màu sắc
+                            
+                            var cartLink = "./index.php?pages=site&action=home&layout=cart&id=<?php echo $id ?>&img=<?php echo $img ?>&price=<?php echo $price ?>&name=<?php echo $name ?>&size="+encodeURIComponent(selectedSize ? selectedSize : '<?php echo $stmt['0']['Attribute_value'] ?>') + "&color=" + encodeURIComponent(selectedColor ? selectedColor : '<?php echo $rows['0']['Attribute_value'] ?>');
+
+                            $('.primary-btn').attr('href', cartLink);
+                        }
+                    </script>
+                        <a class="primary-btn" href="./index.php?pages=site&action=home&layout=cart&id=<?php echo $id ?>&img=<?php echo $img ?>&price=<?php echo $price ?>&name=<?php echo $name ?>&size=<?php echo $stmt['0']['Attribute_value'] ?>&color=<?php echo $rows['0']['Attribute_value'] ?>">Thêm vào giỏ</a>
                         <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+                       
                     </div>
+
                 </div>
+                <?php } 
+             
+               
+                ?>
             </div>
         </div>
     </div>
@@ -426,6 +476,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <!-- single product -->
+            
             <div class="col-lg-3 col-md-6">
                 <div class="single-product">
                     <img class="img-fluid" src="./Public/img/aothun/1.jpg" alt="">
@@ -458,238 +509,11 @@
                     </div>
                 </div>
             </div>
-            <!-- single product -->
-            <div class="col-lg-3 col-md-6">
-                <div class="single-product">
-                    <img class="img-fluid" src="./Public/img/quan/1.jpg" alt="">
-                    <div class="product-details">
-                        <h6>addidas New Hammer sole
-                            for Sports person</h6>
-                        <div class="price">
-                            <h6>$150.00</h6>
-                            <h6 class="l-through">$210.00</h6>
-                        </div>
-                        <div class="prd-bottom">
-
-                            <a href="" class="social-info">
-                                <span class="ti-bag"></span>
-                                <p class="hover-text">add to bag</p>
-                            </a>
-                            <a href="" class="social-info">
-                                <span class="lnr lnr-heart"></span>
-                                <p class="hover-text">Wishlist</p>
-                            </a>
-                            <a href="" class="social-info">
-                                <span class="lnr lnr-sync"></span>
-                                <p class="hover-text">compare</p>
-                            </a>
-                            <a href="" class="social-info">
-                                <span class="lnr lnr-move"></span>
-                                <p class="hover-text">view more</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- single product -->
-            <div class="col-lg-3 col-md-6">
-                <div class="single-product">
-                    <img class="img-fluid" src="./Public/img/aothun/6.jpg" alt="">
-                    <div class="product-details">
-                        <h6>addidas New Hammer sole
-                            for Sports person</h6>
-                        <div class="price">
-                            <h6>$150.00</h6>
-                            <h6 class="l-through">$210.00</h6>
-                        </div>
-                        <div class="prd-bottom">
-
-                            <a href="" class="social-info">
-                                <span class="ti-bag"></span>
-                                <p class="hover-text">add to bag</p>
-                            </a>
-                            <a href="" class="social-info">
-                                <span class="lnr lnr-heart"></span>
-                                <p class="hover-text">Wishlist</p>
-                            </a>
-                            <a href="" class="social-info">
-                                <span class="lnr lnr-sync"></span>
-                                <p class="hover-text">compare</p>
-                            </a>
-                            <a href="" class="social-info">
-                                <span class="lnr lnr-move"></span>
-                                <p class="hover-text">view more</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- single product -->
-            <div class="col-lg-3 col-md-6">
-                <div class="single-product">
-                    <img class="img-fluid" src="./Public/img/quan/5.jpg" alt="">
-                    <div class="product-details">
-                        <h6>addidas New Hammer sole
-                            for Sports person</h6>
-                        <div class="price">
-                            <h6>$150.00</h6>
-                            <h6 class="l-through">$210.00</h6>
-                        </div>
-                        <div class="prd-bottom">
-
-                            <a href="" class="social-info">
-                                <span class="ti-bag"></span>
-                                <p class="hover-text">add to bag</p>
-                            </a>
-                            <a href="" class="social-info">
-                                <span class="lnr lnr-heart"></span>
-                                <p class="hover-text">Wishlist</p>
-                            </a>
-                            <a href="" class="social-info">
-                                <span class="lnr lnr-sync"></span>
-                                <p class="hover-text">compare</p>
-                            </a>
-                            <a href="" class="social-info">
-                                <span class="lnr lnr-move"></span>
-                                <p class="hover-text">view more</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="single-product">
-                    <img class="img-fluid" src="./Public/img/quan/5.jpg" alt="">
-                    <div class="product-details">
-                        <h6>addidas New Hammer sole
-                            for Sports person</h6>
-                        <div class="price">
-                            <h6>$150.00</h6>
-                            <h6 class="l-through">$210.00</h6>
-                        </div>
-                        <div class="prd-bottom">
-
-                            <a href="" class="social-info">
-                                <span class="ti-bag"></span>
-                                <p class="hover-text">add to bag</p>
-                            </a>
-                            <a href="" class="social-info">
-                                <span class="lnr lnr-heart"></span>
-                                <p class="hover-text">Wishlist</p>
-                            </a>
-                            <a href="" class="social-info">
-                                <span class="lnr lnr-sync"></span>
-                                <p class="hover-text">compare</p>
-                            </a>
-                            <a href="" class="social-info">
-                                <span class="lnr lnr-move"></span>
-                                <p class="hover-text">view more</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="single-product">
-                    <img class="img-fluid" src="./Public/img/quan/5.jpg" alt="">
-                    <div class="product-details">
-                        <h6>addidas New Hammer sole
-                            for Sports person</h6>
-                        <div class="price">
-                            <h6>$150.00</h6>
-                            <h6 class="l-through">$210.00</h6>
-                        </div>
-                        <div class="prd-bottom">
-
-                            <a href="" class="social-info">
-                                <span class="ti-bag"></span>
-                                <p class="hover-text">add to bag</p>
-                            </a>
-                            <a href="" class="social-info">
-                                <span class="lnr lnr-heart"></span>
-                                <p class="hover-text">Wishlist</p>
-                            </a>
-                            <a href="" class="social-info">
-                                <span class="lnr lnr-sync"></span>
-                                <p class="hover-text">compare</p>
-                            </a>
-                            <a href="" class="social-info">
-                                <span class="lnr lnr-move"></span>
-                                <p class="hover-text">view more</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- single product -->
-            <div class="col-lg-3 col-md-6">
-                <div class="single-product">
-                    <img class="img-fluid" src="./Public/img/aothun/2.jpg" alt="">
-                    <div class="product-details">
-                        <h6>addidas New Hammer sole
-                            for Sports person</h6>
-                        <div class="price">
-                            <h6>$150.00</h6>
-                            <h6 class="l-through">$210.00</h6>
-                        </div>
-                        <div class="prd-bottom">
-
-                            <a href="" class="social-info">
-                                <span class="ti-bag"></span>
-                                <p class="hover-text">add to bag</p>
-                            </a>
-                            <a href="" class="social-info">
-                                <span class="lnr lnr-heart"></span>
-                                <p class="hover-text">Wishlist</p>
-                            </a>
-                            <a href="" class="social-info">
-                                <span class="lnr lnr-sync"></span>
-                                <p class="hover-text">compare</p>
-                            </a>
-                            <a href="" class="social-info">
-                                <span class="lnr lnr-move"></span>
-                                <p class="hover-text">view more</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- single product -->
-            <div class="col-lg-3 col-md-6">
-                <div class="single-product">
-                    <img class="img-fluid" src="./Public/img/aothun/8.jpg" alt="">
-                    <div class="product-details">
-                        <h6>addidas New Hammer sole
-                            for Sports person</h6>
-                        <div class="price">
-                            <h6>$150.00</h6>
-                            <h6 class="l-through">$210.00</h6>
-                        </div>
-                        <div class="prd-bottom">
-
-                            <a href="" class="social-info">
-                                <span class="ti-bag"></span>
-                                <p class="hover-text">add to bag</p>
-                            </a>
-                            <a href="" class="social-info">
-                                <span class="lnr lnr-heart"></span>
-                                <p class="hover-text">Wishlist</p>
-                            </a>
-                            <a href="" class="social-info">
-                                <span class="lnr lnr-sync"></span>
-                                <p class="hover-text">compare</p>
-                            </a>
-                            <a href="" class="social-info">
-                                <span class="lnr lnr-move"></span>
-                                <p class="hover-text">view more</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
         </div>
 </section>
 <div class="pb-4"></div>
 <br>
+<script src="/Site/"></script>
 
 <!-- End related-product Area -->

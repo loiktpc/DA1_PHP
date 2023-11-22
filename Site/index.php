@@ -1,4 +1,7 @@
-<?php include "./site/include/header.php" ?>
+<?php 
+ob_start();
+
+include "./site/include/header.php" ?>
 
 <?php
 switch ($_GET['pages']) {
@@ -34,7 +37,6 @@ switch ($_GET['pages']) {
 					case 'contact':
 							include './Site/src/contact/ConTact.php';
 							break;
-
 					case 'infouser':
 						include './Site/src/infouser/InfoUser.php';
 						break;

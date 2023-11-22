@@ -41,10 +41,11 @@
     <link rel="stylesheet" href="./Site/css/magnific-popup.css">
     <link rel="stylesheet" href="./Site/css/main.css">
     <link rel="stylesheet" href="./Site/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 
 <body>
-
+    <?php session_start(); ?>
     <!-- Start Header Area -->
     <header class="header_area sticky-header">
         <div class="main_menu">
