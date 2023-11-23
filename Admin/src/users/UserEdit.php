@@ -46,8 +46,6 @@ if (isset($_POST["EditUser"])) {
 } ?>
 
 
-?>
-
 <div class="content-body" style="min-height: 780px;">
     <!-- row -->
 

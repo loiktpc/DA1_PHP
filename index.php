@@ -19,8 +19,7 @@ if (isset($_GET['pages'])) {
         case 'login':
             include './Admin/auth/LoginAdmin.php';
             break;
-        case 'logout':
-            
+        case 'logout':          
             session_destroy();
             setcookie("username", $_POST["username"], time() - 86400);
             setcookie("passwords", $hash_pass, time() - 86400);

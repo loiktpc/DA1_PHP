@@ -1,10 +1,12 @@
 <?php
 $role = null;
-
 if (isset($_SESSION['username'])) {
     $userrole_id = new User();
     $role = $userrole_id->userrole($_SESSION['username'], $_SESSION['passwords']);
+    $id = $userrole_id->id($_SESSION['username']);
+
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -80,14 +82,12 @@ if (isset($_SESSION['username'])) {
                                 </ul>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="index.php?pages=site&action=home&layout=contact">Liên hệ</a></li>
-                            <?php if (!isset($_SESSION['user_on'])) { ?>
+                            <?php if (!isset($_SESSION['username'])) { ?>
                                 <li class="nav-item"><a class="nav-link" href="index.php?pages=site&action=home&layout=login">Đăng nhập</a></li>
                             <?php } else {
                                 $userlist = new User();
-                                $Info = $userlist->selletusername($_SESSION['username'], $_SESSION['passwords']);
-
+                                $Info = $userlist->selletusername($_SESSION['username']);
                                 if ($role['role_id'] == 1) {
-
                                     echo '<img class="rounded-circle m-2" 
                             width="32" height="32" src="./Public/img/logo/avatar.jpg" alt="">
                                  <li class="nav-item submenu dropdown"><a href="index.php?pages=site&action=home&layout=category" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' . $_SESSION['username'] . ' </a>
@@ -101,7 +101,7 @@ if (isset($_SESSION['username'])) {
                                  <li class="nav-item submenu dropdown"><a href="index.php?pages=site&action=home&layout=category" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' . $_SESSION['username'] . ' </a>
                                      <ul class="dropdown-menu ">                   
                                     <li class="nav-item"><a class="nav-link" href="/index.php?pages=logout">Đăng xuất</a></li>
-                                    <li class="nav-item"><a class="nav-link" href=" index.php?pages=site&action=home&layout=infouser">Quản lý tài khoản</a></li>                                 
+                                    <li class="nav-item"><a class="nav-link" href=" index.php?pages=site&action=home&layout=infouser&id=' . $id['id'] . '">Quản lý tài khoản</a></li>                                 
                                     </ul></li>';
                                 }
                             }

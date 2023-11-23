@@ -36,7 +36,6 @@ class User
     public function GetIduser($Id)
     {
         $db = new connect();
-
         $select = "SELECT * FROM users WHERE id  = '$Id'";
         $result = $db->pdo_query_one($select);
         return $result;
@@ -50,10 +49,24 @@ class User
         $result = $db->pdo_execute($select);
         return $result;
     }
-    public function Updateuser($id,$passwords)
+    public function Updateuser($id, $passwords)
     {
         $db = new connect();
         $select = "UPDATE users SET passwords ='$passwords'  WHERE id ='$id' ";
+        $result = $db->pdo_execute($select);
+        return $result;
+    }
+    public function checkacc($UserName,$Email,$Phone)
+    {
+        $db = new connect();
+        $select = "SELECT * FROM users WHERE username LIKE '$UserName' OR email LIKE '$Email' OR phone LIKE '$Phone'";
+        $result = $db->pdo_query_one($select);
+        return $result;
+    }
+    public function updateinfouser($id, $username, $phone, $email)
+    {
+        $db = new connect();
+        $select = "UPDATE users SET username ='$username',phone='$phone',email='$email'  WHERE id ='$id' ";
         $result = $db->pdo_execute($select);
         return $result;
     }
@@ -105,13 +118,14 @@ class User
         return $result;
     }
 
-    public function selletusername($username, $password)
+    public function selletusername($username)
     {
         $db = new connect();
-        $select = "SELECT username FROM users WHERE username='$username' and passwords='$password'";
+        $select = "SELECT username FROM users WHERE username ='$username'";
         $result = $db->pdo_query_one($select);
         return $result;
     }
+    
     public function usernamecmt($id)
     {
         $db = new connect();
@@ -159,5 +173,5 @@ class User
             return $result;
         }
     }
-  
+    
 }

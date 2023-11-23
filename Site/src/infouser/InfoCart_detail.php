@@ -35,7 +35,10 @@
                         <h4 class="widget_title">Tài Khoản Của Tôi</h4>
                         <ul class="list cat-list">
                             <li>
-                                <a href="/index.php?pages=site&action=home&layout=infouser"
+                                <a href="/index.php?pages=site&action=home&layout=infouser&id=<?php
+                                                                                                $user = new User();
+                                                                                                $userInfo = $user->id($_SESSION['username']);
+                                                                                                echo $userInfo['id']; ?>"
                                     class="d-flex justify-content-between">
                                     <p>Hồ sơ</p>
 
