@@ -257,13 +257,22 @@ if (isset($_SESSION['cart'])) {
                             </td>
 
                             <td>
+                                <?php
+                            
+                                if(isset($_SESSION['idLogin'])){
+                                ?>
                                 <div class="checkout_btn_inner d-flex align-items-center">
-                                    <a class="gray_btn" href="#">Tiếp Tục Mua Hàng</a>
-                                    <a class="primary-btn" href="#">Xác Nhận Thanh Toán</a>
+                                    <a class="gray_btn" href="/index.php?pages=site&action=home&layout=home">Tiếp Tục Mua Hàng</a>
+                                    <a class="primary-btn" href="/index.php?pages=site&action=home&layout=checkout">Xác Nhận Thanh Toán</a>
+                                </div>
+                                <?php }else{?>
+                                <div class="checkout_btn_inner d-flex align-items-center">
+                                    <a class="gray_btn" href="/index.php?pages=site&action=home&layout=home">Tiếp Tục Mua Hàng</a>
+                                    <a class="primary-btn" href="/index.php?pages=site&action=home&layout=login">Vui Lòng Đăng Nhập Để Thanh Toán</a>
                                 </div>
                             </td>
                         </tr>
-                        <?php endif; ?>
+                        <?php } endif;  ?>
                         
                     </tbody>
                 </table>

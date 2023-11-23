@@ -2,6 +2,15 @@
 class Order
 {
     var $Id = null;
+    var $order_id = null;
+    var $product_id = null;
+    var $qty = null;
+    var $price = null;
+    var $order_code = null;
+    var $status = null;
+    var $size = null;
+    var $color = null;
+
     public function GetallOrder()
     {
         $db = new connect();
@@ -58,6 +67,15 @@ class Order
 
         $select = "SELECT COUNT(*) AS total FROM order_detail";
         $result = $db->pdo_query_one($select);
+        return $result;
+    }
+    public function Insert_Order_Detail($order_id,$product_id,$qty,$price,$size,$color,$order_code)
+    {
+        $db = new connect();
+
+        $select = "INSERT INTO order_detail(order_id,product_id,qty,price,size,color,order_code,status) VALUES 
+        ('$order_id','$product_id','$qty','$price','$size','$color','$order_code',0)";
+        $result = $db->pdo_execute($select);
         return $result;
     }
 }
