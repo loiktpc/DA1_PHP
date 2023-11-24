@@ -54,7 +54,7 @@ if (isset($_SESSION['username'])) {
 </head>
 
 <body>
-    <?php session_start(); ?>
+  
     <!-- Start Header Area -->
     <header class="header_area sticky-header">
         <div class="main_menu">

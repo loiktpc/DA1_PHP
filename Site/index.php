@@ -1,5 +1,5 @@
 <?php 
-ob_start();
+
 
 include "./site/include/header.php" ?>
 
@@ -58,7 +58,9 @@ switch ($_GET['pages']) {
 					case 'favoritecart':
 						include './Site/src/infouser/FavoriteCart.php';
 						break;
-
+					case 'thanks':
+							include './Site/src/checkout/ThanksOrders.php';
+							break;
 					default:
 						include './Site/src/home/home.php';
 						break;

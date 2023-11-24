@@ -26,7 +26,7 @@
                     $conn = $user->pdo_get_connection();
                     $conn->exec($sql);
                     $last_id = $conn->lastInsertId();
-                    order_detail($last_id, $code_cart) ;
+                    order_detail($last_id, $code_cart,$username,$userphone,$addressuser,$usercity,$pay,$total_bill,$message) ;
                 } else {
                    $mess = "<span class='mess'> vui lòng nhập đúng dạng số điện thoại </span>
                    "; 
@@ -41,7 +41,7 @@
     }
  }
 
- function order_detail($last_id, $code_cart)
+ function order_detail($last_id, $code_cart,$username,$userphone,$addressuser,$usercity,$pay,$total_bill,$message)
  {
     
     $orders = new Order() ; 
@@ -57,14 +57,14 @@
             //  echo $name, $id, $money, $qty, $last_id, $code_cart, $pay;
 
              $orders->Insert_Order_Detail($last_id,$id,$qty,$price,$size,$color,$code_cart) ;
-             unset($_SESSION['cart']);
+            //  unset($_SESSION['cart']);
              ?>
              <script>
                  alert("Đặt Hàng Thành Công Vui Lòng Kiểm tra Lịch sử Đơn Hàng")
-                 window.location.href = '/index.php?pages=site&action=home&layout=home'
+                //  window.location.href = '/index.php?pages=site&action=home&layout=thanks'
              </script>
              <?php
-             // Header('Location: /index.php?pages=product_detail&action=layout&html=giohang');
+             Header('Location: /index.php?pages=site&action=home&layout=thanks&name='.$username.'&phone='.$userphone.'&address='.$addressuser.'&city='.$usercity.'&pay='.$pay.'&code='.$code_cart.'&totalmoney='.$total_bill.'&mess='.$message.'');
  
          }
      }

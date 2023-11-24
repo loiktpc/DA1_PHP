@@ -13,8 +13,6 @@ if (isset($_POST['register'])) {
         $valid = 'Vui lòng nhập thông tin';
     } else if ($usercheck) {
         $valid = 'Tài khoản đã tồn tại vui lòng điền thông tin khác!';
-    } else if ($mailcheck) {
-        $valid_email = 'Email đã được sử dụng,vui lòng điền email khác!';
     } else if (strlen($PassWord) <= 6) {
         $valid_pass = "Mật khẩu phải lớn hơn 6 kí tự";
     } else if (strlen($UserName) <= 6) {

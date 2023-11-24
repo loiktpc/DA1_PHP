@@ -28,7 +28,9 @@ if (isset($_GET['pages'])) {
         case 'register':
             include './Admin/auth/RegisterAdmin.php';
             break;
-
+        case 'handler':
+                include './Site/src/checkout/handler.php';
+                break;
         case 'admin':
             switch ($_GET['layout']) {
                 case 'home':
