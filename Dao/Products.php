@@ -133,5 +133,13 @@ class Products{
         $result = $db->pdo_execute($select,$id,$product_id);
         return $result;
     }
-    
+    public function checkuserId_hasproducts($id)
+    {
+        $db = new connect();
+        $select = "SELECT p.name as name , p.price as price , p.img as img ,p.id as id FROM
+         product_favourite v ,products p WHERE v.product_id = p.id and user_id = ?";
+        $result = $db->pdo_query($select,$id);
+        return $result;
+    }
+   
 }   

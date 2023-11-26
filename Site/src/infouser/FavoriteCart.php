@@ -33,91 +33,39 @@
                         </tr>
                     </thead>
                     <tbody>
-
+                    <?php $Products = new Products();
+    $stmt = $Products->checkuserId_hasproducts($_SESSION['idLogin']) ; 
+foreach ($stmt as $row){
+    extract($row);   
+                ?>
 
                         <tr>
                             <td>
                                 <div class="media">
                                     <div class="d-flex justify-content-center align-items-center">
-                                        <img style="width: 150px; height:120px;" src="./Public/img/aothun/1.jpg" alt="">
+                                        <img style="width: 150px; height:120px;" src="./Public/img/imgshop/<?php echo  $img ?>" alt="">
                                     </div>
                                     <div class="media-body">
-                                        <p>Minimalistic shop for multipurpose use
-                                            multipurpose use
-                                            Minimalismultipurpose use
-                                            Minimalis
-
+                                        <p><?php echo  $name ?>
                                         </p>
                                     </div>
                                 </div>
                             </td>
 
                             <td>
-                                <h5>$360.00</h5>
+                                <h5><?php echo   number_format($price, 0, ",", ".") ?>đ</h5>
 
                             </td>
                             <td>
+                            <a href="./index.php?pages=site&action=home&layout=productdetail&id=<?php echo $id ?>" class="social-info">
                                 <button style="width: 120px;" class="genric-btn success">
                                     Xem Thêm
                                 </button>
+                            </a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <div class="media">
-                                    <div class="d-flex justify-content-center align-items-center">
-                                        <img style="width: 150px; height:120px;" src="./Public/img/aothun/1.jpg" alt="">
-                                    </div>
-                                    <div class="media-body">
-                                        <p>Minimalistic shop for multipurpose use
-                                            multipurpose use
-                                            Minimalismultipurpose use
-                                            Minimalis
-
-                                        </p>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td>
-                                <h5>$360.00</h5>
-
-                            </td>
-                            <td>
-                                <button style="width: 120px;" class="genric-btn success">
-                                    Xem Thêm
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="media">
-                                    <div class="d-flex justify-content-center align-items-center">
-                                        <img style="width: 150px; height:120px;" src="./Public/img/aothun/1.jpg" alt="">
-                                    </div>
-                                    <div class="media-body">
-                                        <p>Minimalistic shop for multipurpose use
-                                            multipurpose use
-                                            Minimalismultipurpose use
-                                            Minimalis
-
-                                        </p>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td>
-                                <h5>$360.00</h5>
-
-                            </td>
-                            <td>
-                                <button style="width: 120px;" class="genric-btn success">
-                                    Xem Thêm
-                                </button>
-                            </td>
-                        </tr>
-
-
+                      
+                        <?php  } ?>
 
 
                     </tbody>

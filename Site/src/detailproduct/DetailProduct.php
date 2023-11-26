@@ -120,7 +120,7 @@
                         }
                     </script>
                         <a class="primary-btn" href="./index.php?pages=site&action=home&layout=cart&id=<?php echo $id ?>&img=<?php echo $img ?>&price=<?php echo $price ?>&name=<?php echo $name ?>&size=<?php echo $stmt['0']['Attribute_value'] ?>&color=<?php echo $rows['0']['Attribute_value'] ?>">Thêm vào giỏ</a>
-                        <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+                       
                        
                     </div>
 
