@@ -182,11 +182,16 @@ foreach ($stmt as $row){
                                  number_format($price, 0, ",", ".")
                                   ?>đ</h6>
                             </div>
-                            <div class="prd-bottom">
-                                <a href="" class="social-info">
-                                    <span class="lnr lnr-heart"></span>
-                                    <p class="hover-text">Yêu Thích</p>
-                                </a>
+                            <div class="prd-bottom" style="display: flex;">
+                                
+                                <form class="form_tym">
+                            <input type="hidden" name="userid" value="<?php echo $_SESSION['idLogin'] ?>">
+                            <input type="hidden" name="productid" value="<?php echo $id ?>">
+                            <a class="social-info send_tym" type="button">
+                                <span class="lnr lnr-heart <?php echo isset($_SESSION['favorites'][$id]) ? 'tym' : ''; ?>"></span>
+                                <p class="hover-text">Yêu Thích</p>
+                            </a>
+                           </form>
                                 <a href="./index.php?pages=site&action=home&layout=productdetail&id=<?php echo $id ?>" class="social-info">
                                     <span class="lnr lnr-move"></span>
                                     <p class="hover-text">Xem Thêm</p>
@@ -226,13 +231,17 @@ foreach ($stmt as $row){
                                 <h6><?php echo   number_format($price, 0, ",", ".") ?>đ</h6>
                               
                             </div>
-                            <div class="prd-bottom">
-
+                            <div class="prd-bottom" style="display: flex;">
+                                
+                            <form class="form_tym">
+                        <input type="hidden" name="userid" value="<?php echo $_SESSION['idLogin'] ?>">
+                        <input type="hidden" name="productid" value="<?php echo $id ?>">
+                        <a class="social-info send_tym" type="button">
+                            <span class="lnr lnr-heart  <?php echo isset($_SESSION['favorites'][$id]) ? 'tym' : ''; ?>"></span>
+                            <p class="hover-text">Yêu Thích</p>
+                        </a>
+                    </form>
                                
-                                <a href="" class="social-info">
-                                    <span class="lnr lnr-heart"></span>
-                                    <p class="hover-text">Yêu thích</p>
-                                </a>
                                
                                 <a href="./index.php?pages=site&action=home&layout=productdetail&id=<?php echo $id ?>" class="social-info">
                                     <span class="lnr lnr-move"></span>
@@ -322,4 +331,42 @@ foreach ($stmt as $row){
     </div>
 </section>
 <!-- End exclusive deal Area -->
+
+
+<script>
+    $(".send_tym").click(function () {
+    var form = $(this).closest("form");
+    var button = $(this);
+
+    $.ajax({
+        url: "/index.php?pages=handler",
+        method: "POST",
+        data: form.serialize(),
+        success: function (data) {
+          
+            // Kiểm tra xem class "tym" đã tồn tại hay không
+            var isTym = button.find('.lnr-heart').hasClass('tym');
+
+            // Thêm hoặc xóa class "tym" tùy thuộc vào trạng thái từ server
+            if (data === "true") {
+                if (!isTym) {
+                    button.find('.lnr-heart').addClass('tym');
+                        // Lưu trạng thái "tym" vào session
+                        <?php $_SESSION['favorites'][$id] = true; ?>
+                }
+            } else {
+                if (isTym) {
+                    button.find('.lnr-heart').removeClass('tym');
+                     // Xóa trạng thái "tym" khỏi session
+                     <?php unset($_SESSION['favorites'][$id]); ?>   
+                }
+            }
+        },
+        error: function (error) {
+            console.log(error);
+        },
+    });
+});
+
+</script>
 

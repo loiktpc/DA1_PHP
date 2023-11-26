@@ -111,4 +111,27 @@ class Products{
         $result = $db->pdo_execute($select,$id);
         return $result;
     }
+    public function product_favourite($id,$product_id)
+    {
+        $db = new connect();
+        $select = "INSERT INTO product_favourite(user_id ,product_id) VALUES 
+        (?,?) ";
+        $result = $db->pdo_execute($select,$id,$product_id);
+        return $result;
+    }
+    public function checkFavorite($id,$product_id)
+    {
+        $db = new connect();
+        $select = "SELECT * FROM product_favourite WHERE user_id  = ? AND product_id  = ?";
+        $result = $db->pdo_query($select,$id,$product_id);
+        return $result;
+    }
+    public function removeFavorite($id,$product_id)
+    {
+        $db = new connect();
+        $select = "DELETE FROM product_favourite WHERE user_id = ? AND product_id = ?";
+        $result = $db->pdo_execute($select,$id,$product_id);
+        return $result;
+    }
+    
 }   
