@@ -1,4 +1,7 @@
 <?php 
+if(isset($_SESSION['order'])){
+    unset($_SESSION['order']) ;
+}
  if(isset($_POST['buy'])){
     $username = $_POST['username'] ?? "";
     $userphone = $_POST['userphone'] ?? "";
@@ -37,6 +40,93 @@
             }
            
             // echo $username .  $userphone . $usercity . $addressuser . $message  .$pay;
+        }
+    }else{
+        if(
+            !empty($username) && !empty($userphone) && !empty($usercity) &&
+            !empty($pay)  && !empty($addressuser) && !empty($total_bill)
+        ){
+            if (is_numeric($userphone)) {
+                if (preg_match('/^(09|03|08)\d{8}$/', $userphone)) {
+                    $code_cart = rand(1, 10000);
+
+                    error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
+                    date_default_timezone_set('Asia/Ho_Chi_Minh');
+                    
+                    $neworder = [
+                        "name" => $username,
+                        "phone" => $userphone,
+                        "address" => $addressuser,
+                        "city" => $usercity,
+                        "message" => $message,
+                        "total_bill" => $total_bill,
+                        "pay" => $pay,
+                        "user_id" => $user_id,
+                        "code_cart" => $code_cart
+                    ];                
+                    $_SESSION['order'] = $neworder ;
+                  //   $vnp_TxnRef = rand(1, 10000); //Mã giao dịch thanh toán tham chiếu của merchant
+                
+                    $vnp_Locale = $_POST['language']; //Ngôn ngữ chuyển hướng thanh toán
+                    $vnp_BankCode = $_POST['bankCode']; //Mã phương thức thanh toán
+                    $vnp_IpAddr = $_SERVER['REMOTE_ADDR']; //IP Khách hàng thanh toán
+        
+                    $inputData = array(
+                        "vnp_Version" => "2.1.0",
+                        "vnp_TmnCode" => $vnp_TmnCode,
+                        "vnp_Amount" => $total_bill * 100,
+                        "vnp_Command" => "pay",
+                        "vnp_CreateDate" => date('YmdHis'),
+                        "vnp_CurrCode" => "VND",
+                        "vnp_IpAddr" => $vnp_IpAddr,
+                        "vnp_Locale" => $vnp_Locale,
+                        "vnp_OrderInfo" => "Thanh toan GD:" + $code_cart,
+                        "vnp_OrderType" => "other",
+                        "vnp_ReturnUrl" => $vnp_Returnurl,
+                        "vnp_TxnRef" => $code_cart,
+                        "vnp_ExpireDate" => $expire
+                       
+
+
+                    );
+        
+                    if (isset($vnp_BankCode) && $vnp_BankCode != "") {
+                        $inputData['vnp_BankCode'] = $vnp_BankCode;
+                    }
+        
+                    ksort($inputData);
+                    $query = "";
+                    $i = 0;
+                    $hashdata = "";
+                    foreach ($inputData as $key => $value) {
+                        if ($i == 1) {
+                            $hashdata .= '&' . urlencode($key) . "=" . urlencode($value);
+                        } else {
+                            $hashdata .= urlencode($key) . "=" . urlencode($value);
+                            $i = 1;
+                        }
+                        $query .= urlencode($key) . "=" . urlencode($value) . '&';
+                    }
+        
+                    $vnp_Url = $vnp_Url . "?" . $query;
+                    if (isset($vnp_HashSecret)) {
+                        $vnpSecureHash = hash_hmac('sha512', $hashdata, $vnp_HashSecret); //  
+                        $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
+        
+                    }
+        
+        
+                    header('Location: ' . $vnp_Url );
+                    die();
+
+
+
+                }else {
+                   $mess = "<span class='mess'> vui lòng nhập đúng dạng số điện thoại </span>"; 
+                }
+            }else{
+                echo 'Vui lòng chỉ nhập số điện thoại hợp lệ.';
+            }
         }
     }
  }
@@ -231,7 +321,7 @@
                         </div>
                         <div class="payment_item active">
                             <div class="radion_btn">
-                                <input type="radio"  id="f-option6" name="bankCode" value="transfer">
+                                <input type="radio"  id="f-option6" name="bankCode" value="VNBANK">
                                 <label for="f-option6">Thanh Toán Qua VNPAY </label>
                                 <img src="img/product/card.jpg" alt="">
                                 <div class="check"></div>
@@ -240,6 +330,8 @@
                                 VNPAY.
                                 ​.</p>
                         </div>
+                        <!-- thanh toán tiếng việt  -->
+                        <input type="hidden" id="language" Checked="True" name="language" value="vn">
                         <div class="creat_account">
                     <input type="hidden" value="<?= $total_bill ?>" name="total_bill">
 

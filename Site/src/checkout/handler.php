@@ -1,6 +1,7 @@
 <?php 
 // Xóa session
 unset($_SESSION['cart']) ;
+unset($_SESSION['order']) ;
 
 if(isset($_POST['userid'])&&isset($_POST['productid'])){
       $productid  = $_POST['productid'] ;

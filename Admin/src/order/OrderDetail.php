@@ -92,10 +92,14 @@ if (isset($_POST["xacnhan"])) {
 
                                                 <td>
                                                     <?php echo $nameproduct ?>
-                                                    <strong>Size:XLL</strong>
+                                                    <strong>Size:  <?php echo $size ?? "" ?>,</strong>
+                                                    <strong>Color:  <?php echo $color ?? "" ?></strong>
                                                 </td>
                                                 <td>
-                                                    <?php echo $moneyproduct ?>
+                                                    <?php echo
+                                                     number_format( $moneyproduct , 0, ",", ".")
+                                                    
+                                                     ?>
                                                 </td>
                                                 <td>
                                                     <?php echo $qty_orderdetail ?>

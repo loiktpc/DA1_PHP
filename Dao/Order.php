@@ -25,7 +25,7 @@ class Order
          o.user_id as userid,
          o.transfer_money as transfer_money
         from orders o, users u
-        where o.user_id = u.id";
+        where o.user_id = u.id  ORDER BY o.create_at DESC";
         return $db->pdo_query($select);
     }
 
@@ -38,8 +38,9 @@ class Order
         p.price as moneyproduct,
         od.qty as qty_orderdetail ,
         od.order_code as order_code,
-        od.created_at as created_at
-       
+        od.created_at as created_at,
+        od.size as size ,
+        od.color as color
         from orders o, products p , order_detail od
         where od.order_id = o.id AND  od.product_id = p.id and o.id= ?";
         $result = $db->pdo_query($select, $id);

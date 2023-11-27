@@ -45,6 +45,10 @@ $order = new Order();
                                                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Age: activate to sort column ascending"
+                                                        style="width: 34.9896px;">Tổng Tiền</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Age: activate to sort column ascending"
                                                         style="width: 200px;">Địa Chỉ</th>
                                                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
                                                         rowspan="1" colspan="1"
@@ -75,7 +79,16 @@ $order = new Order();
                                                             <?php echo $city ?>
                                                         </td>
                                                         <td>
-                                                            <?php echo $transfer_money ?>
+                                                            <?php if($transfer_money=="cash"){
+                                                                echo "Tiền Mặt" ;
+                                                            }else{
+                                                                echo "VNPAY";
+                                                            } ?>
+                                                        </td>
+                                                        <td>
+                                                           <?php         
+                                                               echo   number_format($total, 0, ",", ".")
+                                                            ?>đ
                                                         </td>
                                                         <td>
                                                             <?php echo $addressorder ?>
