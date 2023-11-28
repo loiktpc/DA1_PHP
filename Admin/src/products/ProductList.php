@@ -84,7 +84,8 @@
                                                     <?php echo $name	 ?>
                                                     </td>
                                                     <td>
-                                                    <?php echo $price		 ?>
+                                                    <?php
+                                                     echo number_format( $price, 0, ",", ".")                  		 ?>
                                                     </td>
                                                     <td>
                                                     <?php echo $stock		 ?>

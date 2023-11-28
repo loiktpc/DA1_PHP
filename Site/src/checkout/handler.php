@@ -1,5 +1,5 @@
 <?php 
-// Xóa session
+
 unset($_SESSION['cart']) ;
 unset($_SESSION['order']) ;
 

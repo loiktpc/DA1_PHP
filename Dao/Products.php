@@ -141,5 +141,11 @@ class Products{
         $result = $db->pdo_query($select,$id);
         return $result;
     }
-   
+    public function sreach_product($name)
+    {
+        $db = new connect();
+        $select = "SELECT * FROM products WHERE name like '%$name%' ";
+        $result = $db->pdo_query($select);
+        return $result;
+    }
 }   

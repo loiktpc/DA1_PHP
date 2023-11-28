@@ -171,6 +171,19 @@ switch ($_GET['pages']) {
                                 break;
                         }
                         break;
+                        case 'search':
+                            switch ($_GET['action']) {
+                                case 'listpay':
+                                    include './Admin/src/payoff/ListPay.php';
+                                    break;
+                                case 'payoff':
+                                    include './Admin/src/payoff/PayOff.php';
+                                    break;
+                                default:
+                                    include './Admin/src/review/ReviewList.php';
+                                    break;
+                            }
+                            break;    
                     default:
                         include './Admin/src/Dashboard/Dashboard.php';
                         break;

@@ -183,12 +183,12 @@
 	</section>
    <script>
 function clearSessionAndRedirect() {
-    // Sử dụng Ajax để gửi request đến một file xóa session
+   
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/index.php?pages=handler', true);
     xhr.send();
 
-    // Chuyển trang sau khi xóa session
+  
     window.location.href = 'page2.php';
 }
 </script>

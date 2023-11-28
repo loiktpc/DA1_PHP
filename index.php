@@ -19,6 +19,12 @@ if (isset($_GET['pages'])) {
         case 'login':
             include './Admin/auth/LoginAdmin.php';
             break;
+        case 'handleradmin':
+                include './Admin/handler/handler.php';
+                break;
+         case 'print':
+                include './Admin/src/payoff/printfbill.php';
+                break;
         case 'logout':          
             session_destroy();
             setcookie("username", $_POST["username"], time() - 86400);

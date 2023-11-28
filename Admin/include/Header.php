@@ -47,7 +47,7 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="index.html">
+                <a href="/index.php?pages=admin&layout=home&modulde=Dashboard&action=list">
                     <b class="logo-abbr">
                         <!-- <img src="./Public/img/logo/logo.png" alt=""> -->
                     </b>
@@ -79,12 +79,13 @@
                             <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
                                     class="mdi mdi-magnify"></i></span>
                         </div>
-                        <input type="search" class="form-control" placeholder="Tìm Kiếm" aria-label="Search Dashboard">
+                        <form action="/index.php?pages=admin&layout=home&modulde=search&action=listpay" method="post">
+                        <input type="text" name="search_input" class="form-control" placeholder="Tìm Kiếm" aria-label="Search Dashboard">
                         <div class="drop-down animated flipInX d-md-none">
-                            <form action="#">
                                 <input type="text" class="form-control" placeholder="Search">
-                            </form>
-                        </div>
+                                <button type="submit" name="search">xác nhận</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div class="header-right">
