@@ -95,21 +95,27 @@
     .pink {
         background: #f33d92;
     }
+    
     .yellow {
         background: yellow;
     }
+    
     .gray {
         background: gray;
     }
+    
     .white {
         background: #ffffff;
     }
+    
     .greenyellow {
         background: greenyellow;
     }
+    
     .purple {
-        background:  purple;
+        background: purple;
     }
+    
     .product-colors .active:after {
         content: "";
         width: 30px;
@@ -123,4 +129,31 @@
     }
     .tym{
         background-color: #de3a3a !important;
+    }
+    .delete_btn:hover {
+        background: red;
+        border-color: red;
+        color: #fff;
+    }
+    
+    .update_btn:hover {
+        background: rgb(85, 85, 233);
+        border-color: rgb(85, 85, 233);
+        color: #fff;
+    }
+    
+    .user_btn {
+        position: absolute;
+        padding-left: 350px;
+    }
+    
+    .button_style {
+        background-color: #fff;
+        color: black;
+        border: 1px solid #eee;
+        padding: 3px 17px;
+        font-size: 15px;
+        display: block;
+        font-weight: 400;
+        border-radius: 30px;
     }

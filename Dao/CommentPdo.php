@@ -20,6 +20,25 @@ class comment
         return $result;
     }
 
+    public function update($id, $content)
+    {
+        $db = new connect();
+        $query = "UPDATE `comment` SET `content`='$content' WHERE id= '$id' ";
+        $result = $db->pdo_execute($query);
+        return $result;
+    }
+    public function selectall($id) {
+        $db = new connect(); 
+        $select="SELECT * FROM comment WHERE id= '$id' ";
+        $result = $db->pdo_query_one($select);
+        return $result;
+    }
+public function selectid($user_id) {
+        $db = new connect(); 
+        $select="SELECT id FROM comment WHERE user_id= '$user_id' ";
+        $result = $db->pdo_query_one($select);
+        return $result;
+    }
     function insert($product_id, $content, $user_id)
     {
         $db = new connect();

@@ -56,10 +56,48 @@ class User
         $result = $db->pdo_execute($select);
         return $result;
     }
-    public function checkacc($UserName,$Email,$Phone)
+    public function usercheckUserName($UserName)
     {
         $db = new connect();
-        $select = "SELECT * FROM users WHERE username LIKE '$UserName' OR email LIKE '$Email' OR phone LIKE '$Phone'";
+        $select = "SELECT * FROM users WHERE username LIKE '$UserName'";
+        $result = $db->pdo_query_one($select);
+        return $result;
+
+    }
+    public function usercheckEmail($Email)
+    {
+        $db = new connect();
+        $select = "SELECT * FROM users WHERE  email LIKE '$Email'";
+        $result = $db->pdo_query_one($select);
+        return $result;
+
+    }
+    public function usercheckPhone($Phone)
+    {
+        $db = new connect();
+        $select = "SELECT * FROM users WHERE phone LIKE '$Phone'";
+        $result = $db->pdo_query_one($select);
+        return $result;
+
+    }
+    public function checkaccname($id,$username)
+    {
+        $db = new connect();
+        $select = "SELECT * FROM users WHERE username = '$username'  AND id != $id ";
+        $result = $db->pdo_query_one($select);
+        return $result;
+    }
+
+    public function checkaccmail($id,$email)
+    {
+        $db = new connect();
+        $select = "SELECT * FROM users WHERE email = '$email'  AND id != $id ";
+        $result = $db->pdo_query_one($select);
+        return $result;
+    }public function checkaccphone($id,$phone)
+    {
+        $db = new connect();
+        $select = "SELECT * FROM users WHERE phone = '$phone'  AND id != $id ";
         $result = $db->pdo_query_one($select);
         return $result;
     }
