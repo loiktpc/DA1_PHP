@@ -15,6 +15,12 @@ switch ($_GET['pages']) {
 					case 'productdetail':
 						include './Site/src/DetailProduct/DetailProduct.php';
 						break;
+					case 'userDeletecmt':
+						include './Site/src/DetailProduct/userDeletecmt.php';
+						break;
+					case 'userUpdatecmt':
+						include './Site/src/DetailProduct/userUpdatecmt.php';
+						break;
 					case 'cart':
 						include './Site/src/Cart/cart.php';
 						break;
@@ -35,14 +41,17 @@ switch ($_GET['pages']) {
 						break;
 					case 'changepass':
 						include './Site/src/auth/changepass.php';
-						break;	
+						break;
 					case 'checkout':
 						include './Site/src/checkout/CheckOut.php';
 						break;
 
 					case 'contact':
-							include './Site/src/contact/ConTact.php';
-							break;
+						include './Site/src/contact/ConTact.php';
+						break;
+					case 'sendmail':
+						include './Site/UserSendMail/PHPMailer/index.php';
+						break;	
 					case 'infouser':
 						include './Site/src/infouser/InfoUser.php';
 						break;
@@ -74,12 +83,10 @@ switch ($_GET['pages']) {
 				break;
 		}
 		break;
-
-
 }
 
 
 ?>
 <?php
 include "./site/include/footer.php"
-	?>
+?>

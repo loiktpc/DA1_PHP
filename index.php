@@ -12,6 +12,7 @@ include './Dao/Products.php';
 include './Dao/Review.php';
 include './Dao/CommentPdo.php';
 include_once './Site/mail/PHPMailer/index.php';
+include_once './Site/UserSendMail/PHPMailer/index.php';
 
 
 if (isset($_GET['pages'])) {
@@ -28,7 +29,6 @@ if (isset($_GET['pages'])) {
         case 'logout':          
             session_destroy();
             setcookie("username", $_POST["username"], time() - 86400);
-            setcookie("passwords", $hash_pass, time() - 86400);
             header("Location: ./index.php?pages=site&action=home&layout=home");
             break;
         case 'register':

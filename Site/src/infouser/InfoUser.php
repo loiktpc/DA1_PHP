@@ -9,28 +9,45 @@ if (isset($_POST["EditUser"])) {
     $validphone = "/^(0|\+84)(\s|\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\d)(\s|\.)?(\d{3})(\s|\.)?(\d{3})$/";
     $mess = '';
     $user = new User();
+    $checkname = $user->checkaccname($id, $username);
+    $checkemail = $user->checkaccmail($id, $email);
+    $checkphone = $user->checkaccphone($id, $phone);
     if (!empty($username) && !empty($email) && !empty($phone)) {
         if (strlen($username) >= 6 && strlen($username) < 20) {
-            if (preg_match($validemail, $email)) {
-                if (preg_match($validphone, $phone)) {
-                    $user->updateinfouser($id, $username, $phone, $email);
-                    $_SESSION['username']=$username;
-                    $success="Đổi thông tin thành công *_*";
-                    header('Location: ./index.php?pages=site&action=home&layout=infouser&id='.$_GET['id'].'');
-                    ob_end_flush();
+            if (!$checkname) {
+                if (preg_match($validemail, $email)) {
+                    if (preg_match($validemail, $email) && !$checkemail) {
+                        if (preg_match($validphone, $phone)) {
+                            if (preg_match($validphone, $phone) && !$checkphone) {
+                                $user->updateinfouser($id, $username, $phone, $email);
+                                $_SESSION['username'] = $username;
+                                $success = "Đổi thông tin thành công *_*";
+                                header('Location: ./index.php?pages=site&action=home&layout=infouser&id=' . $_GET['id'] . '');
+                                ob_end_flush();
+                            } else {
+                                $mess = "Số điện thoại đã được sử dụng,vui lòng nhập số điện thoại khác! ";
+                            }
+                        } else {
+                            $mess = "Số điện thoại không đúng định dạng! ";
+                        }
+                    } else {
+                        $mess = "Email đã được sử dụng,vui lòng nhập email khác! ";
+                    }
                 } else {
-                    $mess = "Số điện thoại không đúng định dạng! ";
+                    $mess = "Email không đúng định dạng!";
                 }
             } else {
-                $mess = "Email không đúng định dạng!";
+                $mess = "Tên đăng nhập đã được sử dụng,vui lòng nhập tên khác!";
             }
         } else {
-            $mess = "Tên đăng nhập phải trên 6 kí tự!";
+            $mess = "Tên đăng nhập phải trên 6 và nhỏ hơn 20 kí tự!";
         }
-    } 
+    } else {
+        $mess = "Vui lòng nhập dữ liệu!";
+    }
 }
 $user = new User();
-$id = $user->id($_SESSION['username']); 
+$id = $user->id($_SESSION['username']);
 if (isset($_GET["id"])) {
     $showinfo = $user->GetIduser($_GET['id']);
     if ($showinfo !== null) {
@@ -70,7 +87,7 @@ if (isset($_GET["id"])) {
                 <div class="comment-form">
                     <h4>Thông tin tài khoản</h4>
                     <form method="post" action="">
-                        <p class="text-success"><?php echo $success ??""; ?></p>
+                        <p class="text-success"><?php echo $success ?? ""; ?></p>
                         <div class="form-group ">
                             <input type="text" class="form-control" id="subject" name="username" placeholder="Họ Tên" value="<?php echo $showinfo['username']; ?>" />
                         </div>
@@ -82,7 +99,7 @@ if (isset($_GET["id"])) {
 
                             <input type="text" class="form-control" id="subject" name="email" placeholder="email" value="<?= $email ?>" />
                         </div>
-                        <p class="text-danger"><?php echo $mess ??""; ?></p>
+                        <p class="text-danger"><?php echo $mess ?? ""; ?></p>
                         <button style="border: none;" name="EditUser" class="primary-btn submit_btn">Lưu thông tin</button>
                     </form>
                 </div>
@@ -104,7 +121,7 @@ if (isset($_GET["id"])) {
                         <h4 class="widget_title">Tài Khoản Của Tôi</h4>
                         <ul class="list cat-list">
                             <li>
-                                <a href="/index.php?pages=site&action=home&layout=infouser&id=<?=$id['id']?>" class="d-flex justify-content-between">
+                                <a href="/index.php?pages=site&action=home&layout=infouser&id=<?= $id['id'] ?>" class="d-flex justify-content-between">
                                     <p>Hồ sơ</p>
 
                                 </a>

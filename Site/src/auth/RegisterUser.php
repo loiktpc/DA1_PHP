@@ -1,4 +1,5 @@
 <?php
+
 if (isset($_POST['register'])) {
     $UserName = $_POST['username'];
     $Email = $_POST['email'];
@@ -6,22 +7,32 @@ if (isset($_POST['register'])) {
     $PassWord = $_POST['passwords'];
     $mahoapass = password_hash($PassWord, PASSWORD_DEFAULT);
     $user = new User();
-    $usercheck = $user->checkacc($UserName, $Email, $Phone);
+    $usercheckName=$user->usercheckUserName($UserName);
+    $usercheckEmail=$user->usercheckEmail($Email);
+    $usercheckphone=$user->usercheckPhone($Phone);
     $pattern = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,3})$^";
     $validphone = "/^(0|\+84)(\s|\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\d)(\s|\.)?(\d{3})(\s|\.)?(\d{3})$/";
     if (empty($_POST['username']) && empty($_POST['passwords']) && empty($_POST['email']) && empty($_POST['phone'])) {
         $valid = 'Vui lòng nhập thông tin';
-    } else if ($usercheck) {
-        $valid = 'Tài khoản đã tồn tại vui lòng điền thông tin khác!';
-    } else if (strlen($PassWord) <= 6) {
+    } else if (strlen($UserName) >= 6 && $usercheckName) {
+        $valid_name = 'Tên đăng nhập đã có người sử dụng, vui lòng điền tên khác!';
+    }  else if (strlen($PassWord) <= 6) {
         $valid_pass = "Mật khẩu phải lớn hơn 6 kí tự";
     } else if (strlen($UserName) <= 6) {
         $valid_name = "Tên phải lớn hơn 6 kí tự";
     } else if (!preg_match($validphone, $Phone)) {
         $valid_phone = "Số điện thoại không đúng định dạng!";
-    } else if (!preg_match($pattern, $Email)) {
+    } 
+    else if (preg_match($validphone, $Phone) && $usercheckphone) {
+        $valid_phone = "Số điện thoại đã được sử dụng ,vui lòng nhập số khác!";
+    } 
+    else if (!preg_match($pattern, $Email)) {
         $valid_email = "Email không đúng định dạng";
-    } else {
+    } 
+    else if (preg_match($pattern, $Email)&& $usercheckEmail) {
+        $valid_email = "Email đã được sử dụng ,vui lòng nhập email khác!";
+    } 
+    else {
         $signupuser = $user->Insert_users($UserName, $mahoapass, $Email, $Phone, 1, 2);
         header("Location: ./index.php?pages=site&action=home&layout=login");
     }
