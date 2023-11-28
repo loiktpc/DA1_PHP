@@ -41,14 +41,19 @@ class Products{
         return $db->pdo_query($select);
     }
 
-   
     function getAllProduct()
     {
         $db = new connect();
         $select = "SELECT * FROM products LIMIT 8";
         return $db->pdo_query($select);
     }
-    
+    public function getRandomProducts($limit)
+    {
+        $db = new connect();
+        $query = "SELECT * FROM products ORDER BY RAND() LIMIT $limit";
+        $result = $db->pdo_query($query);
+        return $result;
+    }
     public function Insert_product($name,$price,$stock,$category_id,$content,$img )
     {
         $db = new connect();
