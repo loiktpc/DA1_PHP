@@ -28,7 +28,72 @@ class Order
         where o.user_id = u.id  ORDER BY o.create_at DESC";
         return $db->pdo_query($select);
     }
+    public function getall($id)
+    {
+        $db = new connect();
+        $select = "SELECT * FROM orders WHERE id='$id'";
+        return $db->pdo_query($select);
+    }
+    public function getallorderdetail($id)
+    {
+        $db = new connect();
+        $select = "SELECT orders.id,orders.status_order 
+        FROM order_detail JOIN orders ON order_detail.order_id=orders.id
+        WHERE orders.id='$id'
+        GROUP BY orders.id,orders.status_order";
+        return $db->pdo_query($select);
+    }
+    public function GetOrder($id)
+    {
+        $db = new connect();
+        $select = "SELECT o.id as id ,
+        o.name as nameorder,
+        o.phone as phone,
+        o.address as addressorder,
+        o.city as city ,
+        u.username as username,
+        o.mess as mess ,
+        o.total as total,
+        o.user_id as userid,
+        o.status_order as status_order,
+        o.transfer_money as transfer_money
+        from orders o, users u
+        where o.user_id = u.id and o.user_id='$id'";
+        $result = $db->pdo_query($select);
+        return $result;
+    }
 
+    public function selectorderdetail($id)
+    {
+        $db = new connect();
+
+        $select = "SELECT
+        p.name as nameproduct , 
+        od.product_id as product_id,
+        p.price as moneyproduct,
+        od.qty as qty_orderdetail ,
+        od.order_code as order_code,
+        od.created_at as created_at,
+        o.name as name,
+        o.user_id as user_id,
+        o.status_order as status_order,
+        od.price as price,
+        o.address as address,
+        o.phone as phone,
+        o.transfer_money as transfer_money
+        from orders o, products p ,order_detail  od
+        where od.order_id = o.id AND  od.product_id = p.id and od.order_id= '$id'";
+        $result = $db->pdo_query($select, $id);
+        return $result;
+    }
+
+    public function UpdateStatusOrder($id,$status_order)
+    {
+        $db = new connect();
+        $select = "UPDATE `orders` SET `status_order`='$status_order' WHERE id = '$id' ";
+        $result = $db->pdo_execute($select);
+        return $result;
+    }
     public function GetOrderdetail($id)
     {
         $db = new connect();
@@ -62,6 +127,14 @@ class Order
         $result = $db->pdo_query_one($select);
         return $result;
     }
+    public function sumqty($id)
+    {
+        $db = new connect();
+
+        $select = "SELECT sum(qty) AS totalqty FROM order_detail WHERE order_id='$id' ";
+        $result = $db->pdo_query_one($select);
+        return $result;
+    }
     public function Count_OrderDetail()
     {
         $db = new connect();
@@ -70,7 +143,7 @@ class Order
         $result = $db->pdo_query_one($select);
         return $result;
     }
-    public function Insert_Order_Detail($order_id,$product_id,$qty,$price,$size,$color,$order_code)
+    public function Insert_Order_Detail($order_id, $product_id, $qty, $price, $size, $color, $order_code)
     {
         $db = new connect();
 
