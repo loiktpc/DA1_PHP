@@ -26,6 +26,11 @@ if (isset($_SESSION['username'])) {
 }
 
 ?>
+<style>
+    .color__star_review{
+        color: #fbd600;
+    }
+</style>
 <!-- Start Banner Area -->
 <section class="banner-area organic-breadcrumb">
     <div class="container">
@@ -303,7 +308,7 @@ if (isset($_SESSION['username'])) {
                                 <div class="review_item">
                                     <div class="media">
                                         <div class="d-flex">
-                                            <img src="./Public/img/logo/avatar.jpg" class="rounded-circle m-2" width="50" height="50" alt="">
+                                            <img src="./Public/img/logo/avatar.jpg"  class="rounded-circle m-2" width="50" height="50" alt="">
                                         </div>
                                         <?php if (isset($_SESSION['username']) && $_SESSION['username'] == $list['username']) { ?>
                                             <div class="d-flex user_btn">
@@ -344,20 +349,7 @@ if (isset($_SESSION['username'])) {
                                     <p class="" style="word-wrap: break-word; width: 250px; "><?= $list['content'] ?></p>
                                 </div>
                             <?php endforeach; ?>
-                            <!-- <div class="review_item reply">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="img/product/review-2.png" alt="">
-                                    </div>
-                                    <div class="media-body">
-                                        <h4>Blake Ruiz</h4>
-                                        <h5>12th Feb, 2018 at 05:56 pm</h5>
-                                        <a class="reply_btn" href="#">Trả lời</a>
-                                    </div>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                </p>
-                            </div> -->
+                           
                         </div>
                     </div>
                     <?php if (isset($_SESSION['username'])) {
@@ -386,44 +378,59 @@ if (isset($_SESSION['username'])) {
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="row total_rate">
+                       
                             <div class="col-6">
                                 <div class="box_total">
                                     <h5>Đánh giá</h5>
-                                    <h4>4.0</h4>
-                                    <h6>(03 đánh giá)</h6>
+                                    <h4 class="star_numbber">5.0</h4>
+                                    <h6 class="Count_reviewstar">
+                                        
+                                  
+                                    </h6>
                                 </div>
                             </div>
                             <div class="col-6">
-                                <div class="rating_list">
-                                    <h3>3 đánh giá</h3>
-                                    <ul class="nav list" id="myTab" role="tablist">
+                                <div class="rating_list"  id="ratingList">
+                                    <h3><?php $dashboard = new Dashboard();
+                                      $rows =  $dashboard->Count_Reviewstar($_GET['id']);
+                                    echo $rows["total"] ?? "5" ;
+                                    ?> đánh giá</h3>
+                                    <ul class="nav lists" id="myTab" role="tablist">
                                         <li class="nav-item">
-                                            <a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">5 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a>
+                                            <a class="nav-link active" id="review-tab" data-toggle="tab" style="color: black;" href="#review" role="tab" aria-controls="review" aria-selected="false">5 Sao <i class="fa fa-star color__star_review"></i><i class="fa fa-star color__star_review"></i><i class="fa fa-star color__star_review"></i><i class="fa fa-star color__star_review"></i><i class="fa fa-star color__star_review"></i> </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link active" id="review-tab-4star" data-toggle="tab" href="#review" role="tab" aria-controls="review-4star" aria-selected="false">4 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a>
+                                            <a class="nav-link active" id="review-tab-4star" style="color: black;" data-toggle="tab" href="#review" role="tab" aria-controls="review-4star" aria-selected="false">4 Sao <i class="fa fa-star color__star_review"></i><i class="fa fa-star color__star_review"></i><i class="fa fa-star color__star_review"></i><i class="fa fa-star color__star_review"></i> </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Bình luận</a>
+                                        <a class="nav-link active" id="review-tab-4star" style="color: black;" data-toggle="tab" href="#review" role="tab" aria-controls="review-4star" aria-selected="false">3 Sao <i class="fa fa-star color__star_review"></i><i class="fa fa-star color__star_review"></i><i class="fa fa-star color__star_review"></i> </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">2 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a>
+                                            <a class="nav-link" id="contact-tab" style="color: black;" data-toggle="tab" href="#review" role="tab" aria-controls="contact" aria-selected="false">2 Sao <i class="fa fa-star color__star_review"></i><i class="fa fa-star color__star_review"></i> </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">1 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a>
+                                            <a class="nav-link" id="contact-tab" style="color: black;" data-toggle="tab" href="#review" role="tab" aria-controls="contact" aria-selected="false">1 Sao <i class="fa fa-star color__star_review"></i> </a>
                                         </li>
                                     </ul>
+                                    <input type="hidden" id="product_idreview" value="<?php echo $_GET['id']?>">    
                                 </div>
                             </div>
                         </div>
                         <div class="review_list">
+                            <!-- đánh giá  -->
+                            <?php 
+                             $review = new Review() ;
+                             $rows = $review->GetAllReview_star(5,$_GET['id']);
+                             foreach ($rows as $row):
+                                extract($row);   
+                            ?>
                             <div class="review_item">
                                 <div class="media">
                                     <div class="d-flex">
-                                        <!-- <img src="./Public/img/aothun/4.jpg" alt=""> -->
+                                        <img src="./Public/img/logo/avatar.jpg" style="width:70px;border-radius:50%" alt="">
                                     </div>
                                     <div class="media-body">
-                                        <h4>Blake Ruiz</h4>
+                                        <h4>  <?php echo $username ?></h4>
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -431,76 +438,45 @@ if (isset($_SESSION['username'])) {
                                         <i class="fa fa-star"></i>
                                     </div>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                    laboris nisi ut aliquip ex ea
-                                    commodo</p>
+                                <p>  <?php echo $mess ?></p>
+
                             </div>
-                            <div class="review_item">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="img/product/review-2.png" alt="">
-                                    </div>
-                                    <div class="media-body">
-                                        <h4>Blake Ruiz</h4>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                    laboris nisi ut aliquip ex ea
-                                    commodo</p>
-                            </div>
-                            <div class="review_item">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="img/product/review-3.png" alt="">
-                                    </div>
-                                    <div class="media-body">
-                                        <h4>Blake Ruiz</h4>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                    laboris nisi ut aliquip ex ea
-                                    commodo</p>
-                            </div>
+                            <?php endforeach;  ?>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="review_box">
+                            <?php if(!empty($_GET['hasreview'])){ ?>
                             <h4>Nhập đánh giá</h4>
                             <p>Đánh giá:</p>
                             <ul class="list">
+                              
                                 <li><a href="#"><i class="fa fa-star"></i></a></li>
                                 <li><a href="#"><i class="fa fa-star"></i></a></li>
                                 <li><a href="#"><i class="fa fa-star"></i></a></li>
                                 <li><a href="#"><i class="fa fa-star"></i></a></li>
                                 <li><a href="#"><i class="fa fa-star"></i></a></li>
                             </ul>
-                            <p>Xuất sắc</p>
-                            <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                            <p class="mess_reveiw"></p>
+                            <form class="row contact_form" action="contact_process.php" method="post" id="formreview" novalidate="novalidate">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <textarea class="form-control" name="message" id="message" rows="1" placeholder="Đánh giá" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Đánh giá'"></textarea></textarea>
+                                        <textarea class="form-control messagereview" name="message" id="message" rows="1" placeholder="Đánh giá" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Đánh giá'"></textarea></textarea>
                                     </div>
+                                    <input type="hidden" name="idproduct" id="" value="<?php echo $_GET['id'] ?>">
+                                    <input type="hidden" name="iduser" id="" value="<?php echo $_SESSION['idLogin'] ?>">
+                                    <input type="hidden" name="starnput" id="" value="5">
+                                   
                                 </div>
                                 <div class="col-md-12 text-right">
-                                    <button type="submit" value="submit" class="primary-btn">Gửi</button>
+                                    <button type="submit" name="send_review" class="primary-btn">Gửi</button>
                                 </div>
                             </form>
+                            <?php }else{
+                                echo ' <h4>Xem Đánh Giá</h4>
+                                <h5>Bạn Muốn Được Đánh Giá Hãy Nhanh Tay Đặt Hàng Nhé.</h5>' ;
+                            }
+                             ?>
                         </div>
                     </div>
                 </div>
@@ -564,4 +540,117 @@ foreach ($productlist as $ProductList) :
 <br>
 <script src="/Site/"></script>
 
-<!-- End related-product Area -->
+
+<script>
+    $(document).ready(function () {
+        // handler submit
+        $('#formreview').submit(function (e) {
+            e.preventDefault();
+
+            // Serialize form data
+            var formData = $(this).serialize();
+       
+            var rating = $(this).text().replace(/\D/g, '');
+
+            $.ajax({
+                type: 'POST',
+                url: '/index.php?pages=handlerreviewsend',
+                data: formData,
+                success: function (response) {
+                    $('.messagereview').val('');
+                    // alert(response);
+                    var responseObject = JSON.parse(response);
+                    renderReviewList(responseObject.reviews);
+                },
+                error: function (error) {
+                    console.error('Lỗi khi gửi đánh giá: ', error);
+                }
+            });
+        });
+        var product_idreview = $('#product_idreview').val();
+        // handler render star và list
+        $('#ratingList ul.nav.lists a').click(function (e) {
+            e.preventDefault();
+
+            // Lấy số sao từ text của thẻ a
+            var rating = $(this).text().replace(/\D/g, '');
+
+          
+            $.ajax({
+                type: 'POST',
+                url: '/index.php?pages=handlerreview', 
+                data: { rating: rating,
+                    product_idreview : product_idreview,
+                }, 
+                success: function (response) {
+                  
+                     // Chuyển đổi chuỗi JSON thành đối tượng JavaScript
+            var responseObject = JSON.parse(response);
+
+            // Lấy giá trị của thuộc tính rating từ đối tượng
+            var ratingValue = responseObject.rating;
+                    updateStarList(ratingValue);
+                     // Render lại danh sách đánh giá
+                renderReviewList(responseObject.reviews);
+                $('input[name="starnput"]').val(ratingValue);
+                $('.star_numbber').html(ratingValue+".0")
+                $('.Count_reviewstar').html(responseObject.count.total + "(đánh giá)")
+               
+                },
+                error: function (error) {
+                    console.error('Lỗi khi cập nhật danh sách sao: ', error);
+                }
+            });
+        });
+        function renderReviewList(reviews) {
+        // Xóa đánh giá hiện tại trong danh sách
+        $('.review_list .review_item').remove();
+
+        // Thêm đánh giá mới vào danh sách
+        for (var j = 0; j < reviews.length; j++) {
+            var review = reviews[j];
+            $('.review_list').append('<div class="review_item">' +
+                '<div class="media">' +
+                '<div class="d-flex">' +
+                '<img src="./Public/img/logo/avatar.jpg" style="width:70px;border-radius:50%" alt="">' +
+                '</div>' +
+                '<div class="media-body">' +
+                '<h4>' + review.username + '</h4>' +
+                '<i class="fa fa-star"></i>'.repeat(review.star) +
+                '</div>' +
+                '</div>' +
+                '<p>' + review.mess + '</p>' +
+                '</div>');
+        }
+    }
+        // Hàm cập nhật danh sách số sao
+        function updateStarList(rating) {
+            // Xóa số sao hiện tại trong danh sách
+            $('.list li').remove();
+            $('.mess_reveiw .chilrenmess_reveiw').remove();
+
+            // Thêm số sao mới vào danh sách
+            for (var i = 0; i < rating; i++) {
+                $('.list').append('<li><a href="#"><i class="fa fa-star"></i></a></li>');
+            }
+            if(rating==5){
+               
+                
+                $('.mess_reveiw').append(
+               '<span class="chilrenmess_reveiw">xuất sắc</span>'
+                )
+            }else if(rating==4) {
+               
+                $('.mess_reveiw').append('<span class="chilrenmess_reveiw">tốt</span>')
+            }else if(rating==3) {
+               $('.mess_reveiw').append('<span class="chilrenmess_reveiw">bình thường</span>')
+           }else if(rating==2) {
+               $('.mess_reveiw').append('<span class="chilrenmess_reveiw">kém</span>')
+           }else if(rating==1) {
+               $('.mess_reveiw').append('<span class="chilrenmess_reveiw">rất kém</span>')
+           }
+           
+        }
+       
+    });
+</script>

@@ -37,6 +37,12 @@ if (isset($_GET['pages'])) {
         case 'handler':
                 include './Site/src/checkout/handler.php';
                 break;
+        case 'handlerreview':
+                    include './Site/src/detailproduct/handler_review.php';
+                    break;
+        case 'handlerreviewsend':
+                        include './Site/src/detailproduct/sendreview.php';
+                        break;            
         case 'admin':
             switch ($_GET['layout']) {
                 case 'home':

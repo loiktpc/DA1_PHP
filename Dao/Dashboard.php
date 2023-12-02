@@ -85,4 +85,12 @@ class Dashboard
         $result = $db->pdo_query_one($select);
         return $result;
     }
+    public function Count_Reviewstar($product_id)
+    {
+        $db = new connect();
+
+        $select = "SELECT COUNT(*) AS total FROM review_products where product_id  = '$product_id'";
+        $result = $db->pdo_query_one($select);
+        return $result;
+    }
 }
