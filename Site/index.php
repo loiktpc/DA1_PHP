@@ -1,9 +1,9 @@
 <?php 
 
-
 include "./site/include/header.php" ?>
 
 <?php
+
 switch ($_GET['pages']) {
 	case 'site':
 		switch ($_GET['action']) {
@@ -88,5 +88,6 @@ switch ($_GET['pages']) {
 
 ?>
 <?php
-include "./site/include/footer.php"
+include "./site/include/footer.php";
+include "./site/include/chatbox.php";
 ?>
