@@ -87,13 +87,23 @@ if (isset($_SESSION['username'])) {
                             <?php } else {
                                 $userlist = new User();
                                 $Info = $userlist->selletusername($_SESSION['username']);
-                                if ($role['role_id'] == 1) {
+                            //    echo $role['role_id'] ??"role";
+                            //    echo $_SESSION['role_id'] ??"role";
+                                // ||  $_SESSION['role_id'] == 1
+                                // if( $role['role_id']   === 1 ){
+                                //     echo "true";
+                                // }else{
+                                //     echo "fale";
+                                // }
+                                if (isset($role['role_id']) === 1  || isset($_SESSION['role_id']) == 1 ) {
                                     echo '<img class="rounded-circle m-2" 
                             width="32" height="32" src="./Public/img/logo/avatar.jpg" alt="">
                                  <li class="nav-item submenu dropdown"><a href="index.php?pages=site&action=home&layout=category" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' . $_SESSION['username'] . ' </a>
                                      <ul class="dropdown-menu ">                   
                                     <li class="nav-item"><a class="nav-link" href="/index.php?pages=logout">Đăng xuất</a></li>
-                                    <li class="nav-item"><a class="nav-link" href=" /index.php?pages=admin&layout=home&modulde=dashboard&action=list">Quản lý tài khoản</a></li>                                 
+                                    <li class="nav-item"><a class="nav-link" href=" /index.php?pages=admin&layout=home&modulde=dashboard&action=list">Quản Lí Admin</a></li>    
+                                    <li class="nav-item"><a class="nav-link" href=" index.php?pages=site&action=home&layout=infouser&id=' . $id['id'] . '">Quản lý tài khoản</a></li>                                 
+
                                     </ul></li>';
                                 } else {
                                     echo '<img class="rounded-circle m-2" 

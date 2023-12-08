@@ -150,8 +150,6 @@
                                  $current_page = isset($_GET['numpage']) ? $_GET['numpage'] : 1; 
                                 for ($page = 1; $page <= $number_of_page; $page++) {
                                     echo '        
-                              
-
                                 <li class="paginate_button page-item ' . ($page == $current_page ? 'active' : '') . ' "><a href="/index.php?pages=admin&layout=home&modulde=product&action=list&numpage=' . $page . '"
                                 aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0"
                                 class="page-link">' . $page . '</a></li>

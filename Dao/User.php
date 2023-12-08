@@ -185,6 +185,13 @@ class User
         $result = $db->pdo_query_one($select);
         return $result;
     }
+    public function email($email)
+    {
+        $db = new connect();
+        $select = "SELECT * FROM users WHERE email='$email'";
+        $result = $db->pdo_query_one($select);
+        return $result;
+    }
     public function resetpass($password, $email)
     {
         $db = new connect();
@@ -211,5 +218,13 @@ class User
             return $result;
         }
     }
-    
+    public function insert_user_google($UserName, $Email, $Status, $Role_id)
+    {
+        $db = new connect();
+
+        $select = "INSERT INTO users(username,email,user_status,role_id) VALUES('$UserName','$Email','$Status','$Role_id')";
+        $result = $db->pdo_execute($select);
+        return $result;
+    }
+   
 }

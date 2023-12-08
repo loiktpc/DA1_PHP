@@ -1,6 +1,7 @@
 <?php
 session_start();
 ob_start();
+include "./vendor/autoload.php" ;
 
 include './config/Database.php';
 include './config/Config.php';
