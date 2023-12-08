@@ -73,6 +73,9 @@ switch ($_GET['pages']) {
 					case 'thanksvnpay':
 								include './Site/src/checkout/thanksvnpay.php';
 								break;
+					case 'sreach':
+									include './Site/src/category/sreach.php';
+							break;			
 					default:
 						include './Site/src/home/home.php';
 						break;

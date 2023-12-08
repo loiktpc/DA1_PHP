@@ -131,8 +131,8 @@ if (isset($_SESSION['username'])) {
         </div>
         <div class="search_input" id="search_input_box">
             <div class="container">
-                <form class="d-flex justify-content-between">
-                    <input type="text" class="form-control" id="search_input" placeholder="Tìm kiếm...">
+                <form method="post" action="/index.php?pages=site&action=home&layout=sreach" class="d-flex justify-content-between">
+                    <input type="text" class="form-control" id="search_input" name="search_input" placeholder="Tìm kiếm...">
                     <button type="submit" class="btn"></button>
                     <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
                 </form>
