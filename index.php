@@ -12,8 +12,10 @@ include './Dao/Attribute.php';
 include './Dao/Products.php';
 include './Dao/Review.php';
 include './Dao/CommentPdo.php';
+include './Dao/CategoryPdo.php';
 include_once './Site/mail/PHPMailer/index.php';
 include_once './Site/UserSendMail/PHPMailer/index.php';
+
 
 
 if (isset($_GET['pages'])) {

@@ -4,7 +4,6 @@ if (isset($_SESSION['username'])) {
     $userrole_id = new User();
     $role = $userrole_id->userrole($_SESSION['username'], $_SESSION['passwords']);
     $id = $userrole_id->id($_SESSION['username']);
-
 }
 
 ?>
@@ -54,7 +53,7 @@ if (isset($_SESSION['username'])) {
 </head>
 
 <body>
-  
+
     <!-- Start Header Area -->
     <header class="header_area sticky-header">
         <div class="main_menu">
@@ -74,11 +73,14 @@ if (isset($_SESSION['username'])) {
                             <li class="nav-item submenu dropdown">
                                 <a href="index.php?pages=site&action=home&layout=category" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sản phẩm</a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="./index.php?pages=site&action=home&layout=category">Áo thun</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="single-product.html">Quần short</a>
-                                    </li>
-                                    <li class="nav-item"><a class="nav-link" href="checkout.html">Quần thun dài</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="cart.html">Quần jean</a></li>
+                                    <?php
+                                    $thumuc = new categories();
+                                    $danhsachthumuc = $thumuc->getlist();
+                                    foreach ($danhsachthumuc as $danhmuc) :
+                                        extract($danhmuc);
+                                    ?>
+                                        <li class="nav-item"><a class="nav-link" href="./index.php?pages=site&action=home&layout=category&id=<?php echo $danhmuc['id'] ?>"><?php echo $danhmuc['name'] ?></a></li>
+                                    <?php endforeach; ?>
                                 </ul>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="index.php?pages=site&action=home&layout=contact">Liên hệ</a></li>
@@ -111,7 +113,7 @@ if (isset($_SESSION['username'])) {
                                  <li class="nav-item submenu dropdown"><a href="index.php?pages=site&action=home&layout=category" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' . $_SESSION['username'] . ' </a>
                                      <ul class="dropdown-menu ">                   
                                     <li class="nav-item"><a class="nav-link" href="/index.php?pages=logout">Đăng xuất</a></li>
-                                    <li class="nav-item"><a class="nav-link" href=" index.php?pages=site&action=home&layout=infouser&id=' . $id['id'] . '">Quản lý tài khoản</a></li>                                 
+                                    <li class="nav-item"><a class="nav-link" href=" index.php?pages=site&action=home&layout=infouser&id=' . $_SESSION['idLogin'] . '">Quản lý tài khoản</a></li>                                 
                                     </ul></li>';
                                 }
                             }

@@ -17,6 +17,23 @@ if (isset($_SESSION['username'])) {
     }
 }
 
+if (isset($_POST["updatecomment"])) {
+    $id = $_GET['idcmt'];
+    $idpro = $_GET['id'];
+    $content = $_POST['message'];
+    $commentuser = new comment();
+    $update = $commentuser->update($id, $content);
+    header('Location: ./index.php?pages=site&action=home&layout=productdetail&id=' . $idpro . '');
+    exit();
+}
+if (isset($_POST["deletecomment"])) {
+    $id = $_GET['idcmt'];
+    $idpro = $_GET['id'];
+    $comment = new comment();
+    $Delete = $comment->delete($id);
+    header('Location: ./index.php?pages=site&action=home&layout=productdetail&id=' . $idpro . '');
+    exit();
+}
 
 $role = null;
 if (isset($_SESSION['username'])) {
@@ -27,7 +44,7 @@ if (isset($_SESSION['username'])) {
 
 ?>
 <style>
-    .color__star_review{
+    .color__star_review {
         color: #fbd600;
     }
 </style>
@@ -308,11 +325,37 @@ if (isset($_SESSION['username'])) {
                                 <div class="review_item">
                                     <div class="media">
                                         <div class="d-flex">
-                                            <img src="./Public/img/logo/avatar.jpg"  class="rounded-circle m-2" width="50" height="50" alt="">
+                                            <img src="./Public/img/logo/avatar.jpg" class="rounded-circle m-2" width="50" height="50" alt="">
                                         </div>
                                         <?php if (isset($_SESSION['username']) && $_SESSION['username'] == $list['username']) { ?>
                                             <div class="d-flex user_btn">
-                                                <a href="./index.php?pages=site&action=home&layout=userUpdatecmt&idcmt=<?= $list['idcmt'] ?>&idpro=<?php echo $_GET['id'];?>" class="button_style update_btn m-2">Sửa</a>
+                                                <a href="./index.php?pages=site&action=home&layout=productdetail&id=<?php echo $_GET['id']; ?>&idcmt=<?php echo $list['idcmt'] ?>" class="button_style update_btn m-2" data-bs-toggle="modal" data-bs-target="#exampleModal1">Sửa</a>
+                                                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5" id="exampleModalLabel1">Sửa bình luận</h1>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+
+                                                            </div>
+                                                            <form action="./index.php?pages=site&action=home&layout=productdetail&id=<?php echo $_GET['id']; ?>&idcmt=<?php echo $list['idcmt'] ?>" method="post">
+                                                                <textarea class="form-control" name="message" id="message" rows="3" placeholder="Nhập bình luận"><?php
+                                                                                                                                                                    $commentuser = new comment();
+                                                                                                                                                                    if (isset($list['idcmt'])) {
+                                                                                                                                                                        $selectcmt = $commentuser->selectall($list['idcmt']);
+                                                                                                                                                                        echo $selectcmt['content'];
+                                                                                                                                                                    }
+                                                                                                                                                                    ?></textarea>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Quay lại</button>
+                                                                    <button type="submit" class="btn btn-success" name="updatecomment">Cập nhật</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <a href="" class="button_style delete_btn m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Xóa</a>
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -325,10 +368,10 @@ if (isset($_SESSION['username'])) {
                                                             <div class="modal-body">
                                                                 Bạn chắc chắn xóa?
                                                             </div>
-                                                            <form action="./index.php?pages=site&action=home&layout=userDeletecmt" method="post">
+                                                            <form action="./index.php?pages=site&action=home&layout=productdetail&id=<?php echo $_GET['id']; ?>&idcmt=<?php echo $list['idcmt'] ?>" method="post">
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Quay lại</button>
-                                                                    <button type="submit" class="btn btn-danger"><a href="./index.php?pages=site&action=home&layout=userDeletecmt&id=<?php echo $list['idcmt'] ?>&idpro=<?php echo $_GET['id'];?> " class="text-decoration-none text-white">Xóa</a></button>
+                                                                    <button type="submit" class="btn btn-danger" name="deletecomment">Xóa</button>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -349,52 +392,53 @@ if (isset($_SESSION['username'])) {
                                     <p class="" style="word-wrap: break-word; width: 250px; "><?= $list['content'] ?></p>
                                 </div>
                             <?php endforeach; ?>
-                           
+
                         </div>
                     </div>
                     <?php if (isset($_SESSION['username'])) {
-                       if ($role['role_id'] == 2) {
-                        ?>
-                        <div class="col-lg-6">
-                            <div class="review_box">
-                                <h4>Nhập bình luận</h4>
-                                <form class="row contact_form" action="" method="post" id="contactForm" novalidate="novalidate">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <textarea class="form-control" name="message" id="message" rows="1" placeholder="Nhập bình luận"></textarea>
+                        if ($role['role_id'] == 2) {
+                    ?>
+                            <div class="col-lg-6">
+                                <div class="review_box">
+                                    <h4>Nhập bình luận</h4>
+                                    <form class="row contact_form" action="" method="post" id="contactForm" novalidate="novalidate">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <textarea class="form-control" name="message" id="message" rows="1" placeholder="Nhập bình luận"></textarea>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <p class="text-danger text-center"><?php echo $error ?? ""; ?></p>
-                                    <div class="col-md-12 text-right">
-                                        <button type="submit" value="submit" name="sendcomment" class="btn primary-btn">Gửi</button>
-                                    </div>
-                                </form>
+                                        <p class="text-danger text-center"><?php echo $error ?? ""; ?></p>
+                                        <div class="col-md-12 text-right">
+                                            <button type="submit" value="submit" name="sendcomment" class="btn primary-btn">Gửi</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
-                    <?php }} ?>
+                    <?php }
+                    } ?>
                 </div>
             </div>
             <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="row total_rate">
-                       
+
                             <div class="col-6">
                                 <div class="box_total">
                                     <h5>Đánh giá</h5>
                                     <h4 class="star_numbber">5.0</h4>
                                     <h6 class="Count_reviewstar">
-                                        
-                                  
+
+
                                     </h6>
                                 </div>
                             </div>
                             <div class="col-6">
-                                <div class="rating_list"  id="ratingList">
+                                <div class="rating_list" id="ratingList">
                                     <h3><?php $dashboard = new Dashboard();
-                                      $rows =  $dashboard->Count_Reviewstar($_GET['id']);
-                                    echo $rows["total"] ?? "5" ;
-                                    ?> đánh giá</h3>
+                                        $rows =  $dashboard->Count_Reviewstar($_GET['id']);
+                                        echo $rows["total"] ?? "5";
+                                        ?> đánh giá</h3>
                                     <ul class="nav lists" id="myTab" role="tablist">
                                         <li class="nav-item">
                                             <a class="nav-link active" id="review-tab" data-toggle="tab" style="color: black;" href="#review" role="tab" aria-controls="review" aria-selected="false">5 Sao <i class="fa fa-star color__star_review"></i><i class="fa fa-star color__star_review"></i><i class="fa fa-star color__star_review"></i><i class="fa fa-star color__star_review"></i><i class="fa fa-star color__star_review"></i> </a>
@@ -403,7 +447,7 @@ if (isset($_SESSION['username'])) {
                                             <a class="nav-link active" id="review-tab-4star" style="color: black;" data-toggle="tab" href="#review" role="tab" aria-controls="review-4star" aria-selected="false">4 Sao <i class="fa fa-star color__star_review"></i><i class="fa fa-star color__star_review"></i><i class="fa fa-star color__star_review"></i><i class="fa fa-star color__star_review"></i> </a>
                                         </li>
                                         <li class="nav-item">
-                                        <a class="nav-link active" id="review-tab-4star" style="color: black;" data-toggle="tab" href="#review" role="tab" aria-controls="review-4star" aria-selected="false">3 Sao <i class="fa fa-star color__star_review"></i><i class="fa fa-star color__star_review"></i><i class="fa fa-star color__star_review"></i> </a>
+                                            <a class="nav-link active" id="review-tab-4star" style="color: black;" data-toggle="tab" href="#review" role="tab" aria-controls="review-4star" aria-selected="false">3 Sao <i class="fa fa-star color__star_review"></i><i class="fa fa-star color__star_review"></i><i class="fa fa-star color__star_review"></i> </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" id="contact-tab" style="color: black;" data-toggle="tab" href="#review" role="tab" aria-controls="contact" aria-selected="false">2 Sao <i class="fa fa-star color__star_review"></i><i class="fa fa-star color__star_review"></i> </a>
@@ -412,71 +456,71 @@ if (isset($_SESSION['username'])) {
                                             <a class="nav-link" id="contact-tab" style="color: black;" data-toggle="tab" href="#review" role="tab" aria-controls="contact" aria-selected="false">1 Sao <i class="fa fa-star color__star_review"></i> </a>
                                         </li>
                                     </ul>
-                                    <input type="hidden" id="product_idreview" value="<?php echo $_GET['id']?>">    
+                                    <input type="hidden" id="product_idreview" value="<?php echo $_GET['id'] ?>">
                                 </div>
                             </div>
                         </div>
                         <div class="review_list">
                             <!-- đánh giá  -->
-                            <?php 
-                             $review = new Review() ;
-                             $rows = $review->GetAllReview_star(5,$_GET['id']);
-                             foreach ($rows as $row):
-                                extract($row);   
+                            <?php
+                            $review = new Review();
+                            $rows = $review->GetAllReview_star(5, $_GET['id']);
+                            foreach ($rows as $row) :
+                                extract($row);
                             ?>
-                            <div class="review_item">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="./Public/img/logo/avatar.jpg" style="width:70px;border-radius:50%" alt="">
+                                <div class="review_item">
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="./Public/img/logo/avatar.jpg" style="width:70px;border-radius:50%" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <h4> <?php echo $username ?></h4>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
                                     </div>
-                                    <div class="media-body">
-                                        <h4>  <?php echo $username ?></h4>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                                <p>  <?php echo $mess ?></p>
+                                    <p> <?php echo $mess ?></p>
 
-                            </div>
+                                </div>
                             <?php endforeach;  ?>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="review_box">
-                            <?php if(!empty($_GET['hasreview'])){ ?>
-                            <h4>Nhập đánh giá</h4>
-                            <p>Đánh giá:</p>
-                            <ul class="list">
-                              
-                                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                            </ul>
-                            <p class="mess_reveiw"></p>
-                            <form class="row contact_form" action="contact_process.php" method="post" id="formreview" novalidate="novalidate">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <textarea class="form-control messagereview" name="message" id="message" rows="1" placeholder="Đánh giá" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Đánh giá'"></textarea></textarea>
+                            <?php if (!empty($_GET['hasreview'])) { ?>
+                                <h4>Nhập đánh giá</h4>
+                                <p>Đánh giá:</p>
+                                <ul class="list">
+
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                </ul>
+                                <p class="mess_reveiw"></p>
+                                <form class="row contact_form" action="contact_process.php" method="post" id="formreview" novalidate="novalidate">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <textarea class="form-control messagereview" name="message" id="message" rows="1" placeholder="Đánh giá" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Đánh giá'"></textarea></textarea>
+                                        </div>
+                                        <input type="hidden" name="idproduct" id="" value="<?php echo $_GET['id'] ?>">
+                                        <input type="hidden" name="iduser" id="" value="<?php echo $_SESSION['idLogin'] ?>">
+                                        <input type="hidden" name="starnput" id="" value="5">
+
                                     </div>
-                                    <input type="hidden" name="idproduct" id="" value="<?php echo $_GET['id'] ?>">
-                                    <input type="hidden" name="iduser" id="" value="<?php echo $_SESSION['idLogin'] ?>">
-                                    <input type="hidden" name="starnput" id="" value="5">
-                                   
-                                </div>
-                                <div class="col-md-12 text-right">
-                                    <button type="submit" name="send_review" class="primary-btn">Gửi</button>
-                                </div>
-                            </form>
-                            <?php }else{
+                                    <div class="col-md-12 text-right">
+                                        <button type="submit" name="send_review" class="primary-btn">Gửi</button>
+                                    </div>
+                                </form>
+                            <?php } else {
                                 echo ' <h4>Xem Đánh Giá</h4>
-                                <h5>Bạn Muốn Được Đánh Giá Hãy Nhanh Tay Đặt Hàng Nhé.</h5>' ;
+                                <h5>Bạn Muốn Được Đánh Giá Hãy Nhanh Tay Đặt Hàng Nhé.</h5>';
                             }
-                             ?>
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -503,36 +547,35 @@ if (isset($_SESSION['username'])) {
     <div class="container">
         <div class="row justify-content-center">
             <!-- single product -->
-<?php 
-$product= new Products();
-$productlist=$product->getRandomProducts(4);
-foreach ($productlist as $ProductList) :
-   extract($ProductList);
-   $price = number_format($ProductList['price'], 0, '.', '.');
+            <?php
+            $product = new Products();
+            $productlist = $product->getRandomProducts(4);
+            foreach ($productlist as $ProductList) :
+                extract($ProductList);
+                $price = number_format($ProductList['price'], 0, '.', '.');
 
-?>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="single-product">
-                    <img class="img-fluid" src="./Public/img/imgshop/<?php echo $ProductList['img']; ?>" alt="">
-                    <div class="product-details">
-                        <h6><?php echo $ProductList['name']; ?></h6>
-                        <div class="price">
-                            <h6><?php echo $price; ?>đ</h6>                       
-                        </div>
-                        <div class="prd-bottom">                          
-                            <a href="" class="social-info">
-                                <span class="lnr lnr-heart"></span>
-                                <p class="hover-text">Yêu Thích</p>
-                            </a>                         
-                            <a href="./index.php?pages=site&action=home&layout=productdetail&id=<?php echo $ProductList['id']; ?>" class="social-info">
-                                <span class="lnr lnr-move"></span>
-                                <p class="hover-text">Xem Thêm</p>
-                            </a>
+            ?>
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-product">
+                        <img class="img-fluid" src="./Public/img/imgshop/<?php echo $ProductList['img']; ?>" alt="">
+                        <div class="product-details">
+                            <h6><?php echo $ProductList['name']; ?></h6>
+                            <div class="price">
+                                <h6><?php echo $price; ?>đ</h6>
+                            </div>
+                            <div class="prd-bottom">
+                                <a href="" class="social-info">
+                                    <span class="lnr lnr-heart"></span>
+                                    <p class="hover-text">Yêu Thích</p>
+                                </a>
+                                <a href="./index.php?pages=site&action=home&layout=productdetail&id=<?php echo $ProductList['id']; ?>" class="social-info">
+                                    <span class="lnr lnr-move"></span>
+                                    <p class="hover-text">Xem Thêm</p>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             <?php endforeach; ?>
         </div>
 </section>
@@ -542,87 +585,89 @@ foreach ($productlist as $ProductList) :
 
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         // handler submit
-        $('#formreview').submit(function (e) {
+        $('#formreview').submit(function(e) {
             e.preventDefault();
 
             // Serialize form data
             var formData = $(this).serialize();
-       
+
             var rating = $(this).text().replace(/\D/g, '');
 
             $.ajax({
                 type: 'POST',
                 url: '/index.php?pages=handlerreviewsend',
                 data: formData,
-                success: function (response) {
+                success: function(response) {
                     $('.messagereview').val('');
                     // alert(response);
                     var responseObject = JSON.parse(response);
                     renderReviewList(responseObject.reviews);
                 },
-                error: function (error) {
+                error: function(error) {
                     console.error('Lỗi khi gửi đánh giá: ', error);
                 }
             });
         });
         var product_idreview = $('#product_idreview').val();
         // handler render star và list
-        $('#ratingList ul.nav.lists a').click(function (e) {
+        $('#ratingList ul.nav.lists a').click(function(e) {
             e.preventDefault();
 
             // Lấy số sao từ text của thẻ a
             var rating = $(this).text().replace(/\D/g, '');
 
-          
+
             $.ajax({
                 type: 'POST',
-                url: '/index.php?pages=handlerreview', 
-                data: { rating: rating,
-                    product_idreview : product_idreview,
-                }, 
-                success: function (response) {
-                  
-                     // Chuyển đổi chuỗi JSON thành đối tượng JavaScript
-            var responseObject = JSON.parse(response);
-
-            // Lấy giá trị của thuộc tính rating từ đối tượng
-            var ratingValue = responseObject.rating;
-                    updateStarList(ratingValue);
-                     // Render lại danh sách đánh giá
-                renderReviewList(responseObject.reviews);
-                $('input[name="starnput"]').val(ratingValue);
-                $('.star_numbber').html(ratingValue+".0")
-                $('.Count_reviewstar').html(responseObject.count.total + "(đánh giá)")
-               
+                url: '/index.php?pages=handlerreview',
+                data: {
+                    rating: rating,
+                    product_idreview: product_idreview,
                 },
-                error: function (error) {
+                success: function(response) {
+
+                    // Chuyển đổi chuỗi JSON thành đối tượng JavaScript
+                    var responseObject = JSON.parse(response);
+
+                    // Lấy giá trị của thuộc tính rating từ đối tượng
+                    var ratingValue = responseObject.rating;
+                    updateStarList(ratingValue);
+                    // Render lại danh sách đánh giá
+                    renderReviewList(responseObject.reviews);
+                    $('input[name="starnput"]').val(ratingValue);
+                    $('.star_numbber').html(ratingValue + ".0")
+                    $('.Count_reviewstar').html(responseObject.count.total + "(đánh giá)")
+
+                },
+                error: function(error) {
                     console.error('Lỗi khi cập nhật danh sách sao: ', error);
                 }
             });
         });
-        function renderReviewList(reviews) {
-        // Xóa đánh giá hiện tại trong danh sách
-        $('.review_list .review_item').remove();
 
-        // Thêm đánh giá mới vào danh sách
-        for (var j = 0; j < reviews.length; j++) {
-            var review = reviews[j];
-            $('.review_list').append('<div class="review_item">' +
-                '<div class="media">' +
-                '<div class="d-flex">' +
-                '<img src="./Public/img/logo/avatar.jpg" style="width:70px;border-radius:50%" alt="">' +
-                '</div>' +
-                '<div class="media-body">' +
-                '<h4>' + review.username + '</h4>' +
-                '<i class="fa fa-star"></i>'.repeat(review.star) +
-                '</div>' +
-                '</div>' +
-                '<p>' + review.mess + '</p>' +
-                '</div>');
+        function renderReviewList(reviews) {
+            // Xóa đánh giá hiện tại trong danh sách
+            $('.review_list .review_item').remove();
+
+            // Thêm đánh giá mới vào danh sách
+            for (var j = 0; j < reviews.length; j++) {
+                var review = reviews[j];
+                $('.review_list').append('<div class="review_item">' +
+                    '<div class="media">' +
+                    '<div class="d-flex">' +
+                    '<img src="./Public/img/logo/avatar.jpg" style="width:70px;border-radius:50%" alt="">' +
+                    '</div>' +
+                    '<div class="media-body">' +
+                    '<h4>' + review.username + '</h4>' +
+                    '<i class="fa fa-star"></i>'.repeat(review.star) +
+                    '</div>' +
+                    '</div>' +
+                    '<p>' + review.mess + '</p>' +
+                    '</div>');
+            }
         }
-    }
         // Hàm cập nhật danh sách số sao
         function updateStarList(rating) {
             // Xóa số sao hiện tại trong danh sách
@@ -633,24 +678,24 @@ foreach ($productlist as $ProductList) :
             for (var i = 0; i < rating; i++) {
                 $('.list').append('<li><a href="#"><i class="fa fa-star"></i></a></li>');
             }
-            if(rating==5){
-               
-                
+            if (rating == 5) {
+
+
                 $('.mess_reveiw').append(
-               '<span class="chilrenmess_reveiw">xuất sắc</span>'
+                    '<span class="chilrenmess_reveiw">xuất sắc</span>'
                 )
-            }else if(rating==4) {
-               
+            } else if (rating == 4) {
+
                 $('.mess_reveiw').append('<span class="chilrenmess_reveiw">tốt</span>')
-            }else if(rating==3) {
-               $('.mess_reveiw').append('<span class="chilrenmess_reveiw">bình thường</span>')
-           }else if(rating==2) {
-               $('.mess_reveiw').append('<span class="chilrenmess_reveiw">kém</span>')
-           }else if(rating==1) {
-               $('.mess_reveiw').append('<span class="chilrenmess_reveiw">rất kém</span>')
-           }
-           
+            } else if (rating == 3) {
+                $('.mess_reveiw').append('<span class="chilrenmess_reveiw">bình thường</span>')
+            } else if (rating == 2) {
+                $('.mess_reveiw').append('<span class="chilrenmess_reveiw">kém</span>')
+            } else if (rating == 1) {
+                $('.mess_reveiw').append('<span class="chilrenmess_reveiw">rất kém</span>')
+            }
+
         }
-       
+
     });
 </script>

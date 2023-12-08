@@ -5,14 +5,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userInfo = $user->id($_SESSION['username']);
     $hash = $user->checkUserpass($_SESSION['username']);
     if (!empty($_POST['passwords']) && !empty($_POST['newpass']) && !empty($_POST['renewpass'])) {
-        if (strlen($_POST['newpass']) >= 6 && strlen($_POST['newpass']) <=20 && strlen($_POST['renewpass']) >= 6 && strlen($_POST['renewpass']) <= 20) {
+        if (strlen($_POST['newpass']) >= 6 && strlen($_POST['newpass']) <= 20 && strlen($_POST['renewpass']) >= 6 && strlen($_POST['renewpass']) <= 20) {
             if (isset($hash[0]) && password_verify($_POST['passwords'], $hash[0]['passwords'])) {
                 if ($_POST['newpass'] == $_POST['renewpass']) {
                     $password_hash = password_hash($_POST['newpass'], PASSWORD_DEFAULT);
                     $user->Updateuser($userInfo['id'], $password_hash);
                     $_SESSION['passwords'] = $_POST['newpass'];
-                    $sucess = "Mật khẩu đã được thay đổi thành công *_*";
-                    header('Location: ./index.php?pages=site&action=home&layout=changpass');
+                    echo "<script> alert('Đổi mật khẩu thành công *_*');</script>";
+                    // header('Location: ./index.php?pages=site&action=home&layout=changpass');
                     ob_end_flush();
                 } else {
                     $error = "Mật khẩu mới và xác nhận mật khẩu mới không khớp!";
@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
 <!-- Start Banner Area -->
 <section class="banner-area organic-breadcrumb">
     <div class="container">
@@ -82,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         <div class="br"></div>
                     </aside>
-                  <aside class="single_sidebar_widget post_category_widget">
+                    <aside class="single_sidebar_widget post_category_widget">
                         <h4 class="widget_title">Tài Khoản Của Tôi</h4>
                         <ul class="list cat-list">
                             <li>

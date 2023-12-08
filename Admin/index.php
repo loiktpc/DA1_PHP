@@ -2,7 +2,7 @@
 ob_start();
 include "./Admin/include/Header.php";
 include "./Admin/include/Sidebar.php";
-require './Dao/CategoryPdo.php';
+
 
 switch ($_GET['pages']) {
     case 'admin':
